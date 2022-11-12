@@ -12,14 +12,32 @@ class AuthTest extends TestCase {
    use WithFaker;
    use RefreshDatabase;
 
+   public const LOGIN_URL = '/api/login';
+   public const LOGOUT_URL = '/api/logout';
+   public const REGISTER_URL = '/api/register';
 
-    public function test_that_registration_endpoint_creates_new_user() {
+    public function test_user_cannot_register_if_he_not_provide_name_email_or_password() {
+
+        $response = $this->post(self::REGISTER_URL,[],
+            ['Accept' => 'application/json']);
+
+        $response->assertStatus(422);
+        $response->assertJson(fn (AssertableJson $json) =>
+        $json->has('errors')
+            ->where('errors.name.0', "The name field is required.")
+            ->where('errors.email.0', "The email field is required.")
+            ->where('errors.password.0', "The password field is required.")
+            ->etc()
+        );
+    }
+
+    public function test_registration_create_new_user() {
 
         $name = $this->faker->firstName . ' ' . $this->faker->lastName;
         $email = $this->faker->email;
         $password = $this->faker->password;
 
-        $response = $this->post('/api/register',[
+        $response = $this->post(self::REGISTER_URL,[
             'name' => $name,
             'email' => $email,
             'password' => $password,
@@ -36,19 +54,20 @@ class AuthTest extends TestCase {
                 ->etc()
         );
     }
-    public function test_that_registration_user_with_the_same_email_is_rejected() {
+
+    public function test_cannot_create_user_with_same_email_as_another_user() {
         $name = $this->faker->firstName . ' ' . $this->faker->lastName;
         $email = $this->faker->email;
         $password = $this->faker->password;
 
-        $this->post('/api/register',[
+        $this->post(self::REGISTER_URL,[
             'name' => $name,
             'email' => $email,
             'password' => $password,
             'password_confirmation' => $password
         ],['Accept' => 'application/json']);
 
-        $response = $this->post('/api/register',[
+        $response = $this->post(self::REGISTER_URL,[
             'name' => $name,
             'email' => $email,
             'password' => $password,
@@ -62,19 +81,19 @@ class AuthTest extends TestCase {
             ->etc()
         );
     }
-    public function test_that_registered_account_can_be_logged_into() {
+    public function test_registered_account_can_be_logged_into() {
         $name = $this->faker->firstName . ' ' . $this->faker->lastName;
         $email = $this->faker->email;
         $password = $this->faker->password;
 
-        $this->post('/api/register',[
+        $this->post(self::REGISTER_URL,[
             'name' => $name,
             'email' => $email,
             'password' => $password,
             'password_confirmation' => $password
         ],['Accept' => 'application/json']);
 
-        $response = $this->post('/api/login',[
+        $response = $this->post(self::LOGIN_URL,[
             'email' => $email,
             'password' => $password
         ],['Accept' => 'application/json']);
@@ -89,12 +108,12 @@ class AuthTest extends TestCase {
                 ->etc()
         );
     }
-    public function test_that_login_with_wrong_credentials_is_rejected() {
+    public function test_login_with_wrong_credentials_is_rejected() {
         $name = $this->faker->firstName . ' ' . $this->faker->lastName;
         $email = $this->faker->email;
         $password = $this->faker->password;
 
-        $this->post('/api/register',[
+        $this->post(self::REGISTER_URL,[
             'name' => $name,
             'email' => $email,
             'password' => $password,
@@ -123,26 +142,26 @@ class AuthTest extends TestCase {
             ->etc()
         );
     }
-    public function test_that_you_can_logout_with_a_token() {
+    public function test_you_can_logout_with_a_token() {
         $name = $this->faker->firstName . ' ' . $this->faker->lastName;
         $email = $this->faker->email;
         $password = $this->faker->password;
 
-        $this->post('/api/register',[
+        $this->post(self::REGISTER_URL,[
             'name' => $name,
             'email' => $email,
             'password' => $password,
             'password_confirmation' => $password
         ],['Accept' => 'application/json']);
 
-        $loginResponse = $this->post('/api/login',[
+        $loginResponse = $this->post(self::LOGIN_URL,[
             'email' => $email,
             'password' => $password
         ],['Accept' => 'application/json']);
 
         $token = $loginResponse->json('token');
 
-        $response = $this->post('/api/logout',[],[
+        $response = $this->post(self::LOGOUT_URL,[],[
             'Accept' => 'application/json'
             ,'Authorization' => 'Bearer ' . $token
         ]);
@@ -152,9 +171,5 @@ class AuthTest extends TestCase {
             $json->where('message', 'Logged out')
                 ->etc()
         );
-
-
     }
-
-
 }
