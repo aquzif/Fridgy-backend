@@ -16,6 +16,6 @@
 </div>
 <!-- React JS -->
 @viteReactRefresh
-@vite('resources/js/index.jsx')
+@vite('resources/js/app.js')
 </body>
 </html>
