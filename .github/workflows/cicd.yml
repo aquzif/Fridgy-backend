@@ -77,10 +77,10 @@ jobs:
         with:
           node-version: '18'
       - uses: actions/checkout@v3
-      - name: Install composer dependencies
-        run: composer install --no-dev --prefer-dist --optimize-autoloader
+      - name: Install composer Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Install node dependencies
-        run: npm install
+        run: npm install --force
       - name: Build assets
         run: npm run build
       - name: Remove unnesesary files
@@ -93,7 +93,7 @@ jobs:
       - name: Deploy to server
         run: rsync -e 'ssh -p 222' -avz  ./ ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }}:${{ secrets.SSH_DIR_DEV }}
       - name: Migrate database
-        run: ssh -p 222 ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }} "cd ${{ secrets.SSH_DIR_DEV }} && php artisan migrate"
+        run: ssh -p 222 ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }} "cd ${{ secrets.SSH_DIR_DEV }} && php80 artisan migrate"
   deploy-prod:
     runs-on: ubuntu-latest
     needs: [ test,build ]
