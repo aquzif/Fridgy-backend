@@ -21,7 +21,8 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     runs-on: ubuntu-latest
     steps:
-      - uses: shivammathur/setup-php@v2
+      - name: "Setup PHP"
+        uses: shivammathur/setup-php@v2
         with:
           php-version: '8.0'
       - uses: actions/checkout@v3
@@ -40,4 +41,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - uses: actions/checkout@v3
+      - name: Install node dependencies
+        run: npm install
+      - name: Build assets
+        run: npm run build
 
