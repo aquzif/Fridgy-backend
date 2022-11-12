@@ -58,7 +58,7 @@ jobs:
   deploy-dev:
     runs-on: ubuntu-latest
     needs: [ test,build ]
-    #if: github.ref == 'refs/heads/dev'
+    if: github.ref == 'refs/heads/dev'
     steps:
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
@@ -99,6 +99,14 @@ jobs:
     needs: [ test,build ]
     if: github.ref == 'refs/heads/main'
     steps:
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          known_hosts: 'placeholder'
+      - run: echo $(ssh-keyscan -p 222 ${{ secrets.SERVER_HOST }} )
+      - name: Adding Known Hosts
+        run: ssh-keyscan -p 222 ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -108,7 +116,20 @@ jobs:
         with:
           node-version: '18'
       - uses: actions/checkout@v3
+      - name: Install composer Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Install node dependencies
-        run: npm install
+        run: npm install --force
       - name: Build assets
         run: npm run build
+      - name: Remove unnesesary files
+        run: |
+          rm -rf node_modules
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.production', '.env');"
+      - name: Directory Permissions
+        run: chmod -R 777 storage bootstrap/cache
+      - name: Deploy to server
+        run: rsync -e 'ssh -p 222' -avz  ./ ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }}:${{ secrets.SSH_DIR_PROD }}
+      - name: Migrate database
+        run: ssh -p 222 ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }} "cd ${{ secrets.SSH_DIR_PROD }} && php80 artisan migrate"
