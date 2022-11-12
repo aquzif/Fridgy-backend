@@ -58,7 +58,7 @@ jobs:
   deploy-dev:
     runs-on: ubuntu-latest
     needs: [ test,build ]
-    if: github.ref == 'refs/heads/dev'
+    #if: github.ref == 'refs/heads/dev'
     steps:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -73,6 +73,15 @@ jobs:
         run: npm install
       - name: Build assets
         run: npm run build
+      - name: Directory Permissions
+        run: chmod -R 777 storage bootstrap/cache
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: s110.linuxpl.com
+          username: xgen2
+          password: ASDZXCasdzxc123!
+          server-dir: '/domains/fridgy-dev.xgen-software.com/public_html'
   deploy-prod:
     runs-on: ubuntu-latest
     needs: [ test,build ]
