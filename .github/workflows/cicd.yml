@@ -11,16 +11,14 @@ jobs:
   laravel-tests:
     services:
       mysql:
-        image: mysql:5.7
+        image: mysql:8.0.21
         env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: ""
           MYSQL_DATABASE: fridgy
-          MYSQL_USER: root
-          MYSQL_PASSWORD: ASDZXqwd1d213re2!@@DQWd12dwd
-          MYSQL_ROOT_PASSWORD:
         ports:
-          - 33306:3306
+          - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
     runs-on: ubuntu-latest
     steps:
       - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
