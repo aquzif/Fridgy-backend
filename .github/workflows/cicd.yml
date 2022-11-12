@@ -65,6 +65,7 @@ jobs:
         with:
           key: ${{ secrets.SSH_KEY }}
           known_hosts: 'placeholder'
+      - run: echo ssh-keyscan -H ${{ secrets.SERVER_HOST }}
       - name: Adding Known Hosts
         run: ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
       - name: Setup PHP
