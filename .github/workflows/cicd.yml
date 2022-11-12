@@ -1,4 +1,4 @@
-name: Laravel
+name: "CI/CD"
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 
 jobs:
-  laravel-tests:
+  test:
     services:
       mysql:
         image: mysql:8.0.21
@@ -21,7 +21,7 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     runs-on: ubuntu-latest
     steps:
-      - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+      - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.0'
       - uses: actions/checkout@v3
@@ -37,3 +37,7 @@ jobs:
         run: php artisan migrate
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: php artisan test
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
