@@ -40,6 +40,7 @@ jobs:
         run: php artisan test
   build:
     runs-on: ubuntu-latest
+    depends-on: test
     steps:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
