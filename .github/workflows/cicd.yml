@@ -81,7 +81,7 @@ jobs:
           server: s110.linuxpl.com
           username: xgen2
           password: ASDZXCasdzxc123!
-          server-dir: '/domains/fridgy-dev.xgen-software.com/public_html'
+          server-dir: '/domains/fridgy-dev.xgen-software.com/public_html/'
   deploy-prod:
     runs-on: ubuntu-latest
     needs: [ test,build ]
