@@ -30,9 +30,7 @@ class AuthTest extends TestCase {
             ->etc()
         );
     }
-
     public function test_registration_create_new_user() {
-
         $name = $this->faker->firstName . ' ' . $this->faker->lastName;
         $email = $this->faker->email;
         $password = $this->faker->password;
