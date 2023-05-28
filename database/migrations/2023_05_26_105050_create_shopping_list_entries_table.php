@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->string('product_name');
             $table->string('unit_name');
             $table->integer('amount');
-            $table->integer('grams_per_amount');
+            $table->integer('converter');
             $table->timestamps();
         });
     }

@@ -5,6 +5,9 @@ use App\Http\Controllers\GroceryProductsController;
 use App\Http\Controllers\GroceryProductUnitsController;
 use App\Http\Controllers\ShoppingListEntriesController;
 use App\Http\Controllers\ShoppingListsController;
+use App\Models\ShoppingList;
+use App\Models\ShoppingListEntry;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,21 +40,21 @@ Route::middleware('auth:sanctum')->group(fn() => [
     //Shopping list routes
     //-----------------------------
     Route::prefix('/shopping-list')->group(fn() => [
-        Route::get('/',[ShoppingListsController::class,'index']),
-        Route::post('/',[ShoppingListsController::class,'store']),
-        Route::get('/{shoppingList}',[ShoppingListsController::class,'show']),
-        Route::patch('/{shoppingList}',[ShoppingListsController::class,'update']),
-        Route::delete('/{shoppingList}',[ShoppingListsController::class,'destroy']),
+        Route::get('/',[ShoppingListsController::class,'index'])->can('viewAny',ShoppingList::class),
+        Route::post('/',[ShoppingListsController::class,'store'])->can('create',ShoppingList::class),
+        Route::get('/{shoppingList}',[ShoppingListsController::class,'show'])->can('view','shoppingList'),
+        Route::match(['put','patch'],'/{shoppingList}',[ShoppingListsController::class,'update'])->can('update','shoppingList'),
+        Route::delete('/{shoppingList}',[ShoppingListsController::class,'destroy'])->can('delete','shoppingList'),
 
         //-----------------------------
         //Shopping list entry routes
         //-----------------------------
-        Route::prefix('/{shoppingList}/entries')->group(fn() => [
-            Route::get('/',[ShoppingListEntriesController::class,'index']),
-            Route::post('/',[ShoppingListEntriesController::class,'store']),
-            Route::get('/{shoppingListEntry}',[ShoppingListEntriesController::class,'show']),
-            Route::patch('/{shoppingListEntry}',[ShoppingListEntriesController::class,'update']),
-            Route::delete('/{shoppingListEntry}',[ShoppingListEntriesController::class,'destroy']),
+        Route::prefix('/{shoppingList}/entries')->middleware('can:view,shoppinglist')->group(fn() => [
+            Route::get('/',[ShoppingListEntriesController::class,'index'])->can('viewAny',ShoppingListEntry::class),
+            Route::post('/',[ShoppingListEntriesController::class,'store'])->can('create',ShoppingListEntry::class),
+            Route::get('/{shoppingListEntry}',[ShoppingListEntriesController::class,'show'])->can('view',ShoppingListEntry::class),
+            Route::match(['put','patch'],'/{shoppingListEntry}',[ShoppingListEntriesController::class,'update'])->can('update',ShoppingListEntry::class),
+            Route::delete('/{shoppingListEntry}',[ShoppingListEntriesController::class,'destroy'])->can('delete',ShoppingListEntry::class),
         ]),
     ]),
 
@@ -62,7 +65,7 @@ Route::middleware('auth:sanctum')->group(fn() => [
         Route::get('/',[GroceryProductsController::class,'index']),
         Route::post('/',[GroceryProductsController::class,'store']),
         Route::get('/{groceryProduct}',[GroceryProductsController::class,'show']),
-        Route::patch('/{groceryProduct}',[GroceryProductsController::class,'update']),
+        Route::match(['put','patch'],'/{groceryProduct}',[GroceryProductsController::class,'update']),
         Route::delete('/{groceryProduct}',[GroceryProductsController::class,'destroy']),
 
         //-----------------------------
@@ -72,7 +75,7 @@ Route::middleware('auth:sanctum')->group(fn() => [
             Route::get('/',[GroceryProductUnitsController::class,'index']),
             Route::post('/',[GroceryProductUnitsController::class,'store']),
             Route::get('/{groceryProductUnit}',[GroceryProductUnitsController::class,'show']),
-            Route::patch('/{groceryProductUnit}',[GroceryProductUnitsController::class,'update']),
+            Route::match(['put','patch'],'/{groceryProductUnit}',[GroceryProductUnitsController::class,'update']),
             Route::delete('/{groceryProductUnit}',[GroceryProductUnitsController::class,'destroy']),
         ]),
     ])

@@ -13,4 +13,9 @@ class ShoppingListEntry extends Model {
         'amount',
         'grams_per_amount',
     ];
+
+    function getShoppingList(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
+        return $this->belongsTo(ShoppingList::class);
+    }
+
 }

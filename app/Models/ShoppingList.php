@@ -9,4 +9,8 @@ class ShoppingList extends Model {
         'name',
         'user_id',
     ];
+
+    function getEntries(): \Illuminate\Database\Eloquent\Relations\HasMany {
+        return $this->hasMany(ShoppingListEntry::class);
+    }
 }
