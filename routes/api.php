@@ -49,12 +49,12 @@ Route::middleware('auth:sanctum')->group(fn() => [
         //-----------------------------
         //Shopping list entry routes
         //-----------------------------
-        Route::prefix('/{shoppingList}/entries')->middleware('can:view,shoppinglist')->group(fn() => [
+        Route::prefix('/{shoppingList}/entry')->middleware('can:view,shoppingList')->group(fn() => [
             Route::get('/',[ShoppingListEntriesController::class,'index'])->can('viewAny',ShoppingListEntry::class),
             Route::post('/',[ShoppingListEntriesController::class,'store'])->can('create',ShoppingListEntry::class),
-            Route::get('/{shoppingListEntry}',[ShoppingListEntriesController::class,'show'])->can('view',ShoppingListEntry::class),
-            Route::match(['put','patch'],'/{shoppingListEntry}',[ShoppingListEntriesController::class,'update'])->can('update',ShoppingListEntry::class),
-            Route::delete('/{shoppingListEntry}',[ShoppingListEntriesController::class,'destroy'])->can('delete',ShoppingListEntry::class),
+            Route::get('/{shoppingListEntry}',[ShoppingListEntriesController::class,'show'])->can('view',['shoppingList','shoppingListEntry']),
+            Route::match(['put','patch'],'/{shoppingListEntry}',[ShoppingListEntriesController::class,'update'])->can('update',['shoppingList','shoppingListEntry']),
+            Route::delete('/{shoppingListEntry}',[ShoppingListEntriesController::class,'destroy'])->can('delete',['shoppingList','shoppingListEntry']),
         ]),
     ]),
 

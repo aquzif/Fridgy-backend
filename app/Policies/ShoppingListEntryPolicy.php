@@ -17,9 +17,9 @@ class ShoppingListEntryPolicy
         return true;
     }
 
-    public function view(User $user, ShoppingListEntry $shoppingListEntry, ShoppingList $shoppingList): bool {
-        return $shoppingListEntry->getShoppingList()->first()->user_id == $user->id
-            && $shoppingListEntry->shopping_list_id = $shoppingList->id;
+    public function view(User $user,ShoppingListEntry $shoppingListEntry,ShoppingList $shoppingList): bool {
+        return $shoppingListEntry->shopping_list_id == $shoppingList->id;
+
     }
 
     public function create(User $user): bool {

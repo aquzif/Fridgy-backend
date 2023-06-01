@@ -8,12 +8,27 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class ShoppingListAPITest extends TestCase
-{
+class ShoppingListAPITest extends TestCase {
+
     use RefreshDatabase;
     use WithFaker;
 
     public const SHOPPING_LIST_ENDPOINT = '/api/shopping-list';
+
+
+    public function setUp(): void {
+        parent::setUp();
+        $this->user1 = User::factory()->create();
+        $this->user2 = User::factory()->create();
+
+        $this->user1_token = $this->user1->createToken('auth_token')->plainTextToken;
+        $this->user2_token = $this->user2->createToken('auth_token')->plainTextToken;
+
+        $this->shoppingListData1 = [
+            'name' => $this->faker->name
+        ];
+
+    }
 
     public function generateRandomShoppingListData(): array{
         return [
@@ -29,20 +44,6 @@ class ShoppingListAPITest extends TestCase
 
         return $this->actingAs($user)
             ->postJson(self::SHOPPING_LIST_ENDPOINT, $data);
-    }
-
-    public function setUp(): void {
-        parent::setUp();
-        $this->user1 = User::factory()->create();
-        $this->user2 = User::factory()->create();
-
-        $this->user1_token = $this->user1->createToken('auth_token')->plainTextToken;
-        $this->user2_token = $this->user2->createToken('auth_token')->plainTextToken;
-
-        $this->shoppingListData1 = [
-            'name' => $this->faker->name
-        ];
-
     }
 
     public function test_user_can_create_shopping_list_using_all_available_params(){

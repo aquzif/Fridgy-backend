@@ -11,7 +11,7 @@ class ShoppingListEntry extends Model {
         'product_name',
         'unit_name',
         'amount',
-        'grams_per_amount',
+        'converter',
     ];
 
     function getShoppingList(): \Illuminate\Database\Eloquent\Relations\BelongsTo {

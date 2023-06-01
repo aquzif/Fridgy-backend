@@ -26,7 +26,7 @@ class ShoppingListEntriesController extends Controller {
             'converter' => 'integer|required_if:grocery_product_id,null',
         ]);
 
-        if($fields['grocery_product_id'] !== null) {
+        if(isset($fields['grocery_product_id'])) {
             $product = GroceryProduct::findOrFail($fields['grocery_product_id']);
             $unit = GroceryProductUnit::findOrFail($fields['grocery_product_unit_id']);
 
@@ -44,11 +44,11 @@ class ShoppingListEntriesController extends Controller {
 
     }
 
-    public function show(ShoppingListEntry $shoppingListEntry, ShoppingList $shoppingList, Request $request) {
+    public function show(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request) {
         return $shoppingListEntry;
     }
 
-    public function update(Request $request, ShoppingListEntry $shoppingListEntry, ShoppingList $shoppingList) {
+    public function update(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request ) {
         $fields = $request->validate([
             'product_name' => 'string',
             'unit_name' => 'string',
@@ -62,10 +62,11 @@ class ShoppingListEntriesController extends Controller {
             unset($fields['converter']);
         }
 
-        return $shoppingListEntry->update($fields);
+        $shoppingListEntry->update($fields);
+        return $shoppingListEntry;
     }
 
-    public function destroy(Request $request, ShoppingListEntry $shoppingListEntry,ShoppingList $shoppingList) {
+    public function destroy(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request) {
         $shoppingListEntry->delete();
         return response()->json(['message' => 'Shopping list entry deleted']);
 
