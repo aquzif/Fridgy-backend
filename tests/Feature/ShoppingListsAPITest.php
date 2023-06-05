@@ -7,8 +7,9 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Tests\TestHelpers\ShoppingListTestHelper;
 
-class ShoppingListAPITest extends TestCase {
+class ShoppingListsAPITest extends TestCase {
 
     use RefreshDatabase;
     use WithFaker;
@@ -24,21 +25,13 @@ class ShoppingListAPITest extends TestCase {
         $this->user1_token = $this->user1->createToken('auth_token')->plainTextToken;
         $this->user2_token = $this->user2->createToken('auth_token')->plainTextToken;
 
-        $this->shoppingListData1 = [
-            'name' => $this->faker->name
-        ];
+        $this->shoppingListData1 = ShoppingListTestHelper::generateRandomShoppingListData($this->faker);
 
-    }
-
-    public function generateRandomShoppingListData(): array{
-        return [
-            'name' => $this->faker->name,
-        ];
     }
 
     public function createShoppingList(User $user, $data = []): \Illuminate\Testing\TestResponse {
         if($data == [])
-            $data = $this->generateRandomShoppingListData();
+            $data = ShoppingListTestHelper::generateRandomShoppingListData($this->faker);
 
         $token = $user->createToken('auth_token')->plainTextToken;
 

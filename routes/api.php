@@ -58,27 +58,7 @@ Route::middleware('auth:sanctum')->group(fn() => [
         ]),
     ]),
 
-    //-----------------------------
-    //Grocery products routes
-    //-----------------------------
-    Route::prefix('/grocery-product')->group(fn() => [
-        Route::get('/',[GroceryProductsController::class,'index']),
-        Route::post('/',[GroceryProductsController::class,'store']),
-        Route::get('/{groceryProduct}',[GroceryProductsController::class,'show']),
-        Route::match(['put','patch'],'/{groceryProduct}',[GroceryProductsController::class,'update']),
-        Route::delete('/{groceryProduct}',[GroceryProductsController::class,'destroy']),
 
-        //-----------------------------
-        //Grocery product units routes
-        //-----------------------------
-        Route::prefix('/{groceryProduct}/units')->group(fn() => [
-            Route::get('/',[GroceryProductUnitsController::class,'index']),
-            Route::post('/',[GroceryProductUnitsController::class,'store']),
-            Route::get('/{groceryProductUnit}',[GroceryProductUnitsController::class,'show']),
-            Route::match(['put','patch'],'/{groceryProductUnit}',[GroceryProductUnitsController::class,'update']),
-            Route::delete('/{groceryProductUnit}',[GroceryProductUnitsController::class,'destroy']),
-        ]),
-    ])
 ]);
 
 

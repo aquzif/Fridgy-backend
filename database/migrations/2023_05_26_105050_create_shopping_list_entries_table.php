@@ -9,11 +9,9 @@ return new class extends Migration {
         Schema::create('shopping_list_entries', function (Blueprint $table) {
             $table->id();
             $table->integer('shopping_list_id');
-            $table->integer('grocery_product_id');
             $table->string('product_name');
             $table->string('unit_name');
             $table->integer('amount');
-            $table->integer('converter');
             $table->timestamps();
         });
     }

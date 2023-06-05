@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Tests\TestHelpers\ShoppingListEntriesTestHelper;
+use Tests\TestHelpers\ShoppingListTestHelper;
 
 class ShoppingListEntriesAPITest extends TestCase {
 
@@ -18,24 +20,19 @@ class ShoppingListEntriesAPITest extends TestCase {
         $this->user1 = User::factory()->create();
         $this->user2 = User::factory()->create();
 
-        $this->shoppingList = ShoppingList::create([
-            'name' => $this->faker->name,
-            'user_id' => $this->user1->id
-        ]);
+        $this->shoppingList = ShoppingList::create(
+            [
+                ...ShoppingListTestHelper::generateRandomShoppingListData($this->faker),
+                'user_id' => $this->user1->id
+            ]
+        );
     }
 
-    public function generateRandomShoppingListEntryData(): array {
-        return [
-            'product_name' => $this->faker->name,
-            'amount' => $this->faker->randomDigit(),
-            'unit_name' => $this->faker->word,
-            'converter' => $this->faker->numberBetween(1,100)
-        ];
-    }
+
 
     public function createShoppingListEntry(User $user,ShoppingList $shoppingList, $data = []): \Illuminate\Testing\TestResponse {
         if($data == [])
-            $data = $this->generateRandomShoppingListEntryData();
+            $data = ShoppingListEntriesTestHelper::generateRandomShoppingListEntryData($this->faker);
 
         $url = '/api/shopping-list/'.$shoppingList->id.'/entry';
 
@@ -46,7 +43,7 @@ class ShoppingListEntriesAPITest extends TestCase {
     public function test_user_can_add_raw_entry_to_shopping_list(): void {
 
         $shoppingListID = $this->shoppingList->id;
-        $entryData = $this->generateRandomShoppingListEntryData();
+        $entryData = ShoppingListEntriesTestHelper::generateRandomShoppingListEntryData($this->faker);
         $response = $this->createShoppingListEntry($this->user1,$this->shoppingList,$entryData);
 
         $response->assertStatus(201);
@@ -57,8 +54,8 @@ class ShoppingListEntriesAPITest extends TestCase {
     public function test_user_can_see_every_entry_in_shopping_list(): void {
 
         $shoppingListID = $this->shoppingList->id;
-        $entryData1 = $this->generateRandomShoppingListEntryData();
-        $entryData2 = $this->generateRandomShoppingListEntryData();
+        $entryData1 = ShoppingListEntriesTestHelper::generateRandomShoppingListEntryData($this->faker);
+        $entryData2 = ShoppingListEntriesTestHelper::generateRandomShoppingListEntryData($this->faker);
 
         $this->createShoppingListEntry($this->user1,$this->shoppingList,$entryData1);
         $this->createShoppingListEntry($this->user1,$this->shoppingList,$entryData2);
@@ -76,7 +73,7 @@ class ShoppingListEntriesAPITest extends TestCase {
     public function test_user_can_see_entry_by_id() {
 
         $shoppingListID = $this->shoppingList->id;
-        $entryData = $this->generateRandomShoppingListEntryData();
+        $entryData = ShoppingListEntriesTestHelper::generateRandomShoppingListEntryData($this->faker);
 
         $entry = $this->createShoppingListEntry($this->user1,$this->shoppingList,$entryData);
 
@@ -91,7 +88,7 @@ class ShoppingListEntriesAPITest extends TestCase {
     public function test_user_can_remove_entry_from_shopping_list() {
 
         $shoppingListID = $this->shoppingList->id;
-        $entryData = $this->generateRandomShoppingListEntryData();
+        $entryData = ShoppingListEntriesTestHelper::generateRandomShoppingListEntryData($this->faker);
 
         $entry = $this->createShoppingListEntry($this->user1,$this->shoppingList,$entryData);
 
@@ -105,7 +102,7 @@ class ShoppingListEntriesAPITest extends TestCase {
     public function test_user_can_update_entry_in_shopping_list() {
 
         $shoppingListID = $this->shoppingList->id;
-        $entryData = $this->generateRandomShoppingListEntryData();
+        $entryData = ShoppingListEntriesTestHelper::generateRandomShoppingListEntryData($this->faker);
 
         $entry = $this->createShoppingListEntry($this->user1,$this->shoppingList,$entryData);
 
@@ -114,7 +111,6 @@ class ShoppingListEntriesAPITest extends TestCase {
         $entryData['product_name'] .= 'new';
         $entryData['amount'] += 10;
         $entryData['unit_name'] .= 'new';
-        $entryData['converter'] += 10;
 
         $response = $this->actingAs($this->user1)->putJson($url,$entryData);
 
