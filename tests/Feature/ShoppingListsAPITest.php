@@ -3,10 +3,12 @@
 namespace Tests\Feature;
 
 use App\Models\ShoppingList;
+use App\Models\ShoppingListEntry;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Tests\TestHelpers\ShoppingListEntriesTestHelper;
 use Tests\TestHelpers\ShoppingListTestHelper;
 
 class ShoppingListsAPITest extends TestCase {
@@ -94,17 +96,34 @@ class ShoppingListsAPITest extends TestCase {
 
     public function test_when_user_is_removing_shopping_list_it_removes_entries_as_well(): void{
 
-       /* $shoppingListData = $this->createShoppingList($this->user1,$this->shoppingListData1)->json();
+        $shoppingListData = $this->createShoppingList($this->user1,$this->shoppingListData1)->json();
 
-        $url = self::SHOPPING_LIST_ENDPOINT.'/'.$shoppingListData['id'];
+        $shoppingListId = $shoppingListData['id'];
+
+        $url = self::SHOPPING_LIST_ENDPOINT.'/'.$shoppingListId;
+        $entriesURL = $url.'/entry';
+
+        $this->actingAs($this->user1)
+            ->postJson($entriesURL,
+                ShoppingListEntriesTestHelper::generateRandomShoppingListEntryData($this->faker));
+
+        $this->actingAs($this->user1)
+            ->postJson($entriesURL,
+                ShoppingListEntriesTestHelper::generateRandomShoppingListEntryData($this->faker));
+
+        $entries = ShoppingListEntry::all();
+
+        $this->assertCount(2, $entries);
 
         $request = $this->actingAs($this->user1)
             ->deleteJson($url);
 
         $request->assertStatus(200);
-
         $list = ShoppingList::find($shoppingListData['id']);
-        $this->assertNull($list);*/
+        $this->assertNull($list);
+
+        $entries = ShoppingListEntry::all();
+        $this->assertCount(0, $entries);
 
     }
 
