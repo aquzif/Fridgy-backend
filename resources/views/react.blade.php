@@ -7,8 +7,6 @@
 
     @vite('resources/css/app.css')
 
-    <!-- Styles -->
-    {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 </head>
 <body>
 <!-- React root DOM -->
@@ -16,6 +14,6 @@
 </div>
 <!-- React JS -->
 @viteReactRefresh
-@vite('resources/js/app.js')
+@vite('resources/js/index.jsx')
 </body>
 </html>
