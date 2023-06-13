@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Laravel</title>
 
-    @vite('resources/css/app.css')
+    @vite('resources/sass/app.scss')
 
-    <!-- Styles -->
-    {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 </head>
 <body>
 <!-- React root DOM -->
@@ -16,6 +14,6 @@
 </div>
 <!-- React JS -->
 @viteReactRefresh
-@vite('resources/js/app.js')
+@vite('resources/js/index.jsx')
 </body>
 </html>
