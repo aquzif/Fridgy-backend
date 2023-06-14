@@ -1,3 +1,6 @@
+import store from "@/Store/store";
+import {expire} from "@/Store/Reducers/AuthReducer";
+import toast from "react-hot-toast";
 
 export default class RequestUtils{
 
@@ -42,11 +45,11 @@ export default class RequestUtils{
 
         if(url[0] === '/' && response.status === 401){
 
-            //TODO expire session here
+            store.dispatch(expire());
             if(!this.#expired_checked){
                 this.#expired_checked = true;
                 setTimeout(() => this.#expired_checked = false, 1000);
-                //TODO send message here
+                toast.error("Your session has expired, please login again");
             }
 
 
