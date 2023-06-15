@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import backgroundImage from "../Assets/login-bg.jpg";
+import LoginFormSchema from "../Schemas/LoginFormSchema";
 
 
 const Background = styled.div`
@@ -37,8 +38,15 @@ const Input = styled.input`
     padding: 0 20px;
     margin-top: 20px;
     background-color: white;
+
+    &[error] {
+        border-color: red;
+    }
 `;
 
+const InputLabel = styled.span`
+
+`;
 
 const SubmitButton = styled.button`
     padding: 10px 30px;
@@ -56,14 +64,36 @@ const SubmitButton = styled.button`
 
 
 const LoginView = () => {
+
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: '',
+        },
+        onSubmit: values => {
+            alert(JSON.stringify(values, null, 2));
+        },
+        validationSchema: LoginFormSchema,
+    });
+
     return (
         <Background>
             <Container>
                 <Title>
                     Witaj w fridgy
                 </Title>
-                <Input type="text" placeholder="Email" />
-                <Input type="password" placeholder="Hasło" />
+                <Input
+                    type="text"
+                    placeholder="Email"
+                    error={formik.touched.email && formik.errors.email}
+                />
+                <InputLabel>{formik.touched.email && formik.errors.email}</InputLabel>
+                <Input
+                    type="password"
+                    placeholder="Hasło"
+                    error={formik.touched.password && formik.errors.password}
+                />
+                <InputLabel>{formik.touched.password && formik.errors.password}</InputLabel>
                 <SubmitButton type="submit">Zaloguj</SubmitButton>
             </Container>
         </Background>

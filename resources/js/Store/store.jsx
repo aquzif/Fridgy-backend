@@ -7,6 +7,7 @@ const store = configureStore({
     }
 });
 
+store.subscribe(LocalStorageUtils.saveState);
 
 
 export default store;
