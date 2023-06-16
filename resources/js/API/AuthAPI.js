@@ -1,25 +1,30 @@
 import RequestUtils from "@/Utils/RequestUtils";
+import store from "@/Store/store";
+import UserUtils from "@/Utils/UserUtils";
 
 export default class AuthAPI {
 
-    /**
-     *
-     * function returns request promise from server
-     *
-     * @param email - user email
-     * @param password - user password
-     * @returns {Promise<*>}
-     */
-    static async login(email, password) {
 
-        return RequestUtils.post('/api/login', {
+    static async login(email, password) {
+        return await RequestUtils.post('/api/login', {
             email: email,
             password: password
         });
 
     }
 
+    static async getUser() {
+        return await RequestUtils.get('/api/user', {}, {
+            'Authorization': 'Bearer ' + UserUtils.getUserToken()
+        });
+
+    }
+
     static async logout() {
+
+        return await RequestUtils.post('/api/logout', {}, {
+            'Authorization': 'Bearer ' + UserUtils.getUserToken()
+        });
 
     }
 

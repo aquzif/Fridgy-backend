@@ -5,9 +5,7 @@ export default class LocalStorageUtils {
 
     static saveState() {
         const state = store.getState();
-
-        this.saveAuthReducerState(state.authReducer);
-
+        LocalStorageUtils.saveAuthReducerState(state.authReducer);
     }
 
     static getData(key = 'auth') {

@@ -34,15 +34,7 @@ export default class RequestUtils{
                 ...headers
             },
             ...method !== 'GET' ? {body: JSON.stringify(data)} : {}
-        }).then((response) => {
-            if(response){
-                toReturn = {
-                    data: response.json(),
-                    status: response.status
-                }
-            }
         }).catch((error) => {
-            console.log(error);
             toReturn = {
                 data: null,
                 status: 500,
@@ -50,8 +42,7 @@ export default class RequestUtils{
             }
         });
 
-        if(url[0] === '/' && response.status === 401){
-
+        if(url[0] === '/' && store.getState().authReducer?.token?.length > 0 && response?.status === 401){
             store.dispatch(expire());
             if(!this.#expired_checked){
                 this.#expired_checked = true;
@@ -66,7 +57,6 @@ export default class RequestUtils{
                 status: response.status
             }
         }
-
         return toReturn;
     }
 

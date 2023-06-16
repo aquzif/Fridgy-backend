@@ -1,4 +1,8 @@
+import toast from "react-hot-toast";
+
 const logout = (state, action) => {
+
+    toast.success('Wylogowano pomyślnie');
 
     return {
         ...state,

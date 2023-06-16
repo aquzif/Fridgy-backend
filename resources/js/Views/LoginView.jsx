@@ -3,6 +3,8 @@ import LoginFormSchema from "@/Schemas/LoginFormSchema";
 import {useState} from "react";
 import AuthAPI from "@/API/AuthAPI";
 import toast from "react-hot-toast";
+import store from "@/Store/store";
+import {login} from "@/Store/Reducers/AuthReducer";
 
 
 const LoginView = () => {
@@ -11,7 +13,13 @@ const LoginView = () => {
 
     const tryLogin = async (values) => {
         let result = await AuthAPI.login(values.email,values.password);
-        console.log(result);
+
+        if(result.status === 401) {
+            throw new Error('Invalid credentials');
+        }
+
+        store.dispatch(login(result.data));
+
     }
 
     const formik = useFormik({
@@ -24,12 +32,13 @@ const LoginView = () => {
             setIsLogining(true);
 
             await toast.promise(tryLogin(values), {
-                pending: 'Logging in...',
-                success: 'Logged in successfully',
-                error: 'Error when logging in',
+                loading: 'Logowanie...',
+                success: 'Zalogowano pomyślnie',
+                error: 'Błędne dane logowania',
+            }).catch((err) => {
+                console.log(err);
+                setIsLogining(false);
             });
-
-            setIsLogining(false);
 
 
         }
@@ -58,7 +67,7 @@ const LoginView = () => {
                         value={formik.values.password}
                     /> <br/>
                     <span>{formik.touched.password && formik.errors.password}</span> <br/>
-                    <button disabled={isLogining} >Login</button>
+                    <button disabled={isLogining} type="submit" >Login</button>
                 </form>
             </div>
         </>
