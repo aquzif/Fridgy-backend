@@ -34,6 +34,13 @@ export default class RequestUtils{
                 ...headers
             },
             ...method !== 'GET' ? {body: JSON.stringify(data)} : {}
+        }).then((response) => {
+            if(response){
+                toReturn = {
+                    data: response.json(),
+                    status: response.status
+                }
+            }
         }).catch((error) => {
             console.log(error);
             toReturn = {
@@ -51,9 +58,6 @@ export default class RequestUtils{
                 setTimeout(() => this.#expired_checked = false, 1000);
                 toast.error("Your session has expired, please login again");
             }
-
-
-
         }
 
         if(response){

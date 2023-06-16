@@ -1,3 +1,4 @@
+import store from "@/Store/store";
 
 
 export default class LocalStorageUtils {

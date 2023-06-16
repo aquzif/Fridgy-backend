@@ -1,6 +1,6 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import LoginView from "../Views/LoginView";
 import NotFoundView from "../Views/Error/NotFoundView";
+import LoginView from "@/Views/LoginView";
 
 const Router = () => {
     return (
