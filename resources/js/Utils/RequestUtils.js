@@ -1,6 +1,7 @@
 import store from "@/Store/store";
 import {expire} from "@/Store/Reducers/AuthReducer";
 import toast from "react-hot-toast";
+import UserUtils from "@/Utils/UserUtils";
 
 export default class RequestUtils{
 
@@ -10,16 +11,44 @@ export default class RequestUtils{
         return await this.request(url, 'GET', data , headers);
     }
 
+    static async apiGet(url, data = {}, headers = {}){
+        return await this.request(url, 'GET', data , {
+            ...headers,
+            'Authorization': 'Bearer ' + UserUtils.getUserToken(),
+        });
+    }
+
     static async post(url, data = {}, headers = {}){
         return await this.request(url, 'POST', data , headers);
+    }
+
+    static async apiPost(url, data = {}, headers = {}){
+        return await this.request(url, 'POST', data , {
+            ...headers,
+            'Authorization': 'Bearer ' + UserUtils.getUserToken(),
+        });
     }
 
     static async put(url, data = {}, headers = {}){
         return await this.request(url, 'PUT', data, headers);
     }
 
+    static async apiPut(url, data = {}, headers = {}){
+        return await this.request(url, 'PUT', data, {
+            ...headers,
+            'Authorization': 'Bearer ' + UserUtils.getUserToken(),
+        });
+    }
+
     static async delete(url, data = {}, headers = {}){
         return await this.request(url, 'DELETE', data, headers);
+    }
+
+    static async apiDelete(url, data = {}, headers = {}){
+        return await this.request(url, 'DELETE', data, {
+            ...headers,
+            'Authorization': 'Bearer ' + UserUtils.getUserToken(),
+        });
     }
 
     static async request(url, method, data, headers){

@@ -10,21 +10,15 @@ export default class AuthAPI {
             email: email,
             password: password
         });
-
     }
 
     static async getUser() {
-        return await RequestUtils.get('/api/user', {}, {
-            'Authorization': 'Bearer ' + UserUtils.getUserToken()
-        });
-
+        return await RequestUtils.apiGet('/api/user');
     }
 
     static async logout() {
 
-        return await RequestUtils.post('/api/logout', {}, {
-            'Authorization': 'Bearer ' + UserUtils.getUserToken()
-        });
+        return await RequestUtils.apiPost('/api/logout');
 
     }
 

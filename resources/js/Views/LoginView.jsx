@@ -5,6 +5,81 @@ import AuthAPI from "@/API/AuthAPI";
 import toast from "react-hot-toast";
 import store from "@/Store/store";
 import {login} from "@/Store/Reducers/AuthReducer";
+import styled from "styled-components";
+import backgroundImage from "@/Assets/login-bg.jpg";
+
+
+
+
+const Background = styled.div`
+    background-image: url(${backgroundImage});
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @media (max-width: 768px) {
+        background-image: none;
+        background-color: #2B2B2B;
+    }
+`;
+
+const Container = styled.div`
+    width: 300px;
+    height: 100vh;
+    padding: 0px 50px;
+    background-color: #2B2B2B;
+
+    //100vw width on mobile
+    @media (max-width: 768px) {
+        margin-left: auto;
+        margin-right: auto;
+    }
+`;
+
+const Title = styled.p`
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 120px;
+    color: #FACC2C;
+`;
+
+const Input = styled.input`
+    width: calc(100% - 40px);
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 0 20px;
+    margin-top: 20px;
+    background-color: white;
+
+    &[error] {
+        border-color: red;
+    }
+`;
+
+const InputLabel = styled.span`
+
+`;
+
+const SubmitButton = styled.button`
+    padding: 10px 30px;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 20px;
+    border: 1px solid #079000;
+    background-color: #079000;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+`;
 
 
 const LoginView = () => {
@@ -44,6 +119,36 @@ const LoginView = () => {
         }
     });
 
+    return (
+        <Background>
+            <Container>
+                <Title>
+                    Witaj w fridgy
+                </Title>
+                <form onSubmit={formik.handleSubmit}>
+                    <Input
+                        type={'text'}
+                        name={'email'}
+                        placeholder={'email'}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.email}
+                    />
+                    <InputLabel>{formik.touched.email && formik.errors.email}</InputLabel>
+                    <Input
+                        type={'password'}
+                        name={'password'}
+                        placeholder={'Password'}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.password}
+                    />
+                    <InputLabel>{formik.touched.password && formik.errors.password}</InputLabel>
+                    <SubmitButton type="submit">Zaloguj</SubmitButton>
+                </form>
+            </Container>
+        </Background>
+    );
 
     return (
         <>
