@@ -1,1 +1,1 @@
-{!! file_get_contents(base_path() . '/public/build/index.html') !!}
+{!! file_get_contents(base_path() . '/public/index.html') !!}
