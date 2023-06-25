@@ -8,7 +8,7 @@ if (document.getElementById('root')) {
 
     Index.render(
         <React.StrictMode>
-            <App />
+            <h2>hello world</h2>
         </React.StrictMode>
     )
 }

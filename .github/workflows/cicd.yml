@@ -25,15 +25,9 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.1'
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
       - uses: actions/checkout@v3
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
-      - name: Install node dependencies
-        run: npm install
       - name: Install composer dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Generate key
@@ -44,25 +38,6 @@ jobs:
         run: php artisan migrate
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: php artisan test
-      - name: Execute tests (frontend) via Jest
-        run: npm run test
-  build:
-    runs-on: ubuntu-latest
-    needs: [test]
-    steps:
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.0'
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      - uses: actions/checkout@v3
-      - name: Install node dependencies
-        run: npm install
-      - name: Build assets
-        run: npm run build
   deploy-dev:
     runs-on: ubuntu-latest
     needs: [ test,build ]
@@ -80,20 +55,9 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.0'
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
       - uses: actions/checkout@v3
       - name: Install composer Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-      - name: Install node dependencies
-        run: npm install --force
-      - name: Build assets
-        run: npm run build
-      - name: Remove unnesesary files
-        run: |
-          rm -rf node_modules
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.development', '.env');"
       - name: Directory Permissions
@@ -119,20 +83,9 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.0'
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
       - uses: actions/checkout@v3
       - name: Install composer Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-      - name: Install node dependencies
-        run: npm install --force
-      - name: Build assets
-        run: npm run build
-      - name: Remove unnesesary files
-        run: |
-          rm -rf node_modules
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.production', '.env');"
       - name: Directory Permissions
