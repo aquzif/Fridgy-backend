@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Tests\TestHelpers\ResponseTestHelper;
 use Tests\TestHelpers\ShoppingListEntriesTestHelper;
 use Tests\TestHelpers\ShoppingListTestHelper;
 
@@ -47,7 +48,7 @@ class ShoppingListEntriesAPITest extends TestCase {
         $response = $this->createShoppingListEntry($this->user1,$this->shoppingList,$entryData);
 
         $response->assertStatus(201);
-        $response->assertJson($entryData);
+        $response->assertJson(ResponseTestHelper::getSuccessCreateResponse($entryData));
 
     }
 
@@ -64,7 +65,7 @@ class ShoppingListEntriesAPITest extends TestCase {
         $response = $this->actingAs($this->user1)->getJson($url);
 
         $response->assertStatus(200);
-        $response->assertJsonCount(2);
+        $response->assertJsonCount(2,'data');
         $response->assertJsonFragment($entryData1);
         $response->assertJsonFragment($entryData2);
 
@@ -77,11 +78,11 @@ class ShoppingListEntriesAPITest extends TestCase {
 
         $entry = $this->createShoppingListEntry($this->user1,$this->shoppingList,$entryData);
 
-        $url = '/api/shopping-list/'.$shoppingListID.'/entry/'.$entry->json()['id'];
+        $url = '/api/shopping-list/'.$shoppingListID.'/entry/'.$entry->json()['data']['id'];
         $response = $this->actingAs($this->user1)->getJson($url);
 
         $response->assertStatus(200);
-        $response->assertJson($entryData);
+        $response->assertJson(ResponseTestHelper::getSuccessGetResponse($entryData));
 
     }
 
@@ -92,10 +93,14 @@ class ShoppingListEntriesAPITest extends TestCase {
 
         $entry = $this->createShoppingListEntry($this->user1,$this->shoppingList,$entryData);
 
-        $url = '/api/shopping-list/'.$shoppingListID.'/entry/'.$entry->json()['id'];
+        $url = '/api/shopping-list/'.$shoppingListID.'/entry/'.$entry->json()['data']['id'];
         $response = $this->actingAs($this->user1)->deleteJson($url);
 
         $response->assertStatus(200);
+        $response->assertJson(ResponseTestHelper::getSuccessDeleteResponse());
+
+        $response = $this->actingAs($this->user1)->getJson($url);
+        $response->assertStatus(404);
 
     }
 
@@ -106,7 +111,7 @@ class ShoppingListEntriesAPITest extends TestCase {
 
         $entry = $this->createShoppingListEntry($this->user1,$this->shoppingList,$entryData);
 
-        $url = '/api/shopping-list/'.$shoppingListID.'/entry/'.$entry->json()['id'];
+        $url = '/api/shopping-list/'.$shoppingListID.'/entry/'.$entry->json()['data']['id'];
 
         $entryData['product_name'] .= 'new';
         $entryData['amount'] += 10;
@@ -115,12 +120,12 @@ class ShoppingListEntriesAPITest extends TestCase {
         $response = $this->actingAs($this->user1)->putJson($url,$entryData);
 
         $response->assertStatus(200);
-        $response->assertJson($entryData);
+        $response->assertJson(ResponseTestHelper::getSuccessUpdateResponse($entryData));
 
         $response = $this->actingAs($this->user1)->getJson($url);
 
         $response->assertStatus(200);
-        $response->assertJson($entryData);
+        $response->assertJson(ResponseTestHelper::getSuccessGetResponse($entryData));
 
     }
 
