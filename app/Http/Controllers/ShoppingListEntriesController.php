@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\ShoppingList;
 use App\Models\ShoppingListEntry;
+use App\Utils\ResponseUtils;
 use Illuminate\Http\Request;
 
 class ShoppingListEntriesController extends Controller {
 
 
     public function index(ShoppingList $shoppingList,Request $request) {
-        return $shoppingList->getEntries()->get();
+        return ResponseUtils::generateSuccessResponse($shoppingList->getEntries()->get());
     }
 
     public function store(ShoppingList $shoppingList, Request $request) {
@@ -24,12 +25,12 @@ class ShoppingListEntriesController extends Controller {
 
         $fields['shopping_list_id'] = $shoppingList->id;
 
-        return ShoppingListEntry::create($fields);
+        return response(ResponseUtils::generateSuccessResponse(ShoppingListEntry::create($fields),'OK',201),201);
 
     }
 
     public function show(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request) {
-        return $shoppingListEntry;
+        return ResponseUtils::generateSuccessResponse($shoppingListEntry);
     }
 
     public function update(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request ) {
@@ -40,12 +41,12 @@ class ShoppingListEntriesController extends Controller {
         ]);
 
         $shoppingListEntry->update($fields);
-        return $shoppingListEntry;
+        return ResponseUtils::generateSuccessResponse($shoppingListEntry);
     }
 
     public function destroy(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request) {
         $shoppingListEntry->delete();
-        return response()->json(['message' => 'Shopping list entry deleted']);
+        return ResponseUtils::generateSuccessResponse('Deleted successfully');
 
     }
 }
