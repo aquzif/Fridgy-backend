@@ -20,6 +20,7 @@ class ShoppingListEntriesController extends Controller {
             'product_name' => 'string|required',
             'unit_name' => 'string|required',
             'amount' => 'integer|required',
+            'checked' => 'boolean',
         ]);
 
 
@@ -38,6 +39,7 @@ class ShoppingListEntriesController extends Controller {
             'product_name' => 'string',
             'unit_name' => 'string',
             'amount' => 'integer',
+            'checked' => 'boolean',
         ]);
 
         $shoppingListEntry->update($fields);
