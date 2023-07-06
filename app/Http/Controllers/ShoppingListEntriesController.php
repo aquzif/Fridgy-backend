@@ -11,7 +11,7 @@ class ShoppingListEntriesController extends Controller {
 
 
     public function index(ShoppingList $shoppingList,Request $request) {
-        return ResponseUtils::generateSuccessResponse($shoppingList->getEntries()->get());
+        return ResponseUtils::generateSuccessResponse($shoppingList->entries);
     }
 
     public function store(ShoppingList $shoppingList, Request $request) {
