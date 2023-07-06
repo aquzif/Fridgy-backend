@@ -46,8 +46,8 @@ class ShoppingListsAPITest extends TestCase {
 
         $response = $this->createShoppingList($this->user1,$this->shoppingListData1);
 
+        $this->shoppingListData1['entries'] = [];
         $response->assertStatus(201);
-
         $response->assertJson(ResponseTestHelper::getSuccessCreateResponse($this->shoppingListData1));
     }
 
@@ -59,6 +59,7 @@ class ShoppingListsAPITest extends TestCase {
         $request = $this->actingAs($this->user1)
             ->getJson($url, $shoppingListData);
 
+        $shoppingListData['entries'] = [];
         $request->assertStatus(200);
         $request->assertJson(ResponseTestHelper::getSuccessGetResponse($shoppingListData));
 
@@ -75,6 +76,7 @@ class ShoppingListsAPITest extends TestCase {
         $request = $this->actingAs($this->user1)
             ->patchJson($url, $shoppingListData);
 
+        $shoppingListData['entries'] = [];
         $request->assertStatus(200);
         $request->assertJson(ResponseTestHelper::getSuccessUpdateResponse($shoppingListData));
 

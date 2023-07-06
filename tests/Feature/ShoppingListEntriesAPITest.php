@@ -69,7 +69,12 @@ class ShoppingListEntriesAPITest extends TestCase {
         $response->assertJsonFragment($entryData1);
         $response->assertJsonFragment($entryData2);
 
+        $url= '/api/shopping-list/'.$shoppingListID;
+
+        $response = $this->actingAs($this->user1)->getJson($url);
+        $response->assertJsonCount(2,'data.entries');
     }
+
 
     public function test_user_can_see_entry_by_id() {
 

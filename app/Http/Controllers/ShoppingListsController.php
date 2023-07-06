@@ -22,6 +22,8 @@ class ShoppingListsController extends Controller {
              'name' => $fields['name'],
              'user_id' => $request->user()->id,
          ]);
+        $newShoppingList = $newShoppingList->where('id',$newShoppingList['id'])->first();
+
 
          return response(ResponseUtils::generateSuccessResponse($newShoppingList,'OK',201),201);
 
@@ -44,7 +46,6 @@ class ShoppingListsController extends Controller {
     }
 
     public function destroy(ShoppingList $shoppingList) {
-        $shoppingList->getEntries()->delete();
         $shoppingList->delete();
         return ResponseUtils::generateSuccessResponse();
     }
