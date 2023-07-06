@@ -10,7 +10,13 @@ class ShoppingListEntry extends Model {
         'product_name',
         'unit_name',
         'amount',
+        'checked',
     ];
+
+    protected $casts = [
+        'checked' => 'boolean',
+    ];
+
 
     function getShoppingList(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
         return $this->belongsTo(ShoppingList::class);

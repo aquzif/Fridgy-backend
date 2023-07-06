@@ -10,7 +10,8 @@ class ShoppingListEntriesTestHelper {
         return [
             'product_name' => $faker->name,
             'amount' => $faker->randomDigit(),
-            'unit_name' => $faker->word
+            'unit_name' => $faker->word,
+            'checked' => $faker->boolean(),
         ];
     }
 }
