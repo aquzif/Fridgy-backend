@@ -14,6 +14,7 @@ class ShoppingList extends Model {
         'entries',
     ];
 
+
     function entries(): \Illuminate\Database\Eloquent\Relations\HasMany {
         return $this->hasMany(ShoppingListEntry::class);
     }

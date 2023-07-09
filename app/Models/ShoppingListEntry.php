@@ -11,6 +11,8 @@ class ShoppingListEntry extends Model {
         'unit_name',
         'amount',
         'checked',
+        'unit_id',
+        'type',
     ];
 
     protected $casts = [
@@ -20,6 +22,10 @@ class ShoppingListEntry extends Model {
 
     function getShoppingList(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
         return $this->belongsTo(ShoppingList::class);
+    }
+
+    function getUnit(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
+        return $this->belongsTo(GlobalUnit::class);
     }
 
 }

@@ -17,16 +17,43 @@ class ShoppingListEntriesController extends Controller {
     public function store(ShoppingList $shoppingList, Request $request) {
 
         $fields = $request->validate([
+            'type' => 'string|required|in:raw,product,raw_product',
+        ]);
+
+        $fields = match($fields['type']){
+            'raw' => self::vaidateRaw($shoppingList,$request),
+            'raw_product' => self::validateRawProduct($shoppingList,$request),
+            default => 'type not supported'
+        };
+
+        return response(ResponseUtils::generateSuccessResponse(ShoppingListEntry::create($fields),'OK',201),201);
+
+    }
+
+    public function vaidateRaw(ShoppingList $shoppingList, Request $request) {
+        $fields = $request->validate([
             'product_name' => 'string|required',
-            'unit_name' => 'string|required',
-            'amount' => 'integer|required',
             'checked' => 'boolean',
+            'type' => 'string'
         ]);
 
 
         $fields['shopping_list_id'] = $shoppingList->id;
+        return $fields;
 
-        return response(ResponseUtils::generateSuccessResponse(ShoppingListEntry::create($fields),'OK',201),201);
+    }
+
+    public function validateRawProduct(ShoppingList $shoppingList, Request $request) {
+        $fields = $request->validate([
+            'product_name' => 'string|required',
+            'unit_id' => 'integer|required|exists:global_units,id',
+            'amount' => 'integer|required',
+            'checked' => 'boolean',
+            'type' => 'string'
+        ]);
+
+        $fields['shopping_list_id'] = $shoppingList->id;
+        return $fields;
 
     }
 
@@ -36,11 +63,14 @@ class ShoppingListEntriesController extends Controller {
 
     public function update(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request ) {
         $fields = $request->validate([
-            'product_name' => 'string',
-            'unit_name' => 'string',
-            'amount' => 'integer',
-            'checked' => 'boolean',
+            'type' => 'string|required|in:raw,product,raw_product',
         ]);
+
+        $fields = match($fields['type']){
+            'raw' => self::vaidateRaw($shoppingList,$request),
+            'raw_product' => self::validateRawProduct($shoppingList,$request),
+            default => 'type not supported'
+        };
 
         $shoppingListEntry->update($fields);
         return ResponseUtils::generateSuccessResponse($shoppingListEntry);
