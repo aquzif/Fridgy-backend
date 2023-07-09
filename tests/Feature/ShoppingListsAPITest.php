@@ -110,11 +110,11 @@ class ShoppingListsAPITest extends TestCase {
 
         $this->actingAs($this->user1)
             ->postJson($entriesURL,
-                ShoppingListEntriesTestHelper::generateRandomShoppingListEntryData($this->faker));
+                ShoppingListEntriesTestHelper::generateRandomRawShoppingListEntryData($this->faker));
 
         $this->actingAs($this->user1)
             ->postJson($entriesURL,
-                ShoppingListEntriesTestHelper::generateRandomShoppingListEntryData($this->faker));
+                ShoppingListEntriesTestHelper::generateRandomRawShoppingListEntryData($this->faker));
 
         $entries = ShoppingListEntry::all();
 
