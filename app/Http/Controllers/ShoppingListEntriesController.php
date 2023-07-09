@@ -26,6 +26,9 @@ class ShoppingListEntriesController extends Controller {
             default => 'type not supported'
         };
 
+        if($fields === 'type not supported')
+            return ResponseUtils::generateErrorResponse('type not supported',400);
+
         return response(ResponseUtils::generateSuccessResponse(ShoppingListEntry::create($fields),'OK',201),201);
 
     }
@@ -71,6 +74,10 @@ class ShoppingListEntriesController extends Controller {
             'raw_product' => self::validateRawProduct($shoppingList,$request),
             default => 'type not supported'
         };
+
+        if($fields === 'type not supported')
+            return ResponseUtils::generateErrorResponse('type not supported',400);
+
 
         $shoppingListEntry->update($fields);
         return ResponseUtils::generateSuccessResponse($shoppingListEntry);
