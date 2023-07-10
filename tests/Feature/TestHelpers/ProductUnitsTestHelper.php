@@ -2,12 +2,15 @@
 
 namespace Feature\TestHelpers;
 
+use Faker\Generator;
+
 class ProductUnitsTestHelper {
 
-    public static function generateProductUnitData(): array {
+    public static function generateProductUnitData(Generator $faker, $default = false): array {
         return [
             'name' => 'g',
-            'converter' => 1,
+            'grams_per_unit' => 1,
+            'default' => $default,
         ];
     }
 

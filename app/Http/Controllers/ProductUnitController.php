@@ -14,15 +14,16 @@
 
         public function store(Product $product, Request $request) {
             $fields = $request->validate([
-                'product_id' => 'required|integer|exists:products,id',
                 'name' => 'required|string',
-                'grams_per_unit' => 'required|string',
+                'grams_per_unit' => 'required|int',
                 'default' => 'required|boolean',
             ]);
 
             if($fields['default']) {
                 ProductUnit::where('product_id', $fields['product_id'])->update(['default' => false]);
             }
+
+            $fields['product_id'] = $product->id;
 
             return response(ResponseUtils::generateSuccessResponse(ProductUnit::create($fields),'OK',201),201);
         }
@@ -38,6 +39,13 @@
                 'default' => 'boolean',
             ]);
 
+            if($fields['default']){
+                    ProductUnit::where('product_id', $fields['product_id'])->update(['default' => false]);
+                    $product->update([
+                        'default_unit_id' => $productUnit->id
+                    ]);
+            }
+
             $productUnit->update($fields);
 
             return ResponseUtils::generateSuccessResponse($productUnit);
@@ -48,4 +56,7 @@
 
             return ResponseUtils::generateSuccessResponse('Deleted successfully');
         }
+
+
+
     }

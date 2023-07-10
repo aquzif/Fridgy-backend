@@ -47,7 +47,13 @@
                 'nutrition_sugar' => 'numeric',
                 'nutrition_protein' => 'numeric',
                 'nutrition_salt' => 'numeric',
+                'default_unit_id' => 'numeric',
             ]);
+
+            if(isset($fields['default_unit_id'])){
+                $product->units()->update(['default' => false]);
+                $product->units()->where('id',$fields['default_unit_id'])->update(['default' => true]);
+            }
 
             $product->update($fields);
 

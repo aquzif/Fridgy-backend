@@ -11,6 +11,7 @@
                 $table->string('name');
                 $table->integer('default_unit_id')->default(0);
                 $table->integer('default_unit_converter')->default(1);
+                $table->string('default_unit_name')->default('g');
                 $table->integer('nutrition_energy_kcal')->default(0);
                 $table->integer('nutrition_energy_kj')->default(0);
                 $table->float('nutrition_carbs')->default(0);
