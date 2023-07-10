@@ -1,8 +1,6 @@
 <?php
 
-namespace Tests\TestHelpers;
-
-
+namespace Feature\TestHelpers;
 use Faker\Generator;
 
 class ShoppingListTestHelper {

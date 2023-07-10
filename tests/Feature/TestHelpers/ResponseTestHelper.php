@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\TestHelpers;
+namespace Feature\TestHelpers;
 
 class ResponseTestHelper {
 

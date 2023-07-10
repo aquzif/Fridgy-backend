@@ -4,12 +4,12 @@ namespace Feature;
 
 use App\Models\ShoppingList;
 use App\Models\User;
+use Feature\TestHelpers\ResponseTestHelper;
+use Feature\TestHelpers\ShoppingListEntriesTestHelper;
+use Feature\TestHelpers\ShoppingListTestHelper;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use Tests\TestHelpers\ResponseTestHelper;
-use Tests\TestHelpers\ShoppingListEntriesTestHelper;
-use Tests\TestHelpers\ShoppingListTestHelper;
 
 class ShoppingListRawEntriesAPITest extends TestCase {
 
