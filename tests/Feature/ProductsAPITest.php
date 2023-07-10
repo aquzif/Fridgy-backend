@@ -158,5 +158,6 @@ class ProductsAPITest extends TestCase {
     //test product will throw error is try to access another product unit
     //test product unit cannot update another product unit
     //test that by changing default unit for product, there is updating name and grams_prt_unit in the product too
+    //test when user is deleting product, all product units are deleted too
 
 }
