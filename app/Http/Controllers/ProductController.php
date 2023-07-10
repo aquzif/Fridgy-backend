@@ -24,9 +24,13 @@
             ]);
 
 
+            $newObj = Product::create($fields);
+
+            $newObj = $newObj->where('id',$newObj['id'])->first();
+
             return response(ResponseUtils::generateSuccessResponse(
-                Product::create($fields)
-                ,'OK',201),201);
+                $newObj
+            ,'OK',201),201);
         }
 
         public function show(Product $product) {

@@ -27,9 +27,10 @@
             parent::boot();
 
             static::created(function ($product) {
-                $product->units()->create([
+                $product = $product->units()->create([
                     'name' => 'g',
-                    'converter' => 1,
+                    'grams_per_unit' => 1,
+                    'default' => true,
                 ]);
             });
         }

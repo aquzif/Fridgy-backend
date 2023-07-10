@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class ProductsAPI extends TestCase {
+class ProductsAPITest extends TestCase {
 
     use RefreshDatabase;
     use WithFaker;
@@ -43,7 +43,7 @@ class ProductsAPI extends TestCase {
 
         $response = $this->createProduct($this->user1,$this->productData);
 
-        $this->productData['entries'] = [];
+        $this->productData['units'] = [];
         $response->assertStatus(201);
         $response->assertJson(ResponseTestHelper::getSuccessCreateResponse($this->productData));
     }
