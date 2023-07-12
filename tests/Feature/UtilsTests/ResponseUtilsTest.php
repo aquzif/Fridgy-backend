@@ -54,7 +54,7 @@ class ResponseUtilsTest extends TestCase {
         $actual = ResponseUtils::generateErrorResponse($message,$code);
 
         $this->assertEquals($code,$actual->status());
-       $this->assertEquals($expected,$actual->original);
+        $this->assertEquals($expected,$actual->original);
     }
 
 }
