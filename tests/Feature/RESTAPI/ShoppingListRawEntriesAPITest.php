@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\RESTAPI;
 
 use App\Models\ShoppingList;
 use App\Models\User;

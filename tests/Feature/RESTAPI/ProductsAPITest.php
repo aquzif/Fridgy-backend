@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\RESTAPI;
 
 use App\Models\Product;
 use App\Models\ProductUnit;
@@ -13,7 +13,6 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ProductsAPITest extends TestCase {
-
     use RefreshDatabase;
     use WithFaker;
 

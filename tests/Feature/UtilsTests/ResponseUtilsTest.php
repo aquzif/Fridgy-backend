@@ -1,14 +1,14 @@
 <?php
 
-namespace Tests\Unit\UtilsTests;
+namespace Tests\Feature\UtilsTests;
 
 use App\Utils\ResponseUtils;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class ResponseUtilsTest extends TestCase {
 
     public function test_generateSuccessResponse_with_data(): void {
-        dd('https://stackoverflow.com/questions/41266764/target-illuminate-contracts-routing-responsefactory-is-not-instantiable/61999395#61999395');
+        //dd('https://stackoverflow.com/questions/41266764/target-illuminate-contracts-routing-responsefactory-is-not-instantiable/61999395#61999395');
         $data = [
             'test' => 'test'
         ];
@@ -22,11 +22,12 @@ class ResponseUtilsTest extends TestCase {
         ];
 
         $actual = ResponseUtils::generateSuccessResponse($data,$message,$code);
-        dd($actual);
-        $this->assertEquals($expected,$actual);
+
+        $this->assertEquals($code,$actual->status());
+        $this->assertEquals($expected,$actual->original);
     }
 
-    public function test_generateSuccessResponse_without_data(): void {
+   public function test_generateSuccessResponse_without_data(): void {
         $message = 'OK';
         $code = 200;
 
@@ -37,7 +38,8 @@ class ResponseUtilsTest extends TestCase {
 
         $actual = ResponseUtils::generateSuccessResponse(null,$message,$code);
 
-        $this->assertEquals($expected,$actual);
+       $this->assertEquals($code,$actual->status());
+       $this->assertEquals($expected,$actual->original);
     }
 
     public function test_generateErrorResponse(): void {
@@ -51,7 +53,8 @@ class ResponseUtilsTest extends TestCase {
 
         $actual = ResponseUtils::generateErrorResponse($message,$code);
 
-        $this->assertEquals($expected,$actual);
+        $this->assertEquals($code,$actual->status());
+       $this->assertEquals($expected,$actual->original);
     }
 
 }
