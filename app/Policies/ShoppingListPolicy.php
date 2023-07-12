@@ -12,6 +12,7 @@ class ShoppingListPolicy
     use HandlesAuthorization;
 
     public function viewAny(User $user): bool {
+
         return true;
     }
 

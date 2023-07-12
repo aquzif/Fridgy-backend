@@ -6,7 +6,13 @@
     use App\Utils\ResponseUtils;
     use Illuminate\Http\Request;
 
-    class ProductController extends Controller {
+    class ProductsController extends Controller {
+
+        public function __construct() {
+            $this->authorizeResource(Product::class, 'product');
+        }
+
+
         public function index() {
             return ResponseUtils::generateSuccessResponse(Product::all());
         }
@@ -28,9 +34,9 @@
 
             $newObj = $newObj->where('id',$newObj['id'])->first();
 
-            return response(ResponseUtils::generateSuccessResponse(
+            return ResponseUtils::generateSuccessResponse(
                 $newObj
-            ,'OK',201),201);
+            ,'OK',201);
         }
 
         public function show(Product $product) {
@@ -51,8 +57,17 @@
             ]);
 
             if(isset($fields['default_unit_id'])){
+
+                $unit = $product->units()->where('id',$fields['default_unit_id'])
+                    ->where('product_id',$product['id'])->first();
+
+                if(!$unit)
+                    return ResponseUtils::generateErrorResponse('Unit not found',404);
+
                 $product->units()->update(['default' => false]);
                 $product->units()->where('id',$fields['default_unit_id'])->update(['default' => true]);
+                $fields['default_unit_converter'] = $unit['grams_per_unit'];
+                $fields['default_unit_name'] = $unit['name'];
             }
 
             $product->update($fields);

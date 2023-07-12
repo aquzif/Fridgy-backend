@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 class ResponseUtilsTest extends TestCase {
 
     public function test_generateSuccessResponse_with_data(): void {
+        dd('https://stackoverflow.com/questions/41266764/target-illuminate-contracts-routing-responsefactory-is-not-instantiable/61999395#61999395');
         $data = [
             'test' => 'test'
         ];
@@ -21,7 +22,7 @@ class ResponseUtilsTest extends TestCase {
         ];
 
         $actual = ResponseUtils::generateSuccessResponse($data,$message,$code);
-
+        dd($actual);
         $this->assertEquals($expected,$actual);
     }
 

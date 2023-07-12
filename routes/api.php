@@ -3,7 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GroceryProductsController;
 use App\Http\Controllers\GroceryProductUnitsController;
-    use App\Http\Controllers\ProductController;
+    use App\Http\Controllers\ProductsController;
     use App\Http\Controllers\ProductUnitController;
     use App\Http\Controllers\ShoppingListEntriesController;
 use App\Http\Controllers\ShoppingListsController;
@@ -44,43 +44,46 @@ Route::middleware('auth:sanctum')->group(fn() => [
     //Shopping list routes
     //-----------------------------
     Route::prefix('/shopping-list')->group(fn() => [
-        Route::get('/',[ShoppingListsController::class,'index'])->can('viewAny',ShoppingList::class),
-        Route::post('/',[ShoppingListsController::class,'store'])->can('create',ShoppingList::class),
-        Route::get('/{shoppingList}',[ShoppingListsController::class,'show'])->can('view','shoppingList'),
-        Route::match(['put','patch'],'/{shoppingList}',[ShoppingListsController::class,'update'])->can('update','shoppingList'),
-        Route::delete('/{shoppingList}',[ShoppingListsController::class,'destroy'])->can('delete','shoppingList'),
+        Route::get('/',[ShoppingListsController::class,'index']),
+        Route::post('/',[ShoppingListsController::class,'store']),
+        Route::get('/{shoppingList}',[ShoppingListsController::class,'show']),
+        Route::match(['put','patch'],'/{shoppingList}',[ShoppingListsController::class,'update']),
+        Route::delete('/{shoppingList}',[ShoppingListsController::class,'destroy']),
+
 
         //-----------------------------
         //Shopping list entry routes
         //-----------------------------
-        Route::prefix('/{shoppingList}/entry')->middleware('can:view,shoppingList')->group(fn() => [
-            Route::get('/',[ShoppingListEntriesController::class,'index'])->can('viewAny',ShoppingListEntry::class),
-            Route::post('/',[ShoppingListEntriesController::class,'store'])->can('create',ShoppingListEntry::class),
-            Route::get('/{shoppingListEntry}',[ShoppingListEntriesController::class,'show'])->can('view',['shoppingList','shoppingListEntry']),
-            Route::match(['put','patch'],'/{shoppingListEntry}',[ShoppingListEntriesController::class,'update'])->can('update',['shoppingList','shoppingListEntry']),
-            Route::delete('/{shoppingListEntry}',[ShoppingListEntriesController::class,'destroy'])->can('delete',['shoppingList','shoppingListEntry']),
-        ]),
+        Route::prefix('/{shoppingList}/entry')->middleware('can:view,shoppingList')
+            ->group(fn() => [
+                Route::get('/',[ShoppingListEntriesController::class,'index']),
+                Route::post('/',[ShoppingListEntriesController::class,'store']),
+                Route::get('/{shoppingListEntry}',[ShoppingListEntriesController::class,'show']),
+                Route::match(['put','patch'],'/{shoppingListEntry}',[ShoppingListEntriesController::class,'update']),
+                Route::delete('/{shoppingListEntry}',[ShoppingListEntriesController::class,'destroy']),
+            ]),
     ]),
 
     //-----------------------------
-    //Shopping list routes
+    //Product routes
     //-----------------------------
     Route::prefix('/product')->group(fn() => [
-        Route::get('/',[ProductController::class,'index'])->can('viewAny', Product::class),
-        Route::post('/',[ProductController::class,'store'])->can('create',Product::class),
-        Route::get('/{product}',[ProductController::class,'show'])->can('view','product'),
-        Route::match(['put','patch'],'/{product}',[ProductController::class,'update'])->can('update','product'),
-        Route::delete('/{product}',[ProductController::class,'destroy'])->can('delete','product'),
+        Route::get('/',[ProductsController::class,'index']),
+        Route::post('/',[ProductsController::class,'store']),
+        Route::get('/{product}',[ProductsController::class,'show']),
+        Route::match(['put','patch'],'/{product}',[ProductsController::class,'update']),
+        Route::delete('/{product}',[ProductsController::class,'destroy']),
 
         //-----------------------------
-        //Shopping list entry routes
+        //Product unit routes
         //-----------------------------
-        Route::prefix('/{product}/unit')->middleware('can:view,product')->group(fn() => [
-            Route::get('/',[ProductUnitController::class,'index'])->can('viewAny', ProductUnit::class),
-            Route::post('/',[ProductUnitController::class,'store'])->can('create',ProductUnit::class),
-            Route::get('/{productUnit}',[ProductUnitController::class,'show'])->can('view',['product','productUnit']),
-            Route::match(['put','patch'],'/{productUnit}',[ProductUnitController::class,'update'])->can('update',['product','productUnit']),
-            Route::delete('/{productUnit}',[ProductUnitController::class,'destroy'])->can('delete',['product','productUnit']),
+        Route::prefix('/{product}/unit')->middleware('can:view,product')
+            ->group(fn() => [
+                Route::get('/',[ProductUnitController::class,'index']),
+                Route::post('/',[ProductUnitController::class,'store']),
+                Route::get('/{productUnit}',[ProductUnitController::class,'show']),
+                Route::match(['put','patch'],'/{productUnit}',[ProductUnitController::class,'update']),
+                Route::delete('/{productUnit}',[ProductUnitController::class,'destroy']),
         ]),
     ]),
 

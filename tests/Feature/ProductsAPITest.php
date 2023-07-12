@@ -3,10 +3,11 @@
 namespace Tests\Feature;
 
 use App\Models\Product;
+use App\Models\ProductUnit;
 use App\Models\User;
-use Feature\TestHelpers\ProductsTestHelper;
-use Feature\TestHelpers\ProductUnitsTestHelper;
-use Feature\TestHelpers\ResponseTestHelper;
+use App\Utils\Test\ProductsTestHelper;
+use App\Utils\Test\ProductUnitsTestHelper;
+use App\Utils\Test\ResponseTestHelper;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -154,10 +155,91 @@ class ProductsAPITest extends TestCase {
         $this->assertEquals($resData['default_unit_id'], $anotherUnit['id']);
     }
 
-    //test product caanot update another product unit default state
-    //test product will throw error is try to access another product unit
-    //test product unit cannot update another product unit
-    //test that by changing default unit for product, there is updating name and grams_prt_unit in the product too
-    //test when user is deleting product, all product units are deleted too
+    public function test_product_will_throw_error_when_try_to_access_on_another_product_unit() {
+        $product = $this->createProduct($this->user1,$this->productData);
+        $product2 = $this->createProduct($this->user1,$this->productData);
+        $anotherProductUnitID = $product2->json('data.units.0.id');
+
+        $product_id = $product->json('data.id');
+        $response = $this->actingAs($this->user1)
+            ->getJson(self::PRODUCT_ENDPOINT . '/' . $product_id . '/unit/' . $anotherProductUnitID);
+
+        $response->assertStatus(403);
+        $response->assertJsonFragment([
+            'message' => 'This action is unauthorized.'
+        ]);
+
+    }
+
+    public function test_product_will_throw_error_when_try_to_update_another_product_unit() {
+        $product = $this->createProduct($this->user1,$this->productData);
+        $product2 = $this->createProduct($this->user1,$this->productData);
+        $anotherProductUnitID = $product2->json('data.units.0.id');
+
+        $product_id = $product->json('data.id');
+        $response = $this->actingAs($this->user1)
+            ->putJson(self::PRODUCT_ENDPOINT . '/' . $product_id . '/unit/' . $anotherProductUnitID,[
+                'name' => 'test'
+            ]);
+
+        $response->assertStatus(403);
+        $response->assertJsonFragment([
+            'message' => 'This action is unauthorized.'
+        ]);
+
+    }
+
+    public function test_that_by_changing_default_unit_there_are_changing_its_properties_too() {
+        $product = $this->createProduct($this->user1,$this->productData);
+        $newDefaultUnit = $this->createUnitForProduct($product->json('data.id'))->json('data');
+
+
+        $updatedProduct = $this->actingAs($this->user1)
+            ->putJson(self::PRODUCT_ENDPOINT . '/' . $product->json('data.id'),[
+                'default_unit_id' => $newDefaultUnit['id']
+            ]);
+
+        $updatedProduct->assertJson([
+            'data' => [
+                'default_unit_id' => $newDefaultUnit['id'],
+                'default_unit_name' => $newDefaultUnit['name'],
+                'default_unit_converter' => $newDefaultUnit['grams_per_unit']
+            ]
+        ]);
+
+    }
+
+    public function test_when_product_is_deleted_its_units_are_deleted_too() {
+        $product = $this->createProduct($this->user1,$this->productData);
+        $this->createUnitForProduct($product->json('data.id'))->json('data');
+
+        $this->assertEquals(2,ProductUnit::count());
+
+        $this->actingAs($this->user1)
+            ->delete(self::PRODUCT_ENDPOINT . '/' . $product->json('data.id'));
+
+        $this->assertEquals(0,ProductUnit::count());
+
+    }
+
+    public function test_cannot_assign_another_unit_as_default_to_non_related_product() {
+
+        $product1 = $this->createProduct($this->user1,$this->productData);
+        $product2 = $this->createProduct($this->user1,$this->productData);
+        $newDefaultUnit = $this->createUnitForProduct($product2->json('data.id'))->json('data');
+
+        $result = $this->actingAs($this->user1)
+            ->putJson(self::PRODUCT_ENDPOINT . '/' . $product1->json('data.id'),[
+                'default_unit_id' => $newDefaultUnit['id']
+            ]);
+
+        $result->assertJson([
+            'code' => 404,
+            'message' => 'Unit not found'
+        ]);
+        $result->assertStatus(404);
+
+    }
+
 
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace Feature;
+namespace Tests\Feature;
 
 use App\Models\ShoppingList;
 use App\Models\User;
-use Feature\TestHelpers\ResponseTestHelper;
-use Feature\TestHelpers\ShoppingListEntriesTestHelper;
-use Feature\TestHelpers\ShoppingListTestHelper;
+use App\Utils\Test\ResponseTestHelper;
+use App\Utils\Test\ShoppingListEntriesTestHelper;
+use App\Utils\Test\ShoppingListTestHelper;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;

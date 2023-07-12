@@ -8,6 +8,12 @@
     use Illuminate\Http\Request;
 
     class ProductUnitController extends Controller {
+
+        public function __construct() {
+            $this->authorizeResource(ProductUnit::class, ['productUnit','product']);
+        }
+
+
         public function index(Product $product) {
             return ResponseUtils::generateSuccessResponse(ProductUnit::all());
         }
@@ -25,7 +31,7 @@
 
             $fields['product_id'] = $product->id;
 
-            return response(ResponseUtils::generateSuccessResponse(ProductUnit::create($fields),'OK',201),201);
+            return ResponseUtils::generateSuccessResponse(ProductUnit::create($fields),'OK',201);
         }
 
         public function show(Product $product, ProductUnit $productUnit) {
