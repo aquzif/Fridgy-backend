@@ -5,11 +5,11 @@ namespace Tests\Feature\RESTAPI;
 use App\Models\Product;
 use App\Models\ProductUnit;
 use App\Models\User;
-use App\Utils\Test\ProductsTestHelper;
-use App\Utils\Test\ProductUnitsTestHelper;
-use App\Utils\Test\ResponseTestHelper;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Tests\Helpers\ProductsTestHelper;
+use Tests\Helpers\ProductUnitsTestHelper;
+use Tests\Helpers\ResponseTestHelper;
 use Tests\TestCase;
 
 class ProductsAPITest extends TestCase {

@@ -5,12 +5,12 @@ namespace Tests\Feature\RESTAPI;
 use App\Models\GlobalUnit;
 use App\Models\ShoppingList;
 use App\Models\User;
-use App\Utils\Test\GlobalUnitsTestHelper;
-use App\Utils\Test\ResponseTestHelper;
-use App\Utils\Test\ShoppingListEntriesTestHelper;
-use App\Utils\Test\ShoppingListTestHelper;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Tests\Helpers\GlobalUnitsTestHelper;
+use Tests\Helpers\ResponseTestHelper;
+use Tests\Helpers\ShoppingListEntriesTestHelper;
+use Tests\Helpers\ShoppingListTestHelper;
 use Tests\TestCase;
 
 class ShoppingListRawProductEntriesAPITest extends TestCase {

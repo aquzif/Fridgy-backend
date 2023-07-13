@@ -29,7 +29,9 @@ class ProductUnitPolicy {
     }
 
     public function delete(User $user, ProductUnit $productUnit, Product $product): bool {
-        return $product->id == $productUnit->product_id;
+        return $product->id == $productUnit->product_id &&
+            $product->default_unit_id != $productUnit->id &&
+            $productUnit->default == false;
     }
 
 }

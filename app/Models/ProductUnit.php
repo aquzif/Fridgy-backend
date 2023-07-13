@@ -11,4 +11,9 @@
             'grams_per_unit',
             'default',
         ];
+
+        protected $casts = [
+            'default' => 'boolean',
+            'grams_per_unit' => 'int'
+        ];
     }

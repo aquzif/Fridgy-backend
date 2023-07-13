@@ -9,7 +9,7 @@
             Schema::create('global_units', function (Blueprint $table) {
                 $table->id();
                 $table->string('name');
-                $table->float('converter');
+                $table->decimal('converter');
                 $table->boolean('default');
                 $table->timestamps();
             });

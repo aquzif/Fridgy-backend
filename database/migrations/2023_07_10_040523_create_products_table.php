@@ -14,11 +14,11 @@
                 $table->string('default_unit_name')->default('g');
                 $table->integer('nutrition_energy_kcal')->default(0);
                 $table->integer('nutrition_energy_kj')->default(0);
-                $table->float('nutrition_carbs')->default(0);
-                $table->float('nutrition_fat')->default(0);
-                $table->float('nutrition_sugar')->default(0);
-                $table->float('nutrition_protein')->default(0);
-                $table->float('nutrition_salt')->default(0);
+                $table->decimal('nutrition_carbs')->default(0);
+                $table->decimal('nutrition_fat')->default(0);
+                $table->decimal('nutrition_sugar')->default(0);
+                $table->decimal('nutrition_protein')->default(0);
+                $table->decimal('nutrition_salt')->default(0);
                 $table->timestamps();
             });
         }

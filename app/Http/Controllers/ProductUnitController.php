@@ -41,18 +41,31 @@
         public function update(Product $product, Request $request, ProductUnit $productUnit) {
             $fields = $request->validate([
                 'name' => 'string',
-                'grams_per_unit' => 'string',
+                'grams_per_unit' => 'int',
                 'default' => 'boolean',
             ]);
 
+
+
             if($fields['default']){
-                    ProductUnit::where('product_id', $fields['product_id'])->update(['default' => false]);
-                    $product->update([
-                        'default_unit_id' => $productUnit->id
-                    ]);
+                ProductUnit::where('product_id', $fields['product_id'])->update(['default' => false]);
+                $product->default_unit_id = $productUnit->id;
+                $productUnit->default = true;
             }
 
+            if($productUnit->id === $product->default_unit_id){
+                $product->default_unit_converter = $fields['grams_per_unit'] ?? $productUnit->grams_per_unit;
+                $product->default_unit_name = $fields['name'] ?? $productUnit->name;
+            }
+
+
+
+            if(($fields['default'] ?? false) === false)
+                unset($fields['default']);
+
             $productUnit->update($fields);
+            $product->save();
+
 
             return ResponseUtils::generateSuccessResponse($productUnit);
         }

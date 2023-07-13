@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Utils\Test;
+namespace Tests\Helpers;
 
 use Faker\Generator;
 
