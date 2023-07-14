@@ -59,4 +59,11 @@
       'Flare' => 'Spatie\\LaravelIgnition\\Facades\\Flare',
     ),
   ),
+  'spatie/laravel-ray' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Spatie\\LaravelRay\\RayServiceProvider',
+    ),
+  ),
 );

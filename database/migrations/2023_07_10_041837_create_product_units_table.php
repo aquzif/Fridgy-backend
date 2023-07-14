@@ -6,16 +6,17 @@
 
     return new class extends Migration {
         public function up(): void {
-            Schema::create('global_units', function (Blueprint $table) {
+            Schema::create('product_units', function (Blueprint $table) {
                 $table->id();
+                $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
                 $table->string('name');
-                $table->decimal('converter');
+                $table->integer('grams_per_unit');
                 $table->boolean('default');
                 $table->timestamps();
             });
         }
 
         public function down(): void {
-            Schema::dropIfExists('global_units');
+            Schema::dropIfExists('product_units');
         }
     };

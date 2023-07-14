@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class ShoppingListsController extends Controller {
 
+    public function __construct() {
+        $this->authorizeResource(ShoppingList::class, 'shoppingList');
+    }
+
 
     public function index(Request $request) {
         return ResponseUtils::generateSuccessResponse(ShoppingList::where('user_id', $request->user()->id)->get());
@@ -25,7 +29,7 @@ class ShoppingListsController extends Controller {
         $newShoppingList = $newShoppingList->where('id',$newShoppingList['id'])->first();
 
 
-         return response(ResponseUtils::generateSuccessResponse($newShoppingList,'OK',201),201);
+         return ResponseUtils::generateSuccessResponse($newShoppingList,'OK',201);
 
     }
 

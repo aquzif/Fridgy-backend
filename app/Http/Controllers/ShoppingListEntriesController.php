@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 class ShoppingListEntriesController extends Controller {
 
 
+    public function __construct() {
+        $this->authorizeResource(ShoppingListEntry::class, ['shoppingListEntry','shoppingList']);
+    }
+
     public function index(ShoppingList $shoppingList,Request $request) {
         return ResponseUtils::generateSuccessResponse($shoppingList->entries);
     }
@@ -29,7 +33,7 @@ class ShoppingListEntriesController extends Controller {
         if($fields === 'type not supported')
             return ResponseUtils::generateErrorResponse('type not supported',400);
 
-        return response(ResponseUtils::generateSuccessResponse(ShoppingListEntry::create($fields),'OK',201),201);
+        return ResponseUtils::generateSuccessResponse(ShoppingListEntry::create($fields),'OK',201);
 
     }
 

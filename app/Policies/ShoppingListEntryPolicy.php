@@ -27,6 +27,7 @@ class ShoppingListEntryPolicy
     }
 
     public function update(User $user, ShoppingListEntry $shoppingListEntry, ShoppingList $shoppingList): bool {
+
         return $shoppingListEntry->getShoppingList()->first()->user_id == $user->id
             && $shoppingListEntry->shopping_list_id = $shoppingList->id;
     }

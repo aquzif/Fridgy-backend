@@ -12,14 +12,14 @@ class ResponseUtils {
         if($data != null)
             $toReturn['data'] = $data;
 
-        return $toReturn;
+        return response($toReturn,$code);
     }
 
     public static function generateErrorResponse($message = 'Error',$code = 400) {
-        return [
+        return response([
             'code' => $code,
             'message' => $message
-        ];
+        ],$code);
     }
 
 }

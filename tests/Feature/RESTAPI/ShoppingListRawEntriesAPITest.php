@@ -1,19 +1,17 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\RESTAPI;
 
-use App\Models\GlobalUnit;
 use App\Models\ShoppingList;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Tests\Helpers\ResponseTestHelper;
+use Tests\Helpers\ShoppingListEntriesTestHelper;
+use Tests\Helpers\ShoppingListTestHelper;
 use Tests\TestCase;
-use Tests\TestHelpers\GlobalUnitsTestHelper;
-use Tests\TestHelpers\ResponseTestHelper;
-use Tests\TestHelpers\ShoppingListEntriesTestHelper;
-use Tests\TestHelpers\ShoppingListTestHelper;
 
-class ShoppingListRawProductEntriesAPITest extends TestCase {
+class ShoppingListRawEntriesAPITest extends TestCase {
 
     use RefreshDatabase;
     use WithFaker;
@@ -22,12 +20,6 @@ class ShoppingListRawProductEntriesAPITest extends TestCase {
         parent::setUp();
         $this->user1 = User::factory()->create();
         $this->user2 = User::factory()->create();
-        $this->global_unit = GlobalUnit::create(
-            GlobalUnitsTestHelper::generateGlobalUnitData($this->faker,true)
-        );
-        $this->another_global_unit = GlobalUnit::create(
-            GlobalUnitsTestHelper::generateGlobalUnitData($this->faker)
-        );
 
         $this->shoppingList = ShoppingList::create(
             [
@@ -41,7 +33,7 @@ class ShoppingListRawProductEntriesAPITest extends TestCase {
 
     public function createShoppingListEntry(User $user,ShoppingList $shoppingList, $data = []): \Illuminate\Testing\TestResponse {
         if($data == [])
-            $data = ShoppingListEntriesTestHelper::generateRandomRawProductShoppingListEntryData($this->faker);
+            $data = ShoppingListEntriesTestHelper::generateRandomRawShoppingListEntryData($this->faker);
 
         $url = '/api/shopping-list/'.$shoppingList->id.'/entry';
 
@@ -53,7 +45,7 @@ class ShoppingListRawProductEntriesAPITest extends TestCase {
     public function test_user_can_add_raw_entry_to_shopping_list(): void {
 
         $shoppingListID = $this->shoppingList->id;
-        $entryData = ShoppingListEntriesTestHelper::generateRandomRawProductShoppingListEntryData($this->faker);
+        $entryData = ShoppingListEntriesTestHelper::generateRandomRawShoppingListEntryData($this->faker);
         $response = $this->createShoppingListEntry($this->user1,$this->shoppingList,$entryData);
 
         $response->assertStatus(201);
@@ -64,8 +56,8 @@ class ShoppingListRawProductEntriesAPITest extends TestCase {
     public function test_user_can_see_every_entry_in_shopping_list(): void {
 
         $shoppingListID = $this->shoppingList->id;
-        $entryData1 = ShoppingListEntriesTestHelper::generateRandomRawProductShoppingListEntryData($this->faker);
-        $entryData2 = ShoppingListEntriesTestHelper::generateRandomRawProductShoppingListEntryData($this->faker);
+        $entryData1 = ShoppingListEntriesTestHelper::generateRandomRawShoppingListEntryData($this->faker);
+        $entryData2 = ShoppingListEntriesTestHelper::generateRandomRawShoppingListEntryData($this->faker);
 
         $this->createShoppingListEntry($this->user1,$this->shoppingList,$entryData1);
         $this->createShoppingListEntry($this->user1,$this->shoppingList,$entryData2);
@@ -88,7 +80,7 @@ class ShoppingListRawProductEntriesAPITest extends TestCase {
     public function test_user_can_see_entry_by_id() {
 
         $shoppingListID = $this->shoppingList->id;
-        $entryData = ShoppingListEntriesTestHelper::generateRandomRawProductShoppingListEntryData($this->faker);
+        $entryData = ShoppingListEntriesTestHelper::generateRandomRawShoppingListEntryData($this->faker);
 
         $entry = $this->createShoppingListEntry($this->user1,$this->shoppingList,$entryData);
 
@@ -103,7 +95,7 @@ class ShoppingListRawProductEntriesAPITest extends TestCase {
     public function test_user_can_remove_entry_from_shopping_list() {
 
         $shoppingListID = $this->shoppingList->id;
-        $entryData = ShoppingListEntriesTestHelper::generateRandomRawProductShoppingListEntryData($this->faker);
+        $entryData = ShoppingListEntriesTestHelper::generateRandomRawShoppingListEntryData($this->faker);
 
         $entry = $this->createShoppingListEntry($this->user1,$this->shoppingList,$entryData);
 
@@ -121,13 +113,13 @@ class ShoppingListRawProductEntriesAPITest extends TestCase {
     public function test_user_can_update_entry_in_shopping_list() {
 
         $shoppingListID = $this->shoppingList->id;
-        $entryData = ShoppingListEntriesTestHelper::generateRandomRawProductShoppingListEntryData($this->faker,$this->global_unit['id']);
+        $entryData = ShoppingListEntriesTestHelper::generateRandomRawShoppingListEntryData($this->faker);
 
         $entry = $this->createShoppingListEntry($this->user1,$this->shoppingList,$entryData);
+
         $url = '/api/shopping-list/'.$shoppingListID.'/entry/'.$entry->json()['data']['id'];
 
-        $entryData['unit_id'] = $this->another_global_unit['id'];
-        $entryData['amount'] += 10;
+        $entryData['product_name'] .= 'new';
 
         $response = $this->actingAs($this->user1)->putJson($url,$entryData);
 

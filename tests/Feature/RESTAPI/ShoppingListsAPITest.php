@@ -1,16 +1,16 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\RESTAPI;
 
 use App\Models\ShoppingList;
 use App\Models\ShoppingListEntry;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Tests\Helpers\ResponseTestHelper;
+use Tests\Helpers\ShoppingListEntriesTestHelper;
+use Tests\Helpers\ShoppingListTestHelper;
 use Tests\TestCase;
-use Tests\TestHelpers\ResponseTestHelper;
-use Tests\TestHelpers\ShoppingListEntriesTestHelper;
-use Tests\TestHelpers\ShoppingListTestHelper;
 
 class ShoppingListsAPITest extends TestCase {
 

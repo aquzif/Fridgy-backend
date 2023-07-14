@@ -21,7 +21,7 @@ class ShoppingListEntry extends Model {
 
 
     function getShoppingList(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
-        return $this->belongsTo(ShoppingList::class);
+        return $this->belongsTo(ShoppingList::class,'shopping_list_id','id');
     }
 
     function getUnit(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
