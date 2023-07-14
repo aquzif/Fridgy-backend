@@ -4,48 +4,92 @@ namespace App\Http\Controllers;
 
 use App\Models\ShoppingList;
 use App\Models\ShoppingListEntry;
+use App\Utils\ResponseUtils;
 use Illuminate\Http\Request;
 
 class ShoppingListEntriesController extends Controller {
 
 
+    public function __construct() {
+        $this->authorizeResource(ShoppingListEntry::class, ['shoppingListEntry','shoppingList']);
+    }
+
     public function index(ShoppingList $shoppingList,Request $request) {
-        return $shoppingList->getEntries()->get();
+        return ResponseUtils::generateSuccessResponse($shoppingList->entries);
     }
 
     public function store(ShoppingList $shoppingList, Request $request) {
 
         $fields = $request->validate([
+            'type' => 'string|required|in:raw,product,raw_product',
+        ]);
+
+        $fields = match($fields['type']){
+            'raw' => self::vaidateRaw($shoppingList,$request),
+            'raw_product' => self::validateRawProduct($shoppingList,$request),
+            default => 'type not supported'
+        };
+
+        if($fields === 'type not supported')
+            return ResponseUtils::generateErrorResponse('type not supported',400);
+
+        return ResponseUtils::generateSuccessResponse(ShoppingListEntry::create($fields),'OK',201);
+
+    }
+
+    public function vaidateRaw(ShoppingList $shoppingList, Request $request) {
+        $fields = $request->validate([
             'product_name' => 'string|required',
-            'unit_name' => 'string|required',
-            'amount' => 'integer|required',
+            'checked' => 'boolean',
+            'type' => 'string'
         ]);
 
 
         $fields['shopping_list_id'] = $shoppingList->id;
+        return $fields;
 
-        return ShoppingListEntry::create($fields);
+    }
+
+    public function validateRawProduct(ShoppingList $shoppingList, Request $request) {
+        $fields = $request->validate([
+            'product_name' => 'string|required',
+            'unit_id' => 'integer|required|exists:global_units,id',
+            'amount' => 'integer|required',
+            'checked' => 'boolean',
+            'type' => 'string'
+        ]);
+
+        $fields['shopping_list_id'] = $shoppingList->id;
+        return $fields;
 
     }
 
     public function show(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request) {
-        return $shoppingListEntry;
+        return ResponseUtils::generateSuccessResponse($shoppingListEntry);
     }
 
     public function update(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request ) {
         $fields = $request->validate([
-            'product_name' => 'string',
-            'unit_name' => 'string',
-            'amount' => 'integer',
+            'type' => 'string|required|in:raw,product,raw_product',
         ]);
 
+        $fields = match($fields['type']){
+            'raw' => self::vaidateRaw($shoppingList,$request),
+            'raw_product' => self::validateRawProduct($shoppingList,$request),
+            default => 'type not supported'
+        };
+
+        if($fields === 'type not supported')
+            return ResponseUtils::generateErrorResponse('type not supported',400);
+
+
         $shoppingListEntry->update($fields);
-        return $shoppingListEntry;
+        return ResponseUtils::generateSuccessResponse($shoppingListEntry);
     }
 
     public function destroy(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request) {
         $shoppingListEntry->delete();
-        return response()->json(['message' => 'Shopping list entry deleted']);
+        return ResponseUtils::generateSuccessResponse('Deleted successfully');
 
     }
 }

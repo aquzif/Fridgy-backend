@@ -8,10 +8,10 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('shopping_list_entries', function (Blueprint $table) {
             $table->id();
-            $table->integer('shopping_list_id');
+            $table->foreignId('shopping_list_id')->constrained('shopping_lists')->onDelete('cascade');
             $table->string('product_name');
-            $table->string('unit_name');
-            $table->integer('amount');
+            $table->string('unit_name')->default('');
+            $table->integer('amount')->default(0);
             $table->timestamps();
         });
     }

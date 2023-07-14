@@ -1,15 +1,16 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\RESTAPI;
 
 use App\Models\ShoppingList;
 use App\Models\ShoppingListEntry;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Tests\Helpers\ResponseTestHelper;
+use Tests\Helpers\ShoppingListEntriesTestHelper;
+use Tests\Helpers\ShoppingListTestHelper;
 use Tests\TestCase;
-use Tests\TestHelpers\ShoppingListEntriesTestHelper;
-use Tests\TestHelpers\ShoppingListTestHelper;
 
 class ShoppingListsAPITest extends TestCase {
 
@@ -45,26 +46,28 @@ class ShoppingListsAPITest extends TestCase {
 
         $response = $this->createShoppingList($this->user1,$this->shoppingListData1);
 
+        $this->shoppingListData1['entries'] = [];
         $response->assertStatus(201);
-        $response->assertJson($this->shoppingListData1);
+        $response->assertJson(ResponseTestHelper::getSuccessCreateResponse($this->shoppingListData1));
     }
 
     public function test_user_can_view_shopping_list(){
-        $shoppingListData  = $this->createShoppingList($this->user1,$this->shoppingListData1)->json();
+        $shoppingListData  = $this->createShoppingList($this->user1,$this->shoppingListData1)->json()['data'];
 
         $url = self::SHOPPING_LIST_ENDPOINT.'/'.$shoppingListData['id'];
 
         $request = $this->actingAs($this->user1)
             ->getJson($url, $shoppingListData);
 
+        $shoppingListData['entries'] = [];
         $request->assertStatus(200);
-        $request->assertJson($shoppingListData);
+        $request->assertJson(ResponseTestHelper::getSuccessGetResponse($shoppingListData));
 
     }
 
     public function test_user_can_modify_shopping_list(): void{
 
-        $shoppingListData  = $this->createShoppingList($this->user1,$this->shoppingListData1)->json();
+        $shoppingListData  = $this->createShoppingList($this->user1,$this->shoppingListData1)->json()['data'];
 
 
         $shoppingListData['name'] = $shoppingListData['name'].'_new';
@@ -73,14 +76,15 @@ class ShoppingListsAPITest extends TestCase {
         $request = $this->actingAs($this->user1)
             ->patchJson($url, $shoppingListData);
 
+        $shoppingListData['entries'] = [];
         $request->assertStatus(200);
-        $request->assertJson($shoppingListData);
+        $request->assertJson(ResponseTestHelper::getSuccessUpdateResponse($shoppingListData));
 
     }
 
     public function test_user_can_delete_shopping_list(): void{
 
-        $shoppingListData = $this->createShoppingList($this->user1,$this->shoppingListData1)->json();
+        $shoppingListData = $this->createShoppingList($this->user1,$this->shoppingListData1)->json()['data'];
 
         $url = self::SHOPPING_LIST_ENDPOINT.'/'.$shoppingListData['id'];
 
@@ -88,6 +92,7 @@ class ShoppingListsAPITest extends TestCase {
             ->deleteJson($url);
 
         $request->assertStatus(200);
+        $request->assertJson(ResponseTestHelper::getSuccessDeleteResponse());
 
         $list = ShoppingList::find($shoppingListData['id']);
         $this->assertNull($list);
@@ -96,7 +101,7 @@ class ShoppingListsAPITest extends TestCase {
 
     public function test_when_user_is_removing_shopping_list_it_removes_entries_as_well(): void{
 
-        $shoppingListData = $this->createShoppingList($this->user1,$this->shoppingListData1)->json();
+        $shoppingListData = $this->createShoppingList($this->user1,$this->shoppingListData1)->json()['data'];
 
         $shoppingListId = $shoppingListData['id'];
 
@@ -105,11 +110,11 @@ class ShoppingListsAPITest extends TestCase {
 
         $this->actingAs($this->user1)
             ->postJson($entriesURL,
-                ShoppingListEntriesTestHelper::generateRandomShoppingListEntryData($this->faker));
+                ShoppingListEntriesTestHelper::generateRandomRawShoppingListEntryData($this->faker));
 
         $this->actingAs($this->user1)
             ->postJson($entriesURL,
-                ShoppingListEntriesTestHelper::generateRandomShoppingListEntryData($this->faker));
+                ShoppingListEntriesTestHelper::generateRandomRawShoppingListEntryData($this->faker));
 
         $entries = ShoppingListEntry::all();
 
@@ -129,7 +134,7 @@ class ShoppingListsAPITest extends TestCase {
 
     public function test_user_cannot_see_another_user_shopping_list(): void{
 
-        $shoppingList = $this->createShoppingList($this->user1);
+        $shoppingList = $this->createShoppingList($this->user1)['data'];
 
         $url = self::SHOPPING_LIST_ENDPOINT.'/'.$shoppingList['id'];
         $request = $this->actingAs($this->user2)->getJson($url);
@@ -142,7 +147,7 @@ class ShoppingListsAPITest extends TestCase {
     }
 
     public function test_user_cannot_modify_another_user_shopping_list(): void{
-        $shoppingList = $this->createShoppingList($this->user1)->json();
+        $shoppingList = $this->createShoppingList($this->user1)->json()['data'];
 
         $url = self::SHOPPING_LIST_ENDPOINT.'/'.$shoppingList['id'];
 
@@ -157,7 +162,7 @@ class ShoppingListsAPITest extends TestCase {
     }
 
     public function test_user_cannot_delete_another_user_shopping_list(): void{
-        $shoppingList = $this->createShoppingList($this->user1)->json();
+        $shoppingList = $this->createShoppingList($this->user1)->json()['data'];
 
         $url = self::SHOPPING_LIST_ENDPOINT.'/'.$shoppingList['id'];
 

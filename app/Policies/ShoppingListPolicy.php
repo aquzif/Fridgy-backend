@@ -5,17 +5,18 @@ namespace App\Policies;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Models\ShoppingList;
+use Illuminate\Auth\Access\Response;
 
 class ShoppingListPolicy
 {
     use HandlesAuthorization;
 
     public function viewAny(User $user): bool {
+
         return true;
     }
 
     public function view(User $user, ShoppingList $shoppingList): bool {
-
         return $shoppingList->user_id == $user->id;
     }
 

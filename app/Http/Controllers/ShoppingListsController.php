@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\ShoppingList;
+use App\Utils\ResponseUtils;
 use Illuminate\Http\Request;
 
 class ShoppingListsController extends Controller {
 
+    public function __construct() {
+        $this->authorizeResource(ShoppingList::class, 'shoppingList');
+    }
+
 
     public function index(Request $request) {
-        return ShoppingList::where('user_id', $request->user()->id)->get();
+        return ResponseUtils::generateSuccessResponse(ShoppingList::where('user_id', $request->user()->id)->get());
     }
 
     public function store(Request $request) {
@@ -17,15 +22,19 @@ class ShoppingListsController extends Controller {
             'name' => 'required|string',
         ]);
 
-         return ShoppingList::create([
-            'name' => $fields['name'],
-            'user_id' => $request->user()->id,
-        ]);
+         $newShoppingList = ShoppingList::create([
+             'name' => $fields['name'],
+             'user_id' => $request->user()->id,
+         ]);
+        $newShoppingList = $newShoppingList->where('id',$newShoppingList['id'])->first();
+
+
+         return ResponseUtils::generateSuccessResponse($newShoppingList,'OK',201);
 
     }
 
     public function show(ShoppingList $shoppingList) {
-        return $shoppingList;
+        return ResponseUtils::generateSuccessResponse($shoppingList);
     }
 
     public function update(Request $request, ShoppingList $shoppingList) {
@@ -36,13 +45,12 @@ class ShoppingListsController extends Controller {
 
         $shoppingList->update($fields);
 
-        return $shoppingList;
+        return ResponseUtils::generateSuccessResponse($shoppingList);
 
     }
 
     public function destroy(ShoppingList $shoppingList) {
-        $shoppingList->getEntries()->delete();
         $shoppingList->delete();
-        return response()->json(['message' => 'Shopping list deleted']);
+        return ResponseUtils::generateSuccessResponse();
     }
 }
