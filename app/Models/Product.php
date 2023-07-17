@@ -3,8 +3,11 @@
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Model;
+    use Laravel\Scout\Searchable;
 
     class Product extends Model {
+
+        use Searchable;
         protected $fillable = [
             'name',
             'default_unit_id',
@@ -19,9 +22,17 @@
             'nutrition_salt',
         ];
 
+
+
         protected $with = [
             'units',
         ];
+
+        public function toSearchableArray(): array {
+            return [
+                'name' => $this->name
+            ];
+        }
 
         //on create
         protected static function boot() {
@@ -39,7 +50,14 @@
                     'default_unit_converter' => 1,
                 ]);
 
+
+
             });
+
+            static::deleting(function ($product) {
+                $product->unsearchable();
+            });
+
         }
 
         function units(): \Illuminate\Database\Eloquent\Relations\HasMany {

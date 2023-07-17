@@ -17,6 +17,10 @@
             return ResponseUtils::generateSuccessResponse(Product::all());
         }
 
+        public function search(Request $request) {
+            return Product::search($request->input('query'))->get();
+        }
+
         public function store(Request $request) {
             $fields = $request->validate([
                 'name' => 'string|required',

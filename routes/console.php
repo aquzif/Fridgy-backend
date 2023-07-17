@@ -1,5 +1,6 @@
 <?php
 
+use App\Jobs\LoadRawDataJob;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+Artisan::command('load:raw', function () {
+    $this->comment('Loading raw data...');
+    dispatch(new LoadRawDataJob());
+})->purpose('Load raw data from the API');

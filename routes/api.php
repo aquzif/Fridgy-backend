@@ -68,11 +68,13 @@ Route::middleware('auth:sanctum')->group(fn() => [
     //Product routes
     //-----------------------------
     Route::prefix('/product')->group(fn() => [
+        Route::get('/search',[ProductsController::class,'search']),
         Route::get('/',[ProductsController::class,'index']),
         Route::post('/',[ProductsController::class,'store']),
         Route::get('/{product}',[ProductsController::class,'show']),
         Route::match(['put','patch'],'/{product}',[ProductsController::class,'update']),
         Route::delete('/{product}',[ProductsController::class,'destroy']),
+
 
         //-----------------------------
         //Product unit routes
