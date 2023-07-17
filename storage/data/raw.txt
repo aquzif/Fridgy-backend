@@ -1,0 +1,3000 @@
+Agrest
+41
+11,8
+0,8
+0,2
+Ananas
+54
+13,6
+0,4
+0,2
+Ananas, plastry w syropie
+84
+21
+0,4
+0,1
+Ananasy, dżem niskosłodzony
+157
+38,6
+0,2
+0,1
+Arbuz
+36
+8,4
+0,6
+0,1
+Awokado
+160
+7,4
+2
+15,3
+Babka biszkoptowa
+340
+67,1
+8,2
+4,3
+Bagietki francuskie
+282
+60,1
+7,9
+1,7
+Bakłażan
+21
+6,3
+1,1
+0,1
+Baleron gotowany
+244
+0,9
+15,1
+20,2
+Banan
+95
+23,5
+1
+0,3
+Baranina, łopatka
+284
+0
+15,6
+25
+Baranina, udziec
+232
+0
+18
+18
+Barszcz czerwony zabielany
+32
+3,3
+2
+1,4
+Barszcz ukraiński
+54
+6,5
+2,1
+2,7
+Barszcz ukraiński mrożony
+28
+7,1
+1,6
+0,2
+Barszcz z boćwiną
+29
+2,5
+1,5
+1,7
+Baton Bounty
+448
+56,7
+4,2
+25,2
+Baton Mars
+451
+68,9
+3,6
+18,2
+Baton Milky Way
+448
+71,8
+3,6
+16,2
+Baton Snickers
+497
+52,6
+9,7
+28,9
+Baton szynkowy z indyka
+143
+0,1
+14,9
+9,3
+Baton Twix
+483
+64,2
+5,3
+23,2
+Baton z kurczaka
+144
+0,1
+16,7
+8,6
+Befsztyk bity wiejski
+258
+1,6
+19,4
+19,6
+Białko jaja kurzego
+49
+0,7
+10,9
+0,2
+Bigos
+119
+3,9
+5,1
+9,9
+Bitki wieprzowe
+195
+2,6
+10,4
+16,1
+Bitki wieprzowe w jarzynach
+198
+4,3
+10,7
+16
+Bitki wołowe
+102
+2,4
+13,6
+4,3
+Bitki wołowe w jarzynach
+116
+6,6
+14,3
+4,4
+Bliny ziemniaczane
+257
+23,6
+5,6
+16,3
+Boćwina
+17
+5,5
+2,1
+0,5
+Boeuf Strogonow
+220
+3,7
+19,5
+14,3
+Bób
+66
+14
+7,1
+0,4
+Brokuły
+27
+5,2
+3
+0,4
+Brokuły mrożone
+24
+4,7
+2,7
+0,4
+Brukselka
+37
+8,7
+4,7
+0,5
+Brukselka mrożona
+36
+8,4
+4,5
+0,5
+Brukselka z wody
+110
+12
+4,2
+7,1
+Bryzol wołowy z polędwicy
+252
+1,4
+24,6
+16,6
+Brzoskwinia
+46
+11,9
+1
+0,2
+Brzoskwinie w syropie
+73
+18,2
+0,4
+0,1
+Brzoskwinie, dżem niskosłodzony
+155
+38,3
+0,5
+0,1
+Buchty drożdżowe
+303
+45,6
+6,2
+11
+Budyń z mięsa i makaronu
+171
+23,1
+10,6
+4,4
+Bułka tarta
+347
+77,6
+9,7
+1,9
+Bułki grahamki
+258
+56,9
+8,2
+1,7
+Bułki kajzerki
+296
+59,4
+7,5
+3,6
+Bułki maślane
+326
+61,8
+7,7
+5,9
+Bułki pszenne zwykłe
+272
+58,5
+7,3
+1,5
+Bułki wrocławskie
+293
+57,4
+7,2
+4,4
+Burak
+38
+9,5
+1,8
+0,1
+Buraki mrożone, puree
+34
+8,6
+1,6
+0,1
+Buraki z jabłkami
+69
+10,3
+1,5
+3,3
+Buraki zasmażane
+83
+8,7
+1,6
+5,5
+Buraki ze śmietaną
+68
+8,8
+1,8
+3,6
+Cebula
+30
+6,9
+1,4
+0,4
+Chałki
+333
+61,6
+7
+7
+Chipsy bekonowe
+537
+52,2
+5,9
+38
+Chipsy paprykowe
+549
+50,4
+6
+40
+Chipsy solone
+552
+49,9
+5,6
+40,7
+Chleb baltonowski
+246
+55,9
+5,9
+1,5
+Chleb chrupki
+353
+78,9
+8,7
+2,4
+Chleb Graham
+226
+49,4
+7,6
+1,7
+Chleb mazowiecki
+248
+56,3
+6,3
+1,4
+Chleb mieszany słonecznikowy
+246
+49,2
+6,4
+4,5
+Chleb mieszany sojowy
+231
+49,6
+6,8
+2,7
+Chleb praski
+244
+56,2
+5,7
+1,3
+Chleb pszenny
+249
+56
+6,8
+1,4
+Chleb staropolski
+219
+50,5
+5
+1,7
+Chleb wiejski
+239
+55,1
+5,8
+1,3
+Chleb zwykły
+245
+57
+5,4
+1,3
+Chleb żytni jasny
+241
+57,1
+4
+1,3
+Chleb żytni jasny mleczny
+253
+58,3
+4,8
+1,8
+Chleb żytni pełnoziarnisty
+237
+53,9
+6,7
+1,8
+Chleb żytni razowy
+223
+51,5
+5,6
+1,7
+Chleb żytni razowy na miodzie
+234
+54,2
+5,3
+1,6
+Chleb żytni razowy z soją i słonecznikiem
+244
+50,5
+7,9
+3,7
+Chleb żytni wileński
+225
+52,3
+4,4
+1,5
+Chrupki kukurydziane
+352
+78,9
+8,9
+3
+Chrzan
+67
+18,1
+4,5
+0,6
+Ciastka francuskie ze śliwkami
+432
+44,8
+5
+26,8
+Ciastka Karpatki
+449
+39,1
+4,7
+30,9
+Ciastka Napoleonki
+348
+43,6
+5,9
+17
+Ciastka tortowe z owocami
+276
+47,2
+3,2
+9
+Ciasto drożdżowe
+290
+47,7
+7,4
+8,2
+Ciasto kruche podstawowe
+429
+49,9
+5,2
+23,8
+Ciasto naleśnikowe bez piany
+174
+28,4
+5,9
+4,3
+Ciasto naleśnikowe biszkoptowe
+187
+25,5
+8,3
+6
+Cielęcina w potrawce
+103
+4
+13,5
+4
+Cielęcina, łopatka
+106
+0
+19,9
+2,8
+Cielęcina, sznyclówka
+105
+0
+20,5
+2,4
+Cielęcina, udziec
+108
+0
+19,9
+3,1
+Coca Cola
+42
+10,4
+0
+0
+Cukier
+405
+99,8
+0
+0
+Cukierki irysy
+421
+76,1
+4,3
+10,7
+Cukierki krówki
+421
+76,1
+4,3
+10,7
+Cukinia
+15
+3,2
+1,2
+0,1
+Cykoria
+21
+4,1
+1,7
+0,2
+Cytryna
+36
+9,5
+0,8
+0,3
+Czarne jagody
+45
+12,2
+0,8
+0,6
+Czarne porzeczki, dżem niskosłodzony
+152
+39,6
+0,5
+0,1
+Czarne porzeczki, dżem wysokosłodzony
+251
+63,9
+0,5
+0,1
+Czekolada biała
+530
+51
+7,7
+38,4
+Czekolada deserowa
+531
+64
+5,3
+28,9
+Czekolada gorzka
+554
+56,6
+6,7
+34,3
+Czekolada kawowa
+526
+62,7
+5,5
+29
+Czekolada mleczna
+549
+54,7
+9,8
+32,8
+Czekolada mleczna z orzechami laskowymi
+539
+57,3
+8,6
+30,9
+Czekolada nadziewana
+450
+68,8
+3,9
+17,6
+Czereśnie
+61
+14,6
+1
+0,3
+Czosnek
+146
+32,6
+6,4
+0,5
+Ćwikła
+41
+10,2
+1,6
+0,1
+Daktyle suszone
+277
+74
+2
+0,4
+Delicje szampańskie
+327
+52,8
+4,1
+11,2
+Deser ryżowy jabłkowy
+134
+23,9
+2,8
+3
+Deser ryżowy waniliowy
+133
+23,5
+3
+2,9
+Deser twarogowy termizowany kakaowy
+156
+11,2
+13,9
+6,2
+Deser twarogowy termizowany truskawkowy
+170
+18,3
+11
+5,8
+Dorsz świeży
+78
+0
+17,7
+0,7
+Dorsz świeży, filety bez skóry
+70
+0
+16,5
+0,3
+Dorsz w jarzynach
+117
+3,9
+15,6
+4,9
+Dorsz wędzony
+94
+0
+22,1
+0,5
+Dorsz z rusztu
+172
+0,6
+22,1
+9,1
+Dorsz, filety po grecku
+152
+4,6
+10,6
+10,8
+Dorsz, filety smażone panierowane
+273
+14,6
+19,1
+15,8
+Dorsz, kotlet mielony
+260
+10,9
+14,9
+17,8
+Dorsz, pulpety
+112
+8,8
+14,2
+2,6
+Dorsz, sałatka
+187
+7,2
+9,8
+13,9
+Dynia
+28
+7,7
+1,3
+0,3
+Dynia z pomidorami
+44
+6,5
+1,2
+2,4
+Dynia, pestki
+556
+18
+24,5
+45,8
+Eklerki z bitą śmietaną
+317
+33,5
+5,8
+18
+Fasola biała, suche nasiona
+288
+61,6
+21,4
+1,6
+Fasola cięta konserwowa
+16
+4,5
+1,5
+0,2
+Fasola szparagowa
+27
+7,6
+2,4
+0,2
+Fasolka flageolet konserwowa
+61
+15
+6,3
+0,2
+Fasolka po bretońsku
+141
+15,9
+8
+6,6
+Fasolka szparagowa
+97
+10,3
+2,9
+6,9
+Fasolka szparagowa mrożona
+24
+6,8
+2,2
+0,2
+Figi suszone
+290
+78
+3,6
+1,2
+Flaki
+84
+0
+16
+2,2
+Flądra świeża
+83
+0
+16,5
+1,8
+Galaretka z nóżek wieprzowych
+202
+0,8
+16,9
+14,9
+Gęś, tuszka
+339
+0
+14,1
+31,8
+Gołąbki z mięsem i ryżem w sosie pomidorowym
+108
+10
+3,6
+6,7
+Grejpfrut
+36
+9,8
+0,6
+0,2
+Groch, suche nasiona
+293
+60,2
+23,8
+1,4
+Groszek zielony
+75
+17
+6,7
+0,4
+Groszek zielony konserwowy
+63
+15,8
+4,9
+0,2
+Groszek zielony mrożony
+72
+16,3
+6,4
+0,4
+Groszek zielony z masłem
+100
+9,3
+3,7
+6,8
+Gruszka
+54
+14,4
+0,6
+0,2
+Gruszki w sosie waniliowym
+151
+34,8
+1,6
+1,1
+Gulasz wołowy
+148
+2,6
+14
+9,2
+Halibut biały świeży
+98
+0
+20,1
+1,9
+Herbata bez cukru
+0
+0
+0,1
+0
+Herbatniki
+437
+76,8
+8,2
+11
+Herbatniki Corso
+440
+67,1
+5
+17,2
+Herbatniki kakaowe
+474
+62,9
+6,9
+22,3
+Herbatniki kokosowe
+473
+59,8
+6,4
+25,2
+Herbatniki sezamowe
+503
+55,7
+8,1
+28,6
+Herbatniki w czekoladzie
+489
+63,1
+6,3
+24
+Herbatniki z cukrem
+460
+70,7
+6,7
+17,2
+Herbatniki z nadzieniem czekoladowym
+497
+57,3
+5,5
+27,9
+Herbatniki z nadzieniem owocowym
+389
+58,6
+3,8
+16,1
+Indyk, mięso z piersi bez skóry
+84
+0
+19,2
+0,7
+Indyk, mięso z podudzia ze skórą
+142
+0
+15,7
+8,9
+Indyk, mięso z udźca ze skórą
+131
+0
+18,4
+6,4
+Indyk, skrzydło
+168
+0
+16,5
+11,4
+Jabłka pieczone
+93
+20,8
+0,3
+1,6
+Jabłka suszone
+238
+62,3
+2,1
+2,1
+Jabłka w kruchym cieście
+348
+45,3
+4,1
+17,4
+Jabłko
+46
+12,1
+0,4
+0,4
+Jagody, dżem niskosłodzony
+153
+38,2
+0,3
+0,2
+Jagodzianki
+314
+60,6
+7,1
+5,4
+Jaja gotowane
+109
+0,5
+9,8
+7,6
+Jaja kurze całe
+139
+0,6
+12,5
+9,7
+Jaja sadzone
+168
+0,6
+9,9
+14,2
+Jajecznica
+119
+0,5
+9,8
+8,7
+Jarmuż
+29
+6,1
+3,3
+0,7
+Jarzyny mrożone
+30
+7,5
+2,8
+0,3
+Jogurt bananowy 1,5 %
+70
+10,4
+3,7
+1,5
+Jogurt jagodowy 1,5 %
+62
+8,8
+3,7
+1,5
+Jogurt morelowy 1,5 %
+63
+8,9
+3,7
+1,5
+Jogurt naturalny 2 %
+60
+6,2
+4,3
+2
+Jogurt truskawkowy 1,5 %
+60
+8,2
+3,7
+1,5
+Jogurt wiśniowy 1,5 %
+61
+8,2
+3,7
+1,5
+Kabanosy
+326
+0
+27,4
+24,3
+Kabanosy z kurczaka
+247
+0,1
+22,8
+17,4
+Kaczka, tuszka
+308
+0
+13,5
+28,6
+Kakao w proszku 16 %
+448
+50,6
+18,2
+21,7
+Kalafior
+22
+5
+2,4
+0,2
+Kalafior mrożony
+20
+4,5
+2,2
+0,2
+Kalafior z wody
+33
+5,5
+2
+6,8
+Kalarepa
+29
+6,5
+2,2
+0,3
+Kapusta biała
+29
+7,4
+1,7
+0,2
+Kapusta biała zasmażana
+69
+7,2
+1,6
+4,7
+Kapusta czerwona
+27
+6,7
+1,9
+0,2
+Kapusta kwaszona
+12
+3,4
+1,1
+0,2
+Kapusta pekińska
+12
+3,2
+1,2
+0,2
+Kapusta włoska
+38
+7,8
+3,3
+0,4
+Kapuśniak z kapusty kwaszonej
+21
+1,6
+1,4
+1,2
+Kapuśniak z kapusty słodkiej
+31
+3,2
+0,7
+2,1
+Karmelki nadziewane
+378
+92
+0,3
+0,5
+Karmelki twarde
+399
+98,2
+0
+0
+Karp świeży
+110
+0
+18
+4,2
+Karp w galarecie z warzywami
+137
+2,1
+26,1
+2,9
+Karp z wody
+102
+2
+16
+3,7
+Kasza gryczana
+336
+69,3
+12,6
+3,1
+Kasza gryczana na sypko
+132
+25
+4,5
+2,3
+Kasza jaglana
+346
+71,6
+10,5
+2,9
+Kasza jęczmienna na mleku
+63
+8,5
+2,6
+2,2
+Kasza jęczmienna perłowa
+327
+75
+6,9
+2,2
+Kasza jęczmienna pęczak
+334
+74,9
+8,4
+2
+Kasza manna
+348
+76,7
+8,7
+1,3
+Kasza manna na mleku
+67
+9,3
+2,7
+2,1
+Kasza manna na wywarze jarzynowym
+21
+3,4
+0,5
+0,8
+Kasza perłowa na sypko
+115
+23,6
+2,2
+2
+Kaszanka z kurczaka
+204
+16,4
+9,8
+11,7
+Kawa bez cukru
+2
+0,3
+0,2
+0
+Kefir 2 %
+51
+4,7
+3,4
+2
+Keks bakaliowy
+384
+53,5
+6,4
+17,6
+Ketchup
+93
+22,2
+1,8
+1
+Kiełbasa jałowcowa z kurczaka
+236
+0,1
+19
+17,9
+Kiełbasa krakowska sucha
+323
+0
+25,6
+24,8
+Kiełbasa mazurska z indyka
+129
+0,1
+14,8
+7,7
+Kiełbasa mortadela
+205
+0
+12
+17,7
+Kiełbasa myśliwska sucha
+291
+0
+27,8
+20,1
+Kiełbasa parówkowa
+323
+0
+11
+31,5
+Kiełbasa podlaska z kurczaka
+232
+0,1
+20,7
+16,7
+Kiełbasa podsuszana z kurczaka
+162
+0
+21,7
+8,4
+Kiełbasa podwawelska
+247
+0,9
+17,3
+19,6
+Kiełbasa szynkowa z indyka
+88
+0,2
+17,2
+2
+Kiełbasa szynkowa z kurczaka
+110
+0
+16,2
+5
+Kiełbasa śląska
+210
+0
+18,4
+15,3
+Kiełbasa toruńska
+263
+0
+20,9
+20,1
+Kiełbasa zwyczajna
+209
+0
+17,6
+15,6
+Kiełbasa żywiecka
+315
+0
+20,3
+26,3
+Kisiel porzeczkowy
+88
+23,3
+0,3
+0,1
+Kisiel waniliowy
+121
+16,6
+3,3
+4,5
+Kiszka kaszana jęczmienna
+194
+13
+8,5
+12,6
+Kiszka krwista
+404
+9,2
+14,2
+35
+Kiszka pasztetowa
+384
+4,3
+12,5
+35,7
+Kiwi
+56
+13,9
+0,9
+0,5
+Kiwi, dżem niskosłodzony
+154
+37,8
+0,4
+0,2
+Klopsiki cielęce mielone
+250
+14,3
+16,2
+14,6
+Klopsiki mielone z mięsa mieszanego
+272
+15,9
+13,5
+17,5
+Kluski kładzione
+165
+33,8
+5,1
+1,3
+Kluski lane
+93
+14,9
+4,1
+2
+Kluski lane na mleku
+70
+6,8
+3,6
+3,1
+Kluski śląskie
+169
+32,1
+2,6
+3,8
+Knedle ze śliwkami
+161
+25,8
+2,7
+5,9
+Kompot z jabłek
+51
+13,2
+0,2
+0,1
+Kompot z wiśni
+69
+16,9
+0,2
+0,1
+Koncentrat pomidorowy 30 %
+92
+16,7
+5,6
+1,5
+Koper
+26
+6,1
+2,8
+0,4
+Kopytka
+143
+31,2
+4
+0,7
+Kotlet cielęcy panierowany
+365
+17,4
+27,1
+21,3
+Kotlet mielony z mięsa mieszanego
+284
+11,8
+13
+21,1
+Kotlet schabowy panierowany
+351
+15,9
+19
+24,1
+Kotlet z kurczaka smażony panierowany
+248
+7,6
+19,7
+15,7
+Kotlet z kurczaka smażony saute
+241
+3,3
+20,3
+16,5
+Kotlet z kury mielony
+382
+14,3
+19,9
+27,8
+Kotlety z jaj
+275
+10,8
+7,9
+22,7
+Kotlety ziemniaczane
+241
+29,3
+4,3
+12,8
+Krem z zielonego groszku
+63
+5,9
+3,1
+3,8
+Królik, tuszka
+156
+0
+21
+8
+Krupnik z kaszy gryczanej
+43
+7,2
+1,7
+1,2
+Krupnik z kaszy jęczmiennej
+40
+7,4
+1,5
+0,9
+Krupnik z ryżu
+43
+7,6
+1,5
+1,1
+Kukurydza
+110
+23,4
+3,7
+1,5
+Kukurydza konserwowa
+102
+23,6
+2,9
+1,2
+Kulebiak
+222
+20,1
+7,6
+12,7
+Kura w galarecie
+192
+1,2
+27,3
+8,9
+Kura, tuszka
+202
+0
+18,5
+14,3
+Kurczak faszerowany pieczony
+199
+2,8
+20,5
+11,9
+Kurczak gotowany w jarzynach
+99
+4,6
+7,6
+6,4
+Kurczak pieczony
+179
+0,1
+16,4
+12,7
+Kurczak, mięso z piersi bez skóry
+99
+0
+21,5
+1,3
+Kurczak, mięso z uda ze skórą
+158
+0
+16,8
+10,2
+Kurczak, skrzydło
+186
+0
+19,2
+12,2
+Kurczak, tuszka
+158
+0
+18,6
+9,3
+Kurczak, wątroba
+136
+0,6
+19,1
+6,3
+Kurczak, żołądek
+114
+0,6
+18,2
+4,2
+Lody mleczno-owocowe
+116
+19,4
+3,9
+2,5
+Lody śmietankowe
+160
+17,6
+3,2
+8,5
+Łosoś smażony saute
+379
+4,1
+21,1
+31,4
+Łosoś świeży
+201
+0
+19,9
+13,6
+Łosoś wędzony
+162
+0
+21,5
+8,4
+Łosoś z rusztu
+283
+0,6
+20,7
+22,3
+Majonez z olejem rzepakowym
+714
+2,6
+1,3
+79
+Majonez z olejem słonecznikowym
+714
+2,6
+1,3
+79
+Mak niebieski
+478
+24,7
+20,1
+42,9
+Makaron bezjajeczny
+363
+78,5
+10
+1,6
+Makaron czterojajeczny
+377
+76,2
+12
+3,4
+Makaron dwujajeczny
+373
+77,4
+11,5
+2,6
+Makaron na mleku
+66
+8,5
+2,9
+2,3
+Makrela świeża
+181
+0
+18,7
+11,9
+Makrela wędzona
+221
+0
+20,7
+15,5
+Makrela, filety z czerwoną fasolą
+128
+4,4
+12,4
+7,3
+Makrela, filety z warzywami
+124
+3,6
+12
+7,3
+Makrela, sałatka pikantna
+181
+6,9
+10,2
+13,2
+Maliny
+29
+12
+1,3
+0,3
+Mandarynki
+42
+11,2
+0,6
+0,2
+Marchew
+27
+8,7
+1
+0,2
+Marchew mrożona
+24
+7,8
+0,9
+0,2
+Marchew z groszkiem
+64
+10,8
+1,7
+3,1
+Marchew zasmażana
+69
+8,4
+1
+4,8
+Margaryna Bona
+442
+0
+0
+50
+Margaryna Flora
+531
+0
+0
+60
+Margaryna Kama
+398
+0
+0
+45
+Margaryna mleczna
+710
+0,4
+0,3
+80
+Margaryna Palma
+710
+0,4
+0,3
+80
+Margaryna Rama
+621
+0,4
+0,1
+70
+Margaryna Słoneczna
+710
+0,4
+0,3
+80
+Margaryna Tina
+442
+0
+0
+45
+Margaryna zwykła
+710
+0,4
+0,3
+80
+Markizy
+483
+64,3
+5,6
+23
+Masło ekstra
+735
+0,7
+0,7
+82,5
+Masło roślinne Nova
+442
+0
+0
+50
+Masło roślinne zwykłe
+666
+0,4
+0,3
+75
+Masło śmietankowe
+659
+1,1
+1,1
+73,5
+Maślanka 0,5 %
+37
+4,7
+3,4
+0,5
+Mąka pszenna typ 500
+342
+74,9
+9,2
+1,2
+Mąka pszenna typ 550
+343
+74,1
+9,4
+1,6
+Medaliony z indyka
+247
+3,4
+18,6
+17,9
+Melon
+36
+8,4
+0,9
+0,3
+Mielonka
+171
+3,7
+12,8
+11,7
+Migdały
+572
+20,5
+20
+52
+Mintaj świeży
+73
+0
+16,6
+0,6
+Miód pszczeli
+324
+79,5
+0
+0
+Mizeria ze śmietaną
+34
+2,8
+1
+2,2
+Mleko kozie
+68
+4,5
+3,2
+4,1
+Mleko owcze
+107
+5,1
+6
+7
+Mleko spożywcze 0,5 %
+39
+5,1
+3,5
+0,5
+Mleko spożywcze 1,5 %
+47
+5
+3,4
+1,5
+Mleko spożywcze 2 %
+51
+4,9
+3,4
+2
+Mleko spożywcze 3,2 %
+61
+4,8
+3,3
+3,2
+Mleko spożywcze 3,5 %
+64
+4,8
+3,3
+3,5
+Mleko w proszku odtłuszczone
+360
+51,2
+35,7
+0,8
+Mleko w proszku pełne
+479
+38,7
+27
+24
+Mleko zagęszczone niesłodzone
+131
+9,4
+6,6
+7,5
+Mleko zagęszczone słodzone
+326
+55,3
+7,5
+8
+Morela
+47
+11,9
+0,9
+0,2
+Morele suszone
+284
+72,2
+5,4
+1,2
+Morele, dżem niskosłodzony
+157
+38,8
+0,4
+0,1
+Morszczuk świeży
+89
+0
+17,2
+2,2
+Mus jabłkowy
+127
+28,7
+2,2
+0,5
+Musli z owocami suszonymi
+325
+72,2
+8,4
+3,4
+Musli z rodzynkami i orzechami
+375
+62,9
+11,5
+12,7
+Musztarda
+162
+22
+5,7
+6,4
+Naleśniki z kapustą
+147
+15,2
+3,2
+9,2
+Naleśniki z serem
+242
+27,4
+10,1
+10,3
+Napój mleczny jogurtowy
+82
+12,1
+4
+1,9
+Napój mleczny kakaowy
+81
+12,1
+3,3
+2,1
+Napój owocowy gazowany
+42
+10,3
+0
+0
+Nektarynka
+48
+11,8
+0,9
+0,2
+Nerki wieprzowe
+102
+0
+16,8
+3,8
+Nogi wieprzowe
+274
+0
+23
+20,4
+Ocet winny
+20
+5
+0
+0
+Ogórek
+15
+2,9
+0,7
+0,1
+Ogórek kiszony
+12
+1,9
+0,7
+0,2
+Olej kukurydziany
+900
+0
+0
+100
+Olej lniany
+900
+0
+0
+100
+Olej rzepakowy
+900
+0
+0
+100
+Olej słonecznikowy
+900
+0
+0
+100
+Olej sojowy
+900
+0
+0
+100
+Oliwa z oliwek
+897
+0,2
+0
+99,6
+Oliwki
+147
+4,1
+1,4
+13,9
+Orzechy arachidowe
+595
+19,2
+25,7
+46,1
+Orzechy laskowe
+695
+11
+14,4
+65,9
+Orzechy nerkowca
+638
+24
+17
+54
+Orzechy pistacjowe
+618
+17,5
+20,8
+51,6
+Orzechy włoskie
+679
+18
+16
+60,3
+Orzeszki ziemne
+634
+13,3
+26
+53
+Ostrygi
+85
+5
+5
+5
+Otręby pszenne
+183
+61,9
+16
+4,6
+Ozory cielęce
+106
+0
+17,1
+4,2
+Ozory wieprzowe
+166
+0
+16,5
+11,1
+Paluszki
+384
+75,2
+9,9
+4,9
+Papaja
+43
+9,8
+0,6
+0,1
+Papryka czerwona
+35
+6,9
+1,2
+0,3
+Papryka konserwowa
+37
+5
+0,8
+1,5
+Paprykarz Szczeciński
+181
+8,6
+9,9
+11,9
+Parówki dla dzieci Morlinki
+223
+0,4
+12,4
+19,1
+Parówki popularne
+347
+0
+9,5
+34,3
+Parówki z kurczaka
+262
+4,2
+10,8
+22,4
+Pasternak
+80
+18
+1,2
+0,3
+Pasztet popularny
+405
+2
+13,2
+38,2
+Pasztet z drobiu
+270
+4,4
+9,6
+23,8
+Pączki
+376
+52
+6
+16
+Pepsi, Cola, napój
+42
+10,4
+0
+0
+Pepsi, Cola light, napój
+0,24
+0
+0
+0
+Pestki dyni
+596
+15
+29
+46,7
+Pędy bambusa
+34
+5,2
+2,6
+0,3
+Pędy bambusa, konserwa, odsączone
+23
+3,2
+1,7
+0,4
+Pieczarka suszona
+331
+49,3
+19,1
+2,1
+Pieczarka świeża
+24
+2,5
+2,6
+0,4
+Pieczywo chrupkie pszenne Wasa
+360
+73
+12
+2,2
+Pierogi leniwe mrożone
+157
+30,2
+7,3
+0,8
+Pierogi ruskie mrożone
+215
+37,9
+7,2
+3,8
+Pierogi z kapustą i grzybami mrożone
+209
+34,5
+5
+5,7
+Pierogi z mięsem mrożone
+255
+34,8
+10,5
+8,2
+Pierogi z serem mrożone
+198
+36,4
+10,9
+1
+Pierogi z truskawkami mrożone
+194
+42,4
+4,3
+0,8
+Piernik czekoladowy
+317
+74,3
+4,9
+11,8
+Piersi bez skóry indycze
+109
+0
+21,3
+2,6
+Piersi bez skóry z kurczaka
+100
+0
+21,5
+1,3
+Piersi ze skórą z kurczaka
+155
+0
+19,3
+8,6
+Pietruszka korzeń
+83
+17,1
+2,6
+0,5
+Pietruszka liście
+60
+9
+3,7
+1
+Pikling
+216
+0
+21,8
+14,3
+Piwo bezalkoholowe
+27
+5,2
+0,2
+0
+Piwo ciemne pełne
+42
+4,6
+0,4
+0
+Piwo jasne mocne
+64
+5,4
+7
+0
+Piwo jasne pełne
+49
+3,8
+0,5
+0
+Pizza z pieczarkami i cebulą
+296
+32,1
+12
+13,3
+Pizza z szynką
+223
+40,2
+9,8
+2,5
+Planta, tłuszcz roślinny
+900
+0
+0
+100
+Płatki jęczmienne
+389
+79,4
+9,8
+3,6
+Płatki kukurydziane
+385
+83,6
+6,9
+2,5
+Płatki kukurydziane Nestle Corn Flakes
+370
+83,3
+7,3
+0,8
+Płatki owsiane
+390
+69,3
+11,9
+7,2
+Płatki pszenne
+387
+81
+9
+3
+Płatki żytnie
+385
+82,6
+6,4
+3,2
+Polędwica wołowa
+112
+0
+20,1
+3,5
+Pomidor
+29
+5,2
+0,9
+0,5
+Por
+47
+9,9
+1,7
+0,1
+Pomarańcza
+51
+11,3
+0,9
+0,2
+Popcorn bez tłuszczu
+397
+77,9
+12
+4,2
+Popcorn z tłuszczem
+518
+57,1
+9
+28,1
+Porzeczki białe
+63
+14,5
+0,4
+0,4
+Porzeczki czarne
+84
+17,4
+1,5
+0,9
+Porzeczki czerwone
+64
+13,8
+1,3
+0,4
+Powidła śliwkowe
+218
+53
+1
+0,2
+Poziomki
+41
+8,3
+0,8
+0,5
+Precelki
+385
+79,5
+9,1
+3,5
+Prince Polo, wafel
+534
+57,5
+4,8
+31,5
+Princessa, wafel
+562
+58,4
+4,1
+34,6
+Przyprawa do zup Maggi
+17
+1,5
+2,7
+0
+Pstrąg świeży
+96
+0
+19,2
+2,1
+Ptyś z bitą śmietaną, ciastko
+352
+25,8
+5,4
+25,2
+Pyzy z mięsem mrożone
+169
+26,2
+5,2
+4,9
+Pyzy ziemniaczane mrożone
+140
+32,2
+1,7
+0,5
+Rabarabar
+18
+3,8
+0,5
+0,1
+Raffaello, czekoladki
+600
+35,4
+9,7
+46,6
+Rama Classic, margaryna
+631
+0,2
+0
+70
+Red Bull, napój
+45
+11,3
+0
+0
+Rodzynki
+298
+71,2
+2,3
+0,5
+Rostbef wołowy
+152
+0
+21,5
+7,3
+Rozbratel wołowy
+158
+0
+16,7
+10,1
+Ryż biały
+349
+78,9
+6,7
+0,7
+Ryż brązowy
+353
+76,8
+7,1
+1,9
+Ryż dziki amerykański
+351
+73
+13,8
+0,4
+Ryż preparowany
+376
+84,1
+6,3
+1,6
+Rzeżucha
+15
+1,3
+2,3
+0,1
+Rzodkiewka
+21
+3,6
+0,8
+0,4
+Salceson czarny
+340
+0,5
+12,6
+32
+Salceson włoski
+322
+0
+14,6
+29,3
+Sałata
+20
+2,9
+1,4
+0,3
+Sandacz świeży
+80
+0,9
+18,3
+0,3
+Sardynki w oleju, konserwa
+202
+0
+24
+11,5
+Sardynki w sosie pomidorowym, konserwa
+163
+1,4
+17
+9,9
+Sarnina
+102
+0,4
+20,8
+1,9
+Schab surowy wieprzowy
+174
+0
+21
+10
+Schab wędzony
+136
+0
+25
+4
+Seler korzeń
+61
+13,6
+1,3
+0,2
+Ser Feta
+216
+1
+17
+16
+Ser pleśniowy Brie pełnotłusty
+293
+0
+18
+24,5
+Ser pleśniowy Rokpol pełnotłusty
+354
+0
+22,6
+29,3
+Ser podpuszczkowy Brie pełnotłusty
+332
+0,2
+19,8
+28
+Ser podpuszczkowy Camembert tłusty
+263
+1,9
+19,3
+19,8
+Ser podpuszczkowy Cheddar pełnotłusty
+382
+2,5
+27,1
+29,3
+Ser podpuszczkowy Ementaler pełnotłusty
+383
+0,1
+28,8
+29,7
+Ser podpuszczkowy Ementaler tłusty
+330
+1,5
+28,8
+23,2
+Ser podpuszczkowy Gouda tłusty
+314
+1
+27,9
+22
+Ser podpuszczkowy Mozarella tłusty
+224
+0
+20
+16
+Ser podpuszczkowy Myśliwski pełnotłusty
+349
+0,1
+25,5
+27,4
+Ser podpuszczkowy Parmezan
+408
+0,1
+35,1
+29,7
+Ser podpuszczkowy Salami pełnotłusty
+354
+0,1
+25,2
+28,1
+Ser podpuszczkowy Salami tłusty
+329
+3,1
+29,5
+22,1
+Ser podpuszczkowy Tylżycki pełnotłusty
+356
+0,1
+26,1
+27,9
+Ser podpuszczkowy Tylżycki tłusty
+327
+2,1
+27,8
+23
+Ser topiony tłusty
+222
+1,6
+18
+16
+Ser twarogowy chudy
+98
+3,5
+19,8
+0,5
+Ser twarogowy półtłusty
+132
+3,7
+18,7
+4,7
+Ser twarogowy pełnotłusty
+176
+3,5
+17,7
+10,1
+Serca wieprzowe
+111
+0
+16,9
+4,8
+Serdelki drobiowe
+239
+1,9
+13,9
+19,5
+Serek Fromage naturalny
+384
+2,4
+10,2
+37,1
+Serek homogenizowany truskawkowy
+167
+17,7
+15,3
+3,9
+Serek homogenizowany waniliowy
+158
+13,3
+16,8
+4,2
+Serek twarogowy ziarnisty
+101
+3,3
+12,3
+4,3
+Sernik
+273
+38
+10
+9
+Sernik z rodzynkami, ciasto
+342
+39,6
+14,6
+13,9
+Serwatka płynna
+25
+5,1
+0,8
+0,1
+Sezamki
+511
+56,2
+13,4
+25,8
+Skrobia kukurydziana
+367
+91,3
+0,3
+0,1
+Skrzydło bez skóry indycze
+169
+0
+16,5
+11,4
+Słonecznik ziarno
+580
+12,3
+22,5
+49
+Słonina
+811
+0
+2,4
+89
+Smalec
+896
+0
+0
+99,5
+Snickers, baton
+509
+52,6
+9,7
+28,9
+Soczewica, suche ziarno
+347
+59,5
+25
+1
+Soja, suche ziarno
+442
+34,8
+34,9
+18,1
+Sola świeża
+83
+0
+17,5
+1,4
+Sok ananasowy
+48
+11,4
+0,3
+0,1
+Sok grejfrutowy
+35
+7,8
+0,6
+0,2
+Sok jabłkowy
+45
+10
+0,4
+0,4
+Sok marchwiowy
+48
+11,3
+0,4
+0,1
+Sok pomarańczowy
+45
+10,5
+0,5
+0,1
+Sok pomidorowy
+19
+2,6
+0,8
+0,6
+Sok z czarnej porzeczki
+45
+10,2
+0,3
+0,3
+Sprite, napój
+42
+10,5
+0
+0
+Syrop truskawkowy
+262
+62
+0,2
+0,1
+Szampan półsłodki
+97
+7
+0,2
+0
+Szampan półwytrawny
+83
+3,4
+0,1
+0
+Szampan słodki
+117
+12
+0,2
+0
+Szczaw
+39
+3,9
+1,1
+0,8
+Szczupak świeży
+81
+0
+18,4
+0,8
+Szczypiorek
+39
+3,9
+4,1
+0,8
+Szparagi
+24
+3,7
+1,9
+0,2
+Szpinak
+26
+3
+2,6
+0,4
+Szponder wołowy
+218
+0
+19,3
+15,7
+Szprot wędzony
+243
+0
+19,3
+18,3
+Szynka surowa wieprzowa
+264
+0
+18
+21,3
+Szynka wędzona gotowana
+389
+0
+23
+33
+Śmietana 12% tłuszczu
+134
+3,9
+2,7
+12
+Śmietana 18% tłuszczu
+186
+3,6
+2,5
+18
+Śmietanka do kawy 9% tłuszczu
+54
+4
+2,8
+9
+Śmietanka kremowa 30% tłuszczu
+291
+3,1
+2,2
+30
+Śledź solony
+218
+0
+19,8
+15,4
+Śledź świeży
+162
+0
+16,3
+10,7
+Śledź w oleju, konserwa
+343
+0
+19,7
+29,4
+Śledź w pomidorach, konserwa
+177
+1,8
+13,7
+12,8
+Śliwki
+70
+15,9
+1
+0,3
+Śliwki suszone
+311
+70,8
+4,9
+0,9
+Truskawki
+28
+7,2
+0,7
+0,4
+Truskawki w galaretce
+126
+16
+15,4
+0,2
+Truskawki z bitą śmietaną
+127
+8,4
+1,1
+10,4
+Truskawki, dżem niskosłodzony
+153
+37,8
+0,3
+0,2
+Truskawki, dżem wysokosłodzony
+252
+62,3
+0,3
+0,2
+Tuńczyk w oleju
+190
+0
+27,1
+9
+Tuńczyk w wodzie
+96
+0
+21
+1,2
+Wafle nadziewane
+519
+60,7
+8,3
+27,5
+Wafle w czekoladzie
+553
+55,6
+7,4
+33,9
+Wątroba cielęca
+124
+4,1
+19,2
+3,3
+Wątroba wieprzowa
+130
+2,6
+22
+3,4
+Wątroba wołowa
+125
+4
+20
+3,1
+Wątróbka wieprzowa saute
+239
+4,9
+20,5
+15,5
+Wędzonka wołowa gotowana
+102
+0,5
+17,8
+3,1
+Węgorz wędzony
+326
+0
+17,9
+28,6
+Wieprzowina duszona
+225
+1,2
+11,4
+19,8
+Wieprzowina gotowana
+364
+3,1
+22,6
+30
+Winogrona
+69
+17,6
+0,5
+0,2
+Wiórki kokosowe
+606
+27
+5,6
+63,2
+Wiśnie
+47
+10,9
+0,9
+0,4
+Wiśnie, dżem niskosłodzony
+154
+37,8
+0,4
+0,2
+Wiśnie, dżem wysokosłodzony
+252
+61,7
+0,4
+0,2
+Włoszczyzna mrożona
+25
+7,9
+1,4
+0,3
+Wołowina, pieczeń
+117
+0
+20,9
+3,6
+Wołowina, polędwica
+113
+0
+20,1
+3,5
+Wołowina, rostbef
+152
+0
+21,5
+7,3
+Wołowina, rozbratel
+157
+0
+16,7
+10,1
+Wołowina, szponder
+217
+0
+19,3
+15,7
+Ziemniaki późne
+85
+20,5
+1,9
+0,1
+Ziemniaki puree
+90
+18,4
+2,1
+1,4
+Ziemniaki wczesne
+69
+16,3
+1,8
+0,1
+Ziemniaki z tłuszczem
+106
+18,7
+2
+3,1
+Zupa cebulowa
+44
+4
+1,4
+2,7
+Zupa cytrynowa z ryżem
+58
+8,7
+1,4
+2,2
+Zupa fasolowa
+62
+10
+4
+1,8
+Zupa grochowa
+66
+8,9
+4,4
+2,4
+Zupa grzybowa zabielana
+26
+1,3
+1,3
+1,8
+Zupa jarzynowa
+43
+6,2
+1,7
+1,8
+Zupa jesienna mrożona
+27
+7,2
+1,6
+0,2
+Zupa kalafiorowa
+28
+4,9
+1,6
+0,5
+Zupa kalafiorowa mrożona
+22
+5,5
+2
+0,2
+Zupa neapolitańska
+63
+8,2
+2,2
+2,6
+Zupa ogórkowa
+42
+5
+1,4
+2
+Zupa owocowa z jabłek
+42
+11,8
+0,1
+0,1
+Zupa pomidorowa
+11
+2,1
+1
+0,1
+Zupa pomidorowa z makaronem
+35
+3,3
+1,5
+1,8
+Zupa pomidorowa z ryżem
+37
+3,9
+1,5
+1,8
+Zupa pomidorowa zabielana
+28
+1,9
+1,3
+1,8
+Zupa selerowa
+37
+4,5
+1,6
+1,8
+Zupa selerowa z grzankami
+51
+8,1
+1,8
+1,9
+Zupa szczawiowa
+40
+2,9
+1,6
+2,5
+Zupa szpinakowa z ziemniakami
+40
+6,6
+2,2
+0,9
+Zupa włoska mrożona
+27
+6,9
+1,8
+0,3
+Zupa z fasoli szparagowej
+43
+8,9
+2,2
+0,6
+Zupa z porów z makaronem
+58
+10,3
+2,4
+1,4
+Zupa z zielonego groszku
+56
+11,2
+3,2
+1,2
+Zupa ziemniaczana
+39
+6,6
+1,4
+1,1
+Zupa zimowa mrożona
+25
+6,9
+2,1
+0,3
+Żeberka wieprzowe duszone
+210
+2,2
+7,9
+19,2
+Żółtko jaja kurzego
+314
+0,3
+15,5
+28,2
+Żurek
+124
+23,5
+2,2
+3,1
