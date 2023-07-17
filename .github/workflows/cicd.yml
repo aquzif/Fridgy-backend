@@ -67,9 +67,9 @@ jobs:
       - name: Directory Permissions
         run: chmod -R 777 storage bootstrap/cache
       - name: Deploy to server
-        run: rsync -e 'ssh -p 222' -avz  ./ ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }}:${{ secrets.SSH_DIR_DEV }}
+        run: rsync -e 'ssh -p 22' -avz  ./ ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }}:${{ secrets.SSH_DIR_DEV }}
       - name: Migrate database
-        run: ssh -p 222 ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }} "cd ${{ secrets.SSH_DIR_DEV }} && sail composer install && sail artisan migrate"
+        run: ssh -p 22 ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }} "cd ${{ secrets.SSH_DIR_DEV }} && sail composer install && sail artisan migrate"
   deploy-prod:
     runs-on: ubuntu-latest
     needs: [ test ]
@@ -97,6 +97,6 @@ jobs:
       - name: Directory Permissions
         run: chmod -R 777 storage bootstrap/cache
       - name: Deploy to server
-        run: rsync -e 'ssh -p 222' -avz  ./ ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }}:${{ secrets.SSH_DIR_PROD }}
+        run: rsync -e 'ssh -p 22' -avz  ./ ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }}:${{ secrets.SSH_DIR_PROD }}
       - name: Migrate database
-        run: ssh -p 222 ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }} "cd ${{ secrets.SSH_DIR_PROD }} && sail composer install && sail artisan migrate"
+        run: ssh -p 22 ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }} "cd ${{ secrets.SSH_DIR_PROD }} && sail composer install && sail artisan migrate"
