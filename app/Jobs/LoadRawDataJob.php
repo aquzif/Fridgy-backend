@@ -25,7 +25,6 @@ class LoadRawDataJob implements ShouldQueue {
         $handle = fopen($file, 'r');
         $i = 0;
         while (($line = fgets($handle)) !== false) {
-            if($i > 100) break;
 
             if($i % 5 === 0) {
                 if(!empty($newData)){
