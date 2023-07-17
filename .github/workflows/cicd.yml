@@ -62,8 +62,8 @@ jobs:
         run: composer update -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Install composer Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-      - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.development', '.env');"
+      #- name: Copy .env
+      #  run: php -r "file_exists('.env') || copy('.env.development', '.env');"
       - name: Directory Permissions
         run: chmod -R 777 storage bootstrap/cache
       - name: Deploy to server
@@ -92,8 +92,8 @@ jobs:
         run: composer update -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Install composer Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-      - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.production', '.env');"
+      #- name: Copy .env
+      #  run: php -r "file_exists('.env') || copy('.env.production', '.env');"
       - name: Directory Permissions
         run: chmod -R 777 storage bootstrap/cache
       - name: Deploy to server
