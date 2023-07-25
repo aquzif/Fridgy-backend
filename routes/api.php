@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GlobalUnitsController;
 use App\Http\Controllers\GroceryProductsController;
 use App\Http\Controllers\GroceryProductUnitsController;
     use App\Http\Controllers\ProductsController;
@@ -68,11 +69,13 @@ Route::middleware('auth:sanctum')->group(fn() => [
     //Product routes
     //-----------------------------
     Route::prefix('/product')->group(fn() => [
+        Route::get('/search',[ProductsController::class,'search']),
         Route::get('/',[ProductsController::class,'index']),
         Route::post('/',[ProductsController::class,'store']),
         Route::get('/{product}',[ProductsController::class,'show']),
         Route::match(['put','patch'],'/{product}',[ProductsController::class,'update']),
         Route::delete('/{product}',[ProductsController::class,'destroy']),
+
 
         //-----------------------------
         //Product unit routes
@@ -87,6 +90,16 @@ Route::middleware('auth:sanctum')->group(fn() => [
         ]),
     ]),
 
+    //-----------------------------
+    //Global units routes
+    //-----------------------------
+    Route::prefix('/global-unit')->group(fn() => [
+        Route::get('/',[GlobalUnitsController::class,'index']),
+        Route::post('/',[GlobalUnitsController::class,'store']),
+        Route::get('/{globalUnit}',[GlobalUnitsController::class,'show']),
+        Route::match(['put','patch'],'/{globalUnit}',[GlobalUnitsController::class,'update']),
+        Route::delete('/{globalUnit}',[GlobalUnitsController::class,'destroy']),
+    ]),
 
 ]);
 

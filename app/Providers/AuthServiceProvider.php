@@ -4,10 +4,12 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 
+use App\Models\GlobalUnit;
 use App\Models\Product;
 use App\Models\ProductUnit;
 use App\Models\ShoppingList;
 use App\Models\ShoppingListEntry;
+use App\Policies\GlobalUnitPolicy;
 use App\Policies\ProductPolicy;
 use App\Policies\ProductUnitPolicy;
 use App\Policies\ShoppingListEntryPolicy;
@@ -27,7 +29,8 @@ class AuthServiceProvider extends ServiceProvider
         ShoppingList::class => ShoppingListPolicy::class,
         ShoppingListEntry::class => ShoppingListEntryPolicy::class,
         Product::class => ProductPolicy::class,
-        ProductUnit::class => ProductUnitPolicy::class
+        ProductUnit::class => ProductUnitPolicy::class,
+        GlobalUnit::class => GlobalUnitPolicy::class,
     ];
 
     /**

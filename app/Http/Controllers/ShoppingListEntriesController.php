@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GlobalUnit;
 use App\Models\ShoppingList;
 use App\Models\ShoppingListEntry;
 use App\Utils\ResponseUtils;
@@ -25,8 +26,8 @@ class ShoppingListEntriesController extends Controller {
         ]);
 
         $fields = match($fields['type']){
-            'raw' => self::vaidateRaw($shoppingList,$request),
-            'raw_product' => self::validateRawProduct($shoppingList,$request),
+            'raw' => self::vaidateRawCreate($shoppingList,$request),
+            'raw_product' => self::validateRawProductCreate($shoppingList,$request),
             default => 'type not supported'
         };
 
@@ -37,45 +38,19 @@ class ShoppingListEntriesController extends Controller {
 
     }
 
-    public function vaidateRaw(ShoppingList $shoppingList, Request $request) {
-        $fields = $request->validate([
-            'product_name' => 'string|required',
-            'checked' => 'boolean',
-            'type' => 'string'
-        ]);
 
 
-        $fields['shopping_list_id'] = $shoppingList->id;
-        return $fields;
-
-    }
-
-    public function validateRawProduct(ShoppingList $shoppingList, Request $request) {
-        $fields = $request->validate([
-            'product_name' => 'string|required',
-            'unit_id' => 'integer|required|exists:global_units,id',
-            'amount' => 'integer|required',
-            'checked' => 'boolean',
-            'type' => 'string'
-        ]);
-
-        $fields['shopping_list_id'] = $shoppingList->id;
-        return $fields;
-
-    }
 
     public function show(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request) {
         return ResponseUtils::generateSuccessResponse($shoppingListEntry);
     }
 
     public function update(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request ) {
-        $fields = $request->validate([
-            'type' => 'string|required|in:raw,product,raw_product',
-        ]);
 
-        $fields = match($fields['type']){
-            'raw' => self::vaidateRaw($shoppingList,$request),
-            'raw_product' => self::validateRawProduct($shoppingList,$request),
+
+        $fields = match($shoppingListEntry->type){
+            'raw' => self::validateRawUpdate($shoppingList,$request,$shoppingListEntry),
+            'raw_product' => self::validateRawProductUpdate($shoppingList,$request,$shoppingListEntry),
             default => 'type not supported'
         };
 
@@ -90,6 +65,71 @@ class ShoppingListEntriesController extends Controller {
     public function destroy(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request) {
         $shoppingListEntry->delete();
         return ResponseUtils::generateSuccessResponse('Deleted successfully');
+    }
+
+
+    //-------------------------------//
+    //--------CUSTOM METHODS---------//
+    //-------------------------------//
+
+
+    public function validateRawProductCreate(ShoppingList $shoppingList, Request $request) {
+        $fields = $request->validate([
+            'product_name' => 'string|required',
+            'unit_id' => 'integer|required|exists:global_units,id',
+            'amount' => 'integer|required',
+            'checked' => 'boolean',
+            'type' => 'string'
+        ]);
+
+        $unit = GlobalUnit::find($fields['unit_id']);
+        $fields['unit_name'] = $unit->name;
+        $fields['shopping_list_id'] = $shoppingList->id;
+        return $fields;
 
     }
+
+    public function vaidateRawCreate(ShoppingList $shoppingList, Request $request) {
+        $fields = $request->validate([
+            'product_name' => 'string|required',
+            'checked' => 'boolean',
+            'type' => 'string'
+        ]);
+
+        $fields['shopping_list_id'] = $shoppingList->id;
+        return $fields;
+
+    }
+
+    public function validateRawProductUpdate(ShoppingList $shoppingList, Request $request,ShoppingListEntry $shoppingListEntry) {
+        $fields = $request->validate([
+            'product_name' => 'string',
+            'unit_id' => 'integer|exists:global_units,id',
+            'amount' => 'integer',
+            'checked' => 'boolean',
+            'type' => 'string'
+        ]);
+        $unit = GlobalUnit::find($shoppingListEntry->unit_id);
+
+        if(isset($fields['unit_id']) )
+            $unit = GlobalUnit::find($fields['unit_id']);
+
+        $fields['unit_name'] = $unit->name;
+        $fields['shopping_list_id'] = $shoppingList->id;
+        return $fields;
+
+    }
+
+    public function validateRawUpdate(ShoppingList $shoppingList, Request $request,ShoppingListEntry $shoppingListEntry) {
+        $fields = $request->validate([
+            'product_name' => 'string',
+            'checked' => 'boolean',
+            'type' => 'string'
+        ]);
+
+        $fields['shopping_list_id'] = $shoppingList->id;
+        return $fields;
+
+    }
+
 }
