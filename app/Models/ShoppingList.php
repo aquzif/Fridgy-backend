@@ -8,6 +8,7 @@ class ShoppingList extends Model {
     protected $fillable = [
         'name',
         'user_id',
+        'type',
     ];
 
     protected $with = [
