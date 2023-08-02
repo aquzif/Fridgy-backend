@@ -20,12 +20,14 @@
             'nutrition_sugar',
             'nutrition_protein',
             'nutrition_salt',
+            'category_id',
         ];
 
 
 
         protected $with = [
             'units',
+            'productCategory'
         ];
 
         public function toSearchableArray(): array {
@@ -62,6 +64,10 @@
 
         function units(): \Illuminate\Database\Eloquent\Relations\HasMany {
             return $this->hasMany(ProductUnit::class);
+        }
+
+        function productCategory(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
+            return $this->belongsTo(ProductCategory::class, 'category_id');
         }
 
 
