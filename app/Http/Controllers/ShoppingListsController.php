@@ -20,10 +20,11 @@ class ShoppingListsController extends Controller {
     public function store(Request $request) {
         $fields = $request->validate([
             'name' => 'required|string',
+            'type' => 'string|in:default,grouped',
         ]);
 
          $newShoppingList = ShoppingList::create([
-             'name' => $fields['name'],
+             ...$fields,
              'user_id' => $request->user()->id,
          ]);
         $newShoppingList = $newShoppingList->where('id',$newShoppingList['id'])->first();
@@ -40,7 +41,8 @@ class ShoppingListsController extends Controller {
     public function update(Request $request, ShoppingList $shoppingList) {
 
         $fields = $request->validate([
-            'name' => 'string|nullable',
+            'name' => 'string',
+            'type' => 'string|in:default,grouped',
         ]);
 
         $shoppingList->update($fields);

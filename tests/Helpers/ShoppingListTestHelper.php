@@ -5,9 +5,10 @@ use Faker\Generator;
 
 class ShoppingListTestHelper {
 
-    public static function generateRandomShoppingListData(Generator $faker): array{
+    public static function generateRandomShoppingListData(Generator $faker,$type = 'default'): array{
         return [
             'name' => $faker->name,
+            'type' => $type,
         ];
     }
 
