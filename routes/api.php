@@ -4,7 +4,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GlobalUnitsController;
 use App\Http\Controllers\GroceryProductsController;
 use App\Http\Controllers\GroceryProductUnitsController;
-    use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProductCategoriesController;
+use App\Http\Controllers\ProductsController;
     use App\Http\Controllers\ProductUnitController;
     use App\Http\Controllers\ShoppingListEntriesController;
 use App\Http\Controllers\ShoppingListsController;
@@ -99,6 +100,17 @@ Route::middleware('auth:sanctum')->group(fn() => [
         Route::get('/{globalUnit}',[GlobalUnitsController::class,'show']),
         Route::match(['put','patch'],'/{globalUnit}',[GlobalUnitsController::class,'update']),
         Route::delete('/{globalUnit}',[GlobalUnitsController::class,'destroy']),
+    ]),
+
+    //-----------------------------
+    //Product categories routes
+    //-----------------------------
+    Route::prefix('/product-category')->group(fn() => [
+        Route::get('/',[ProductCategoriesController::class,'index']),
+        Route::post('/',[ProductCategoriesController::class,'store']),
+        Route::get('/{productCategory}',[ProductCategoriesController::class,'show']),
+        Route::match(['put','patch'],'/{productCategory}',[ProductCategoriesController::class,'update']),
+        Route::delete('/{productCategory}',[ProductCategoriesController::class,'destroy']),
     ]),
 
 ]);
