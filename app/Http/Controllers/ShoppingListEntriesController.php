@@ -51,7 +51,7 @@ class ShoppingListEntriesController extends Controller {
         return ResponseUtils::generateSuccessResponse($shoppingListEntry);
     }
 
-    public function update(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request ) {
+    public function update(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request) {
 
 
         $fields = match($shoppingListEntry->type){
@@ -65,6 +65,17 @@ class ShoppingListEntriesController extends Controller {
 
         if($fields['category_id'] === 0)
             $fields['category_id'] = null;
+
+        $shoppingListEntry->update($fields);
+        $shoppingListEntry = $shoppingListEntry->find($shoppingListEntry['id']);
+        return ResponseUtils::generateSuccessResponse($shoppingListEntry);
+    }
+
+    public function check(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request) {
+
+        $fields = $request->validate([
+            'checked' => 'boolean|required',
+        ]);
 
         $shoppingListEntry->update($fields);
         $shoppingListEntry = $shoppingListEntry->find($shoppingListEntry['id']);

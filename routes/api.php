@@ -62,6 +62,7 @@ Route::middleware('auth:sanctum')->group(fn() => [
                 Route::post('/',[ShoppingListEntriesController::class,'store']),
                 Route::get('/{shoppingListEntry}',[ShoppingListEntriesController::class,'show']),
                 Route::match(['put','patch'],'/{shoppingListEntry}',[ShoppingListEntriesController::class,'update']),
+                Route::match(['put','patch'],'/{shoppingListEntry}/check',[ShoppingListEntriesController::class,'check']),
                 Route::delete('/{shoppingListEntry}',[ShoppingListEntriesController::class,'destroy']),
             ]),
     ]),
