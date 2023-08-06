@@ -34,6 +34,9 @@ class ShoppingListEntriesController extends Controller {
         if($fields === 'type not supported')
             return ResponseUtils::generateErrorResponse('type not supported',400);
 
+        if($fields['category_id'] === 0)
+            $fields['category_id'] = null;
+
         $shoppingListEntry = ShoppingListEntry::create($fields);
         $shoppingListEntry = ShoppingListEntry::find($shoppingListEntry['id']);
 
@@ -60,6 +63,8 @@ class ShoppingListEntriesController extends Controller {
         if($fields === 'type not supported')
             return ResponseUtils::generateErrorResponse('type not supported',400);
 
+        if($fields['category_id'] === 0)
+            $fields['category_id'] = null;
 
         $shoppingListEntry->update($fields);
         $shoppingListEntry = $shoppingListEntry->find($shoppingListEntry['id']);
