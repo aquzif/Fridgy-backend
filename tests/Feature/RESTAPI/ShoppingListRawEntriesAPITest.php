@@ -65,6 +65,9 @@ class ShoppingListRawEntriesAPITest extends TestCase {
         $url = '/api/shopping-list/'.$shoppingListID.'/entry';
         $response = $this->actingAs($this->user1)->getJson($url);
 
+        $entryData1['category_id'] = null;
+        $entryData2['category_id'] = null;
+
         $response->assertStatus(200);
         $response->assertJsonCount(2,'data');
         $response->assertJsonFragment($entryData1);

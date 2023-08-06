@@ -34,6 +34,11 @@ class ShoppingListEntriesController extends Controller {
         if($fields === 'type not supported')
             return ResponseUtils::generateErrorResponse('type not supported',400);
 
+//        if($fields['category_id'] === 0)
+//            $fields['category_id'] = null;
+        if(!$fields['category_id'])
+            $fields['category_id'] = null;
+
         $shoppingListEntry = ShoppingListEntry::create($fields);
         $shoppingListEntry = ShoppingListEntry::find($shoppingListEntry['id']);
 
@@ -48,7 +53,7 @@ class ShoppingListEntriesController extends Controller {
         return ResponseUtils::generateSuccessResponse($shoppingListEntry);
     }
 
-    public function update(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request ) {
+    public function update(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request) {
 
 
         $fields = match($shoppingListEntry->type){
@@ -60,6 +65,19 @@ class ShoppingListEntriesController extends Controller {
         if($fields === 'type not supported')
             return ResponseUtils::generateErrorResponse('type not supported',400);
 
+        if(!$fields['category_id'])
+            $fields['category_id'] = null;
+
+        $shoppingListEntry->update($fields);
+        $shoppingListEntry = $shoppingListEntry->find($shoppingListEntry['id']);
+        return ResponseUtils::generateSuccessResponse($shoppingListEntry);
+    }
+
+    public function check(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request) {
+
+        $fields = $request->validate([
+            'checked' => 'boolean|required',
+        ]);
 
         $shoppingListEntry->update($fields);
         $shoppingListEntry = $shoppingListEntry->find($shoppingListEntry['id']);
