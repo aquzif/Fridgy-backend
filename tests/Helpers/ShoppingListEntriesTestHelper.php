@@ -11,6 +11,7 @@ class ShoppingListEntriesTestHelper {
             'product_name' => $faker->name,
             'type' => 'raw',
             'checked' => $faker->boolean(),
+            'category_id' => 0
         ];
     }
 
@@ -21,6 +22,7 @@ class ShoppingListEntriesTestHelper {
             'amount' => $faker->randomDigit(),
             'type' => 'raw_product',
             'checked' => $faker->boolean(),
+            'category_id' => 0
         ];
     }
 

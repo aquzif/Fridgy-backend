@@ -44,11 +44,14 @@ class ShoppingListsAPITest extends TestCase {
 
     public function test_user_can_create_shopping_list_using_all_available_params(){
 
-        $response = $this->createShoppingList($this->user1,$this->shoppingListData1);
+        $data = $this->shoppingListData1;
+        $data['type'] = 'grouped';
 
-        $this->shoppingListData1['entries'] = [];
+        $response = $this->createShoppingList($this->user1,$data);
+
+        $data['entries'] = [];
         $response->assertStatus(201);
-        $response->assertJson(ResponseTestHelper::getSuccessCreateResponse($this->shoppingListData1));
+        $response->assertJson(ResponseTestHelper::getSuccessCreateResponse($data));
     }
 
     public function test_user_can_view_shopping_list(){
@@ -71,6 +74,7 @@ class ShoppingListsAPITest extends TestCase {
 
 
         $shoppingListData['name'] = $shoppingListData['name'].'_new';
+        $shoppingListData['type'] = 'grouped';
         $url = self::SHOPPING_LIST_ENDPOINT.'/'.$shoppingListData['id'];
 
         $request = $this->actingAs($this->user1)

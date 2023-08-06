@@ -31,11 +31,11 @@
                 'nutrition_sugar' => 'required|numeric',
                 'nutrition_protein' => 'required|numeric',
                 'nutrition_salt' => 'required|numeric',
+                'category_id' => 'numeric',
             ]);
 
 
             $newObj = Product::create($fields);
-
             $newObj = $newObj->where('id',$newObj['id'])->first();
 
             return ResponseUtils::generateSuccessResponse(
@@ -58,6 +58,7 @@
                 'nutrition_protein' => 'numeric',
                 'nutrition_salt' => 'numeric',
                 'default_unit_id' => 'numeric',
+                'category_id' => 'numeric',
             ]);
 
             if(isset($fields['default_unit_id'])){

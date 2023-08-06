@@ -34,7 +34,15 @@ class ShoppingListEntriesController extends Controller {
         if($fields === 'type not supported')
             return ResponseUtils::generateErrorResponse('type not supported',400);
 
-        return ResponseUtils::generateSuccessResponse(ShoppingListEntry::create($fields),'OK',201);
+//        if($fields['category_id'] === 0)
+//            $fields['category_id'] = null;
+        if(!$fields['category_id'])
+            $fields['category_id'] = null;
+
+        $shoppingListEntry = ShoppingListEntry::create($fields);
+        $shoppingListEntry = ShoppingListEntry::find($shoppingListEntry['id']);
+
+        return ResponseUtils::generateSuccessResponse($shoppingListEntry,'OK',201);
 
     }
 
@@ -45,7 +53,7 @@ class ShoppingListEntriesController extends Controller {
         return ResponseUtils::generateSuccessResponse($shoppingListEntry);
     }
 
-    public function update(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request ) {
+    public function update(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request) {
 
 
         $fields = match($shoppingListEntry->type){
@@ -57,8 +65,22 @@ class ShoppingListEntriesController extends Controller {
         if($fields === 'type not supported')
             return ResponseUtils::generateErrorResponse('type not supported',400);
 
+        if(!$fields['category_id'])
+            $fields['category_id'] = null;
 
         $shoppingListEntry->update($fields);
+        $shoppingListEntry = $shoppingListEntry->find($shoppingListEntry['id']);
+        return ResponseUtils::generateSuccessResponse($shoppingListEntry);
+    }
+
+    public function check(ShoppingList $shoppingList, ShoppingListEntry $shoppingListEntry, Request $request) {
+
+        $fields = $request->validate([
+            'checked' => 'boolean|required',
+        ]);
+
+        $shoppingListEntry->update($fields);
+        $shoppingListEntry = $shoppingListEntry->find($shoppingListEntry['id']);
         return ResponseUtils::generateSuccessResponse($shoppingListEntry);
     }
 
@@ -79,7 +101,8 @@ class ShoppingListEntriesController extends Controller {
             'unit_id' => 'integer|required|exists:global_units,id',
             'amount' => 'integer|required',
             'checked' => 'boolean',
-            'type' => 'string'
+            'type' => 'string',
+            'category_id' => 'numeric|nullable',
         ]);
 
         $unit = GlobalUnit::find($fields['unit_id']);
@@ -93,7 +116,8 @@ class ShoppingListEntriesController extends Controller {
         $fields = $request->validate([
             'product_name' => 'string|required',
             'checked' => 'boolean',
-            'type' => 'string'
+            'type' => 'string',
+             'category_id' => 'numeric|nullable',
         ]);
 
         $fields['shopping_list_id'] = $shoppingList->id;
@@ -107,7 +131,8 @@ class ShoppingListEntriesController extends Controller {
             'unit_id' => 'integer|exists:global_units,id',
             'amount' => 'integer',
             'checked' => 'boolean',
-            'type' => 'string'
+            'type' => 'string',
+            'category_id' => 'numeric|nullable',
         ]);
         $unit = GlobalUnit::find($shoppingListEntry->unit_id);
 
@@ -124,7 +149,8 @@ class ShoppingListEntriesController extends Controller {
         $fields = $request->validate([
             'product_name' => 'string',
             'checked' => 'boolean',
-            'type' => 'string'
+            'type' => 'string',
+            'category_id' => 'numeric|nullable',
         ]);
 
         $fields['shopping_list_id'] = $shoppingList->id;
