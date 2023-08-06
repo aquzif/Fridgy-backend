@@ -75,6 +75,10 @@ class ShoppingListRawProductEntriesAPITest extends TestCase {
 
         $response->assertStatus(200);
         $response->assertJsonCount(2,'data');
+
+        $entryData1['category_id'] = null;
+        $entryData2['category_id'] = null;
+
         $response->assertJsonFragment($entryData1);
         $response->assertJsonFragment($entryData2);
 
