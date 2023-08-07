@@ -21,6 +21,9 @@
             'nutrition_protein',
             'nutrition_salt',
             'category_id',
+            'open_food_facts_id',
+            'barcode',
+            'barcode_type',
         ];
 
 

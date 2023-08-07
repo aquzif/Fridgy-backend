@@ -32,6 +32,9 @@
                 'nutrition_protein' => 'required|numeric',
                 'nutrition_salt' => 'required|numeric',
                 'category_id' => 'numeric',
+                'open_food_facts_id' => 'string',
+                'barcode' => 'Str',
+                'barcode_type' => 'string',
             ]);
 
 
@@ -59,6 +62,9 @@
                 'nutrition_salt' => 'numeric',
                 'default_unit_id' => 'numeric',
                 'category_id' => 'numeric',
+                'open_food_facts_id' => 'string',
+                'barcode' => 'string',
+                'barcode_type' => 'string',
             ]);
 
             if(isset($fields['default_unit_id'])){

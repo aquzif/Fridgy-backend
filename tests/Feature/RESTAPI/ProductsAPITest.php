@@ -37,7 +37,7 @@ class ProductsAPITest extends TestCase {
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return $this->actingAs($user)
-            ->postJson(self::PRODUCT_ENDPOINT, $data);
+            ->postJson(self::PRODUCT_ENDPOINT, $data)->dd();
     }
 
     public function createUnitForProduct($productID, $data = []) {
