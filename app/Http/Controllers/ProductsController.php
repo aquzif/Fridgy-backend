@@ -3,6 +3,7 @@
     namespace App\Http\Controllers;
 
     use App\Models\Product;
+    use App\Rules\StringableRule;
     use App\Utils\ResponseUtils;
     use Illuminate\Http\Request;
 
@@ -32,8 +33,8 @@
                 'nutrition_protein' => 'required|numeric',
                 'nutrition_salt' => 'required|numeric',
                 'category_id' => 'numeric',
-                'open_food_facts_id' => 'string',
-                'barcode' => 'Str',
+                'open_food_facts_id' => [new StringableRule],
+                'barcode' => [new StringableRule],
                 'barcode_type' => 'string',
             ]);
 
@@ -62,8 +63,8 @@
                 'nutrition_salt' => 'numeric',
                 'default_unit_id' => 'numeric',
                 'category_id' => 'numeric',
-                'open_food_facts_id' => 'string',
-                'barcode' => 'string',
+                'open_food_facts_id' => [new StringableRule],
+                'barcode' => [new StringableRule],
                 'barcode_type' => 'string',
             ]);
 
