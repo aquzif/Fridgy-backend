@@ -15,7 +15,10 @@ class ProductsTestHelper {
             'nutrition_fat' => $faker->randomFloat(2, 0, 100),
             'nutrition_sugar' => $faker->randomFloat(2, 0, 100),
             'nutrition_protein' => $faker->randomFloat(2, 0, 100),
-            'nutrition_salt' => $faker->randomFloat(2, 0, 100)
+            'nutrition_salt' => $faker->randomFloat(2, 0, 100),
+            'open_food_facts_id' => $faker->randomNumber(8),
+            'barcode' => $faker->randomNumber(8),
+            'barcode_type' => $faker->randomElement(['EAN_8', 'EAN_13']),
         ];
 
     }
