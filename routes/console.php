@@ -30,7 +30,8 @@ Artisan::command('load:off', function () {
     try {
         // Send a ping to confirm a successful connection
         $collection = $client->off->produkty;
-        echo "Connected successfully to server";
+        echo "Connected successfully to server \n";
+        echo "Fetching data from database\n";
         $result = $collection->find([
             'product_name_pl' => [
                 '$exists' => true,
@@ -52,11 +53,13 @@ Artisan::command('load:off', function () {
                 ]
             ]
         ]);
-        echo 'fetching data...';
+        echo "parsing data to array...\n";
         //get result size
         $resultSize = $result->toArray();
 
-        dd($resultSize);
+        foreach ($resultSize as $item) {
+            dd($item);
+        }
 
     } catch (Exception $e) {
         printf($e->getMessage());
