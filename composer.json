@@ -15,6 +15,7 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.2",
         "meilisearch/meilisearch-php": "^1.2",
+        "mongodb/mongodb": "^1.12",
         "spatie/laravel-ray": "^1.32"
     },
     "require-dev": {
