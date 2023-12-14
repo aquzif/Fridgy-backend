@@ -1,5 +1,7 @@
 <?php
 
+use App\Console\Commands\LoadCategoryImport;
+use App\Console\Commands\PrepareCategoryImport;
 use App\Jobs\LoadRawDataJob;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
@@ -23,3 +25,10 @@ Artisan::command('load:raw', function () {
     $this->comment('Loading raw data...');
     dispatch(new LoadRawDataJob());
 })->purpose('Load raw data from the API');
+Artisan::command('load:categoryImport', function () {
+    LoadCategoryImport::run();
+})->purpose('Load category import');
+
+Artisan::command('prepare:categoryImport', function () {
+    PrepareCategoryImport::run();
+})->purpose('Prepare category import');
