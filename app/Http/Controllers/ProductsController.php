@@ -13,9 +13,17 @@
             $this->authorizeResource(Product::class, 'product');
         }
 
+        public function index(Request $request) {
 
-        public function index() {
-            return ResponseUtils::generateSuccessResponse(Product::all());
+            $fields = $request->validate([
+                'perPage' => 'numeric'
+            ]);
+
+            if(!empty($fields['perPage']))
+                return ResponseUtils::generateSuccessResponse(Product::paginate($fields['perPage']));
+            else
+                return ResponseUtils::generateSuccessResponse(Product::paginate(10));
+
         }
 
         public function search(Request $request) {
