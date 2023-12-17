@@ -82,7 +82,13 @@ class ProductsAPITest extends TestCase {
             ->getJson(self::PRODUCT_ENDPOINT);
 
         $response->assertStatus(200);
-        $response->assertJson(ResponseTestHelper::getSuccessGetResponse([$this->productData]));
+
+        $response->assertJson(ResponseTestHelper::getSuccessGetResponse([
+            'current_page' => 1,
+            'data' => [
+                $this->productData
+            ]
+        ]));
     }
 
     public function test_user_can_update_product() {
