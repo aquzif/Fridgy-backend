@@ -34,16 +34,16 @@ class LoadRawDataJob implements ShouldQueue {
                 $newData['name'] = trim($line);
             }
             if(($i-1) % 5 === 0) {
-                $newData['kcal'] = floatval(trim($line));
+                $newData['kcal'] = (float)str_replace(',', '.', trim($line));
             }
             if(($i-2) % 5 === 0) {
-                $newData['carbs'] = floatval(trim($line));
+                $newData['carbs'] = (float)str_replace(',', '.', trim($line));
             }
             if(($i-3) % 5 === 0) {
-                $newData['protein'] = floatval(trim($line));
+                $newData['protein'] = (float)str_replace(',', '.', trim($line));
             }
             if(($i-4) % 5 === 0) {
-                $newData['fat'] = floatval(trim($line));
+                $newData['fat'] = (float)str_replace(',', '.', trim($line));
             }
             $i++;
         }
@@ -52,19 +52,28 @@ class LoadRawDataJob implements ShouldQueue {
         foreach ($resultData as $resultDatum) {
             echo "Loading: " . $resultDatum['name'] . "\n";
 
-            foreach (Product::where('name', $resultDatum['name'])->get() as $item) {
-                $item->delete();
-                echo "Found duplikate, deleting: " . $item->name . "\n";
-            }
 
-
-            Product::create([
+            Product::updateOrCreate([
                 'name' => $resultDatum['name'],
+            ],[
                 'nutrition_energy_kcal' => $resultDatum['kcal'],
                 'nutrition_carbs' => $resultDatum['carbs'],
                 'nutrition_fat' => $resultDatum['fat'],
                 'nutrition_protein' => $resultDatum['protein'],
             ]);
+
+//            foreach (Product::where('name', $resultDatum['name'])->get() as $item) {
+//                $item->delete();
+//                echo "Found duplicate, u: " . $item->name . "\n";
+//            }
+//
+//            Product::create([
+//                'name' => $resultDatum['name'],
+//                'nutrition_energy_kcal' => $resultDatum['kcal'],
+//                'nutrition_carbs' => $resultDatum['carbs'],
+//                'nutrition_fat' => $resultDatum['fat'],
+//                'nutrition_protein' => $resultDatum['protein'],
+//            ]);
 
         }
 
