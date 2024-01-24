@@ -84,10 +84,7 @@ class ProductsAPITest extends TestCase {
         $response->assertStatus(200);
 
         $response->assertJson(ResponseTestHelper::getSuccessGetResponse([
-            'current_page' => 1,
-            'data' => [
-                $this->productData
-            ]
+            $this->productData
         ]));
     }
 
