@@ -26,7 +26,7 @@
             ]);
 
             if($fields['default']) {
-                ProductUnit::where('product_id', $fields['product_id'])->update(['default' => false]);
+                ProductUnit::where('product_id', $product->id)->update(['default' => false]);
             }
 
             $fields['product_id'] = $product->id;
@@ -48,7 +48,7 @@
 
 
             if($fields['default']){
-                ProductUnit::where('product_id', $fields['product_id'])->update(['default' => false]);
+                ProductUnit::where('product_id', $product->id)->update(['default' => false]);
                 $product->default_unit_id = $productUnit->id;
                 $productUnit->default = true;
             }

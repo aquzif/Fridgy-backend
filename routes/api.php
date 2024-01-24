@@ -7,7 +7,8 @@ use App\Http\Controllers\GroceryProductUnitsController;
 use App\Http\Controllers\ProductCategoriesController;
 use App\Http\Controllers\ProductsController;
     use App\Http\Controllers\ProductUnitController;
-    use App\Http\Controllers\ShoppingListEntriesController;
+use App\Http\Controllers\RecipesController;
+use App\Http\Controllers\ShoppingListEntriesController;
 use App\Http\Controllers\ShoppingListsController;
     use App\Models\Product;
     use App\Models\ProductUnit;
@@ -112,6 +113,17 @@ Route::middleware('auth:sanctum')->group(fn() => [
         Route::get('/{productCategory}',[ProductCategoriesController::class,'show']),
         Route::match(['put','patch'],'/{productCategory}',[ProductCategoriesController::class,'update']),
         Route::delete('/{productCategory}',[ProductCategoriesController::class,'destroy']),
+    ]),
+
+    //-----------------------------
+    //Recipes
+    //-----------------------------
+    Route::prefix('/recipe')->group(fn() => [
+        Route::get('/',[RecipesController::class,'index']),
+        Route::post('/',[RecipesController::class,'store']),
+        Route::get('/{recipe}',[RecipesController::class,'show']),
+        Route::match(['put','patch'],'/{recipe}',[RecipesController::class,'update']),
+        Route::delete('/{recipe}',[RecipesController::class,'destroy']),
     ]),
 
 ]);
