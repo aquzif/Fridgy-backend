@@ -19,6 +19,7 @@
                 'perPage' => 'numeric'
             ]);
 
+            return ResponseUtils::generateSuccessResponse(Product::all());
             if(!empty($fields['perPage']))
                 return ResponseUtils::generateSuccessResponse(Product::paginate($fields['perPage']));
             else
@@ -46,8 +47,11 @@
                 'barcode_type' => 'string',
             ]);
 
+            if(isset($fields['category_id']) && $fields['category_id'] == 0)
+                unset($fields['category_id']);
 
             $newObj = Product::create($fields);
+
             $newObj = $newObj->where('id',$newObj['id'])->first();
 
             return ResponseUtils::generateSuccessResponse(
@@ -75,6 +79,11 @@
                 'barcode' => [new StringableRule],
                 'barcode_type' => 'string',
             ]);
+
+            if(isset($fields['category_id']) && $fields['category_id'] == 0){
+                $product->productCategory()->dissociate();
+                unset($fields['category_id']);
+            }
 
             if(isset($fields['default_unit_id'])){
 

@@ -43,6 +43,14 @@
         protected static function boot() {
             parent::boot();
 
+            static::retrieved(function ($product) {
+                $product['category'] = $product->productCategory ? $product->productCategory->name : null;
+            });
+
+            static::updating(function ($product) {
+                unset($product['category']);
+            });
+
             static::created(function ($product) {
                 $unit = $product->units()->create([
                     'name' => 'g',
