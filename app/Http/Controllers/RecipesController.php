@@ -44,8 +44,8 @@ class RecipesController extends Controller {
         $product->update($fields);
     }
 
-    public function destroy(Product $product) {
-        $product->delete();
+    public function destroy(Recipe $recipe) {
+        $recipe->delete();
     }
 
 }
