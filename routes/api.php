@@ -120,6 +120,7 @@ Route::middleware('auth:sanctum')->group(fn() => [
     //Recipes
     //-----------------------------
     Route::prefix('/recipe')->group(fn() => [
+        Route::get('/search',[RecipesController::class,'search']),
         Route::get('/',[RecipesController::class,'index']),
         Route::post('/',[RecipesController::class,'store']),
         Route::get('/{recipe}',[RecipesController::class,'show']),

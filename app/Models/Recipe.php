@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Laravel\Scout\Searchable;
 
-class Recipe extends Model
-{
+class Recipe extends Model {
+
+    use Searchable;
     protected $fillable = [
         'name',
         'prepare_time',
@@ -17,6 +20,12 @@ class Recipe extends Model
     ];
 
     protected $with = ['ingredients'];
+
+    public function toSearchableArray(): array {
+        return [
+            'name' => $this->name
+        ];
+    }
 
     public function ingredients() {
         return $this->hasMany(Ingredient::class);
@@ -32,6 +41,14 @@ class Recipe extends Model
         $this->calories_per_serving = $calories / $this->serving_amount;
         $this->saveQuietly();
 
+    }
+
+    public function deleteImage(): void {
+        $oldImage = $this->image;
+        if($oldImage) {
+            $oldImageLink = '/public/images/' .explode('/',$oldImage)[3];
+            Storage::delete( $oldImageLink);
+        }
     }
 
     public static function boot() {
