@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductsController;
     use App\Http\Controllers\ProductUnitController;
 use App\Http\Controllers\RecipeIngredientsController;
 use App\Http\Controllers\RecipesController;
+use App\Http\Controllers\RecipeTagsController;
 use App\Http\Controllers\ShoppingListEntriesController;
 use App\Http\Controllers\ShoppingListsController;
     use App\Models\Product;
@@ -138,6 +139,17 @@ Route::middleware('auth:sanctum')->group(fn() => [
                 Route::match(['put','patch'],'/{ingredient}',[RecipeIngredientsController::class,'update']),
                 Route::delete('/{ingredient}',[RecipeIngredientsController::class,'destroy']),
             ]),
+    ]),
+
+    //-----------------------------
+    //Recipe Tags routes
+    //-----------------------------
+    Route::prefix('/recipe-tag')->group(fn() => [
+        Route::get('/',[RecipeTagsController::class,'index']),
+        Route::post('/',[RecipeTagsController::class,'store']),
+        Route::get('/{recipeTag}',[RecipeTagsController::class,'show']),
+        Route::match(['put','patch'],'/{recipeTag}',[RecipeTagsController::class,'update']),
+        Route::delete('/{recipeTag}',[RecipeTagsController::class,'destroy']),
     ]),
 
 ]);

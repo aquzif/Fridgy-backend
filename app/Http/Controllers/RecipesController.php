@@ -16,10 +16,12 @@ class RecipesController extends Controller {
             'perPage' => 'numeric'
         ]);
 
+
+
         if(!empty($fields['perPage']))
             return ResponseUtils::generateSuccessResponse(Recipe::paginate($fields['perPage']));
         else
-            return ResponseUtils::generateSuccessResponse(Recipe::paginate(10));
+            return ResponseUtils::generateSuccessResponse(Recipe::paginate(10000));
     }
 
     public function search(Request $request) {
@@ -29,11 +31,18 @@ class RecipesController extends Controller {
     public function store(Request $request) {
         $fields = $request->validate([
             'name' => 'string|required',
-            'prepare_time' => 'required|numeric',
-            'serving_amount' => 'required|numeric',
+            'prepare_time' => 'numeric',
+            'serving_amount' => 'numeric',
             'image' => 'string',
-            'steps' => 'json|required',
+            'video_url' => 'string|nullable',
+            'steps' => 'json',
         ]);
+
+        if(!isset($fields['prepare_time']))
+            $fields['prepare_time'] = 60;
+
+        if(!isset($fields['serving_amount']))
+            $fields['serving_amount'] = 1;
 
         $newObj = Recipe::create($fields);
 
@@ -52,8 +61,12 @@ class RecipesController extends Controller {
             'prepare_time' => 'numeric',
             'serving_amount' => 'numeric',
             'image' => 'file|image',
+            'video_url' => 'string|nullable',
+            'tags' => 'json',
             'steps' => 'json',
         ]);
+
+
 
         if(isset($fields['image'])) {
             $uplaodedFile = $fields['image'];

@@ -14,6 +14,7 @@ class Ingredient extends Model {
         'amount_in_unit',
         'amount_in_grams',
         'calories',
+        'youtube_url'
     ];
 
     protected $with = ['product', 'unit'];

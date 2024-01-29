@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Utils\URLUtils;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Scout\Searchable;
@@ -17,6 +18,7 @@ class Recipe extends Model {
         'video_url',
         'image',
         'steps',
+        'tags'
     ];
 
     protected $with = ['ingredients'];
@@ -53,8 +55,18 @@ class Recipe extends Model {
 
     public static function boot() {
         parent::boot();
+        self::creating(function($model) {
+            $model->tags = '[]';
+        });
         self::deleting(function($model) {
             $model->ingredients()->delete();
+            $model->deleteImage();
+        });
+        self::updating(function($model) {
+            if($model['video_url'])
+                if(!URLUtils::isValidYoutubeUrl($model['video_url']))
+                    throw new \Exception('Invalid youtube url');
+            $model->recalculate();
         });
     }
 }
