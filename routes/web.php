@@ -13,11 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//if url is /storage, redirect to /storage/app/public, and try providing the file
-Route::get('/storage/{path}', function ($path) {
-    return redirect('/storage/app/public/'.$path);
-})->where('path', '.*');
-
+    
 Route::fallback(function () {
     return view('react');
 });
