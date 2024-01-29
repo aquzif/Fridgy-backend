@@ -66,8 +66,6 @@ class RecipesController extends Controller {
             'steps' => 'json',
         ]);
 
-
-
         if(isset($fields['image'])) {
             $uplaodedFile = $fields['image'];
             $newFileName = Str::random(40) . '.' . $uplaodedFile->getClientOriginalExtension();
