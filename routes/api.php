@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CalendarEntriesController;
 use App\Http\Controllers\GlobalUnitsController;
 use App\Http\Controllers\GroceryProductsController;
 use App\Http\Controllers\GroceryProductUnitsController;
@@ -12,7 +13,8 @@ use App\Http\Controllers\RecipesController;
 use App\Http\Controllers\RecipeTagsController;
 use App\Http\Controllers\ShoppingListEntriesController;
 use App\Http\Controllers\ShoppingListsController;
-    use App\Models\Product;
+use App\Http\Controllers\UserController;
+use App\Models\Product;
     use App\Models\ProductUnit;
     use App\Models\ShoppingList;
 use App\Models\ShoppingListEntry;
@@ -31,9 +33,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
 
 Route::controller(AuthController::class)->group(fn() => [
     //Route::middleware('auth:sanctum')->post('/register','register');
@@ -44,6 +44,13 @@ Route::controller(AuthController::class)->group(fn() => [
 
 
 Route::middleware('auth:sanctum')->group(fn() => [
+
+    //-----------------------------
+    //User routes
+    //-----------------------------
+
+    Route::get('/user',[UserController::class,'index']),
+    Route::match(['put','patch'],'/user',[UserController::class,'update']),
 
     //-----------------------------
     //Shopping list routes
@@ -150,6 +157,17 @@ Route::middleware('auth:sanctum')->group(fn() => [
         Route::get('/{recipeTag}',[RecipeTagsController::class,'show']),
         Route::match(['put','patch'],'/{recipeTag}',[RecipeTagsController::class,'update']),
         Route::delete('/{recipeTag}',[RecipeTagsController::class,'destroy']),
+    ]),
+
+    //-----------------------------
+    //Recipe Calendar Entries routes
+    //-----------------------------
+    Route::prefix('/calendar-entry')->group(fn() => [
+        Route::get('/',[CalendarEntriesController::class,'index']),
+        Route::post('/',[CalendarEntriesController::class,'store']),
+        Route::get('/{calendarEntry}',[CalendarEntriesController::class,'show']),
+        Route::match(['put','patch'],'/{calendarEntry}',[CalendarEntriesController::class,'update']),
+        Route::delete('/{calendarEntry}',[CalendarEntriesController::class,'destroy']),
     ]),
 
 ]);

@@ -43,6 +43,16 @@ class Recipe extends Model {
         $this->calories_per_serving = $calories / $this->serving_amount;
         $this->saveQuietly();
 
+        $entries = $this->calendarEntries()->get();
+        foreach ($entries as $entry) {
+            $entry->calories = $this->calories_per_serving;
+            $entry->saveQuietly();
+        }
+
+    }
+
+    public function calendarEntries() {
+        return $this->hasMany(CalendarEntry::class);
     }
 
     public function deleteImage(): void {
@@ -59,6 +69,12 @@ class Recipe extends Model {
             $model->tags = '[]';
         });
         self::deleting(function($model) {
+
+            if($model->calendarEntries()->count() > 0)
+                throw new \Exception('Cannot delete recipe with calendar entries');
+
+
+
             $model->ingredients()->delete();
             $model->deleteImage();
         });
@@ -67,6 +83,7 @@ class Recipe extends Model {
                 if(!URLUtils::isValidYoutubeUrl($model['video_url']))
                     throw new \Exception('Invalid youtube url');
             $model->recalculate();
+
         });
     }
 }
