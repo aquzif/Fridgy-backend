@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Recipe;
 use App\Utils\ResponseUtils;
+use App\Utils\StorageUtils;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -13,19 +14,37 @@ class RecipesController extends Controller {
     public function index(Request $request) {
 
         $fields = $request->validate([
-            'perPage' => 'numeric'
+            'selectedTags' => 'string|nullable',
+            'needAllTags' => 'boolean|nullable',
         ]);
 
+        if(!isset($fields['selectedTags']) || $fields['selectedTags'] == '[]')
+            return ResponseUtils::generateSuccessResponse(
+                Recipe::paginate(12)
+            );
+
+        $selectedTagsArray = json_decode($fields['selectedTags']);
+
+        $tagsIDS = json_decode($fields['selectedTags']);
+
+        $query = Recipe::query();
+        foreach ($selectedTagsArray as $tag) {
+            if(isset($fields['needAllTags']) && $fields['needAllTags'])
+                $query->whereRaw("JSON_CONTAINS(tags, \"$tag\")");
+            else
+                $query->orWhereRaw("JSON_CONTAINS(tags, \"$tag\")");
+        }
 
 
-        if(!empty($fields['perPage']))
-            return ResponseUtils::generateSuccessResponse(Recipe::paginate($fields['perPage']));
-        else
-            return ResponseUtils::generateSuccessResponse(Recipe::paginate(10000));
+        return ResponseUtils::generateSuccessResponse(
+            $query->paginate(12)
+        );
     }
 
     public function search(Request $request) {
-        return Recipe::search($request->input('query'))->get();
+        return ResponseUtils::generateSuccessResponse(
+            Recipe::search($request->input('query'))->paginate(12)
+        );
     }
 
     public function store(Request $request) {
@@ -67,11 +86,8 @@ class RecipesController extends Controller {
         ]);
 
         if(isset($fields['image'])) {
-            $uplaodedFile = $fields['image'];
-            $newFileName = Str::random(40) . '.' . $uplaodedFile->getClientOriginalExtension();
-            Storage::put('/public/images/' . $newFileName, $uplaodedFile->getContent());
+            $fields['image'] = StorageUtils::storeImage($fields['image']);
             $recipe->deleteImage();
-            $fields['image'] = '/storage/images/' . $newFileName;
         }
         $recipe->update($fields);
 

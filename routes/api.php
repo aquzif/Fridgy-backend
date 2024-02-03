@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalendarEntriesController;
+use App\Http\Controllers\FastFoodMealsController;
+use App\Http\Controllers\FastFoodMealSetMealsController;
+use App\Http\Controllers\FastFoodMealSetsController;
+use App\Http\Controllers\FastFoodStoresController;
 use App\Http\Controllers\GlobalUnitsController;
 use App\Http\Controllers\GroceryProductsController;
 use App\Http\Controllers\GroceryProductUnitsController;
@@ -168,6 +172,53 @@ Route::middleware('auth:sanctum')->group(fn() => [
         Route::get('/{calendarEntry}',[CalendarEntriesController::class,'show']),
         Route::match(['put','patch'],'/{calendarEntry}',[CalendarEntriesController::class,'update']),
         Route::delete('/{calendarEntry}',[CalendarEntriesController::class,'destroy']),
+    ]),
+
+    //-----------------------------
+    //Fast Food Stores routes
+    //-----------------------------
+    Route::prefix('/fast-food-store')->group(fn() => [
+        Route::get('/',[FastFoodStoresController::class,'index']),
+        Route::post('/',[FastFoodStoresController::class,'store']),
+        Route::get('/{fastFoodStore}',[FastFoodStoresController::class,'show']),
+        Route::match(['put','patch'],'/{fastFoodStore}',[FastFoodStoresController::class,'update']),
+        Route::delete('/{fastFoodStore}',[FastFoodStoresController::class,'destroy']),
+
+        //-----------------------------
+        //Fast Food Meals routes
+        //-----------------------------
+        Route::prefix('/{fastFoodStore}/meal')
+            ->group(fn() => [
+                Route::get('/',[FastFoodMealsController::class,'index']),
+                Route::post('/',[FastFoodMealsController::class,'store']),
+                Route::get('/{fastFoodMeal}',[FastFoodMealsController::class,'show']),
+                Route::match(['put','patch'],'/{fastFoodMeal}',[FastFoodMealsController::class,'update']),
+                Route::delete('/{fastFoodMeal}',[FastFoodMealsController::class,'destroy']),
+            ]),
+
+        //-----------------------------
+        //Fast Food Meal Sets routes
+        //-----------------------------
+        Route::prefix('/{fastFoodStore}/meal-set')
+            ->group(fn() => [
+                Route::get('/',[FastFoodMealSetsController::class,'index']),
+                Route::post('/',[FastFoodMealSetsController::class,'store']),
+                Route::get('/{fastFoodMealSet}',[FastFoodMealSetsController::class,'show']),
+                Route::match(['put','patch'],'/{fastFoodMealSet}',[FastFoodMealSetsController::class,'update']),
+                Route::delete('/{fastFoodMealSet}',[FastFoodMealSetsController::class,'destroy']),
+
+
+                Route::prefix('/{fastFoodMealSet}/meal')
+                    ->group(fn() => [
+                        Route::get('/',[FastFoodMealSetMealsController::class,'index']),
+                        Route::post('/',[FastFoodMealSetMealsController::class,'store']),
+                        Route::get('/{fastFoodMealInSet}',[FastFoodMealSetMealsController::class,'show']),
+                        Route::match(['put','patch'],'/{fastFoodMealInSet}',[FastFoodMealSetMealsController::class,'update']),
+                        Route::delete('/{fastFoodMealInSet}',[FastFoodMealSetMealsController::class,'destroy']),
+                    ]),
+
+            ]),
+
     ]),
 
 ]);

@@ -41,9 +41,7 @@ class CalendarEntriesController extends Controller
 
         $user = $request->user();
 
-        if($user->calendarEntries()->where('date', $request['date'])->where('meal_order', $request['meal_order'])->count() > 0) {
-            return ResponseUtils::generateErrorResponse('Entry already exists');
-        }
+        $user->calendarEntries()->where('date', $request['date'])->where('meal_order', $request['meal_order'])->delete();
 
         return match ($params['type']) {
             'from_recipe' => $this->storeFromRecipe($request),
@@ -78,9 +76,7 @@ class CalendarEntriesController extends Controller
             return ResponseUtils::generateErrorResponse('Unauthorized', 401);
         }
 
-        if($user->calendarEntries()->where('date', $fields['date'])->where('meal_order', $fields['meal_order'])->count() > 0) {
-            return ResponseUtils::generateErrorResponse('Entry already exists');
-        }
+        $user->calendarEntries()->where('date', $fields['date'])->where('meal_order', $fields['meal_order'])->delete();
 
 
         return match ($fields['type']) {
