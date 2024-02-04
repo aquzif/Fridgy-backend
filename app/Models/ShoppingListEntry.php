@@ -14,6 +14,7 @@ class ShoppingListEntry extends Model {
         'unit_id',
         'type',
         'category_id',
+        'product_unit_id',
     ];
 
     protected $casts = [
@@ -22,7 +23,8 @@ class ShoppingListEntry extends Model {
 
     protected $with = [
         'unit',
-        'productCategory'
+        'productCategory',
+        'productUnit',
     ];
 
     function getShoppingList(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
@@ -30,7 +32,11 @@ class ShoppingListEntry extends Model {
     }
 
     function unit(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
-        return $this->belongsTo(GlobalUnit::class);
+        return $this->belongsTo(GlobalUnit::class,'unit_id');
+    }
+
+    function productUnit(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
+        return $this->belongsTo(ProductUnit::class,'product_unit_id');
     }
 
     function productCategory(): \Illuminate\Database\Eloquent\Relations\BelongsTo {

@@ -62,6 +62,8 @@ Route::middleware('auth:sanctum')->group(fn() => [
     Route::prefix('/shopping-list')->group(fn() => [
         Route::get('/',[ShoppingListsController::class,'index']),
         Route::post('/',[ShoppingListsController::class,'store']),
+        Route::post('/{shoppingList}/insertCalendarEntries',
+            [ShoppingListsController::class,'insertCalendarEntries']),
         Route::get('/{shoppingList}',[ShoppingListsController::class,'show']),
         Route::match(['put','patch'],'/{shoppingList}',[ShoppingListsController::class,'update']),
         Route::delete('/{shoppingList}',[ShoppingListsController::class,'destroy']),
