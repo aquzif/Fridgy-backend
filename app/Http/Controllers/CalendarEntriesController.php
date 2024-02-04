@@ -93,7 +93,7 @@ class CalendarEntriesController extends Controller
         }
 
         $calendarEntry->delete();
-        return RequestUtils::generateSuccessResponse('OK');
+        return ResponseUtils::generateSuccessResponse('OK');
     }
 
     //--------------------------------------------------------------------------------
