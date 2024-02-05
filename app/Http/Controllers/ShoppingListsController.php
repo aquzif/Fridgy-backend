@@ -25,7 +25,7 @@ class ShoppingListsController extends Controller {
         ]);
 
         $fields['entries_ids'] = explode(',', $fields['entries_ids']);
-        
+
         $calendarEntries =
             $request->user()->calendarEntries()
                 ->whereBetween('date', [$fields['date_from'], $fields['date_to']])
