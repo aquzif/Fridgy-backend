@@ -19,14 +19,17 @@ class ShoppingListsController extends Controller {
 
     public function insertCalendarEntries(ShoppingList $shoppingList, Request $request) {
         $fields = $request->validate([
+            'entries_ids' => 'required|string',
             'date_from' => 'required|date',
             'date_to' => 'required|date'
         ]);
 
-
+        $fields['entries_ids'] = explode(',', $fields['entries_ids']);
+        
         $calendarEntries =
             $request->user()->calendarEntries()
                 ->whereBetween('date', [$fields['date_from'], $fields['date_to']])
+                ->whereIn('id', $fields['entries_ids'])
                 ->orderBy('date')
                 ->get();
 
@@ -35,6 +38,7 @@ class ShoppingListsController extends Controller {
         }
 
         $shoppingListEntriesToInsert = [];
+
 
         foreach ($calendarEntries as $calendarEntry) {
             $ingredients = $calendarEntry->recipe->ingredients()->get();
