@@ -37,6 +37,9 @@ class Recipe extends Model {
         $ingredients = $this->ingredients()->get();
         $calories = 0;
         foreach ($ingredients as $ingredient) {
+            $ingredient->amount_in_grams = $ingredient->amount_in_unit * $ingredient->unit()->first()->grams_per_unit;
+            $ingredient->calories = $ingredient->amount_in_grams * ($ingredient->product->nutrition_energy_kcal/100);
+            $ingredient->saveQuietly();
             $calories += $ingredient->calories;
         }
 
