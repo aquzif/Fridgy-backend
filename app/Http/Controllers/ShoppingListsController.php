@@ -42,7 +42,7 @@ class ShoppingListsController extends Controller {
 
         foreach ($calendarEntries as $calendarEntry) {
             $ingredients = $calendarEntry->recipe->ingredients()->get();
-
+            $portions = $calendarEntry->recipe->serving_amount;
             foreach ($ingredients as $ingredient) {
 
                 $product = $ingredient->product()->first();
@@ -55,10 +55,10 @@ class ShoppingListsController extends Controller {
                     if($toInsert['product_id'] == $product->id) {
                         $found = true;
                         if($toInsert['product_unit_id'] == $unit->id) {
-                            $toInsert['amount'] += $ingredient->amount_in_unit;
+                            $toInsert['amount'] += $ingredient->amount_in_unit/$portions;
                         } else {
                             $factor =  $unit->grams_per_unit /$toInsert['grams_per_unit'];
-                            $toInsert['amount'] += $ingredient->amount_in_unit * $factor;
+                            $toInsert['amount'] += ($ingredient->amount_in_unit * $factor)/$portions;
                         }
                     }
 
@@ -72,7 +72,7 @@ class ShoppingListsController extends Controller {
                         'unit_name' => $unit->name,
                         'checked' => false,
                         'type' => 'product',
-                        'amount' => $ingredient->amount_in_unit,
+                        'amount' => $ingredient->amount_in_unit/$portions,
                         'grams_per_unit' => $unit->grams_per_unit,
                         'shopping_list_id' => $shoppingList->id,
                         'category_id' => $product->category_id,
