@@ -19,6 +19,7 @@ class ShoppingListEntry extends Model {
 
     protected $casts = [
         'checked' => 'boolean',
+        'amount' => 'float',
     ];
 
     protected $with = [
