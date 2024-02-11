@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Recipe;
+
 return [
 
     /*
@@ -133,6 +135,9 @@ return [
         'host' => env('MEILISEARCH_HOST', 'http://localhost:7700'),
         'key' => env('MEILISEARCH_KEY'),
         'index-settings' => [
+            Recipe::class => [
+                'sortableAttributes' => ['id'],
+            ]
             // 'users' => [
             //     'filterableAttributes'=> ['id', 'name', 'email'],
             // ],

@@ -20,7 +20,8 @@ class RecipesController extends Controller {
 
         if(!isset($fields['selectedTags']) || $fields['selectedTags'] == '[]')
             return ResponseUtils::generateSuccessResponse(
-                Recipe::paginate(12)
+                Recipe::orderBy('id','desc')
+                    ->paginate(12)
             );
 
         $selectedTagsArray = json_decode($fields['selectedTags']);
