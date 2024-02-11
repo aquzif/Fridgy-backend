@@ -4,9 +4,9 @@ namespace App\Utils;
 
 class MathUtils {
 
-    static function roundUp($number, $precision = 2) {
-        $fig = (int) str_pad('1', $precision, '0');
-        return (ceil($number * $fig) / $fig);
+    static function roundUp($value, $precision = 2) {
+        $pow = pow ( 10, $precision );
+        return ( ceil ( $pow * $value ) + ceil ( $pow * $value - ceil ( $pow * $value ) ) ) / $pow;
     }
 
 }
