@@ -37,13 +37,17 @@ class RecipesController extends Controller {
 
 
         return ResponseUtils::generateSuccessResponse(
-            $query->paginate(12)
+            $query
+                ->orderBy('id','desc')
+                ->paginate(12)
         );
     }
 
     public function search(Request $request) {
         return ResponseUtils::generateSuccessResponse(
-            Recipe::search($request->input('query'))->paginate(12)
+            Recipe::search($request->input('query'))
+                ->orderBy('id','desc')
+                ->paginate(12)
         );
     }
 
