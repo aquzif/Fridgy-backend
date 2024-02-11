@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ShoppingList;
+use App\Utils\MathUtils;
 use App\Utils\ResponseUtils;
 use Illuminate\Http\Request;
 
@@ -55,10 +56,10 @@ class ShoppingListsController extends Controller {
                     if($toInsert['product_id'] == $product->id) {
                         $found = true;
                         if($toInsert['product_unit_id'] == $unit->id) {
-                            $toInsert['amount'] += $ingredient->amount_in_unit/$portions;
+                            $toInsert['amount'] += MathUtils::roundUp($ingredient->amount_in_unit/$portions);
                         } else {
                             $factor =  $unit->grams_per_unit /$toInsert['grams_per_unit'];
-                            $toInsert['amount'] += ($ingredient->amount_in_unit * $factor)/$portions;
+                            $toInsert['amount'] += MathUtils::roundUp(($ingredient->amount_in_unit * $factor)/$portions);
                         }
                     }
 
@@ -72,7 +73,7 @@ class ShoppingListsController extends Controller {
                         'unit_name' => $unit->name,
                         'checked' => false,
                         'type' => 'product',
-                        'amount' => $ingredient->amount_in_unit/$portions,
+                        'amount' => MathUtils::roundUp($ingredient->amount_in_unit/$portions),
                         'grams_per_unit' => $unit->grams_per_unit,
                         'shopping_list_id' => $shoppingList->id,
                         'category_id' => $product->category_id,
@@ -90,7 +91,8 @@ class ShoppingListsController extends Controller {
         $shoppingList->entries()->delete();
 
         foreach ($shoppingListEntriesToInsert as &$item) {
-            $item['amount']  = ceil($item['amount']);
+            $item['amount'] = MathUtils::roundUp($item['amount']);
+
 
             $shoppingList->entries()->create($item);
 

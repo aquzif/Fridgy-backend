@@ -99,7 +99,7 @@ class ShoppingListEntriesController extends Controller {
         $fields = $request->validate([
             'product_name' => 'string|required',
             'unit_id' => 'integer|required|exists:global_units,id',
-            'amount' => 'integer|required',
+            'amount' => 'numeric|required',
             'checked' => 'boolean',
             'type' => 'string',
             'category_id' => 'numeric|nullable',
@@ -129,7 +129,7 @@ class ShoppingListEntriesController extends Controller {
         $fields = $request->validate([
             'product_name' => 'string',
             'unit_id' => 'integer|exists:global_units,id',
-            'amount' => 'integer',
+            'amount' => 'numeric',
             'checked' => 'boolean',
             'type' => 'string',
             'category_id' => 'numeric|nullable',
