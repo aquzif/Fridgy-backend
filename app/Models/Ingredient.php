@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ingredient extends Model {
+class   Ingredient extends Model {
 
 
     protected $fillable = [
@@ -42,6 +42,9 @@ class Ingredient extends Model {
             $model->amount_in_grams = $model->amount_in_unit * $model->unit()->first()->grams_per_unit;
             $model->calories = $model->amount_in_grams * ($model->product->nutrition_energy_kcal/100);
             $model->saveQuietly();
+            $model->recipe->recalculate();
+        });
+        self::deleted(function($model) {
             $model->recipe->recalculate();
         });
     }

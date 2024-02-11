@@ -48,8 +48,9 @@ class RecipeIngredientsController extends Controller {
         $ingredient->update($fields);
     }
 
-    public function destroy(Ingredient $ingredient) {
+    public function destroy(Recipe $recipe, Ingredient $ingredient) {
         $ingredient->delete();
     }
+
 
 }
