@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CalendarEntry;
+use App\Models\FastFoodStore;
 use App\Models\Recipe;
 use App\Utils\ResponseUtils;
 use Illuminate\Http\Request;
@@ -34,7 +35,7 @@ class CalendarEntriesController extends Controller
     public function store(Request $request) {
 
         $params = $request->validate([
-            'type' => 'required|in:from_recipe',
+            'type' => 'required|in:from_recipe,from_fast_food_store',
             'meal_order' => 'integer|required',
             'date' => 'required|date',
         ]);
@@ -45,6 +46,7 @@ class CalendarEntriesController extends Controller
 
         return match ($params['type']) {
             'from_recipe' => $this->storeFromRecipe($request),
+            'from_fast_food_store' => $this->storeFromFastFoodStore($request),
             default => ResponseUtils::generateErrorResponse('Invalid type'),
         };
 
@@ -81,6 +83,7 @@ class CalendarEntriesController extends Controller
 
         return match ($fields['type']) {
             'from_recipe' => $this->updateFromRecipe($request, $calendarEntry),
+            'from_fast_food_store' => $this->updateFromFastFoodStore($request, $calendarEntry),
             default => ResponseUtils::generateErrorResponse('Invalid type'),
         };
     }
@@ -99,6 +102,50 @@ class CalendarEntriesController extends Controller
     //--------------------------------------------------------------------------------
     // Helper functions
     //--------------------------------------------------------------------------------
+
+    public function storeFromFastFoodStore(Request $request) {
+        $fields = $request->validate([
+            'fast_food_store_id' => 'required|integer',
+            'date' => 'required|date',
+            'meal_order' => 'integer|required',
+        ]);
+
+        $user = $request->user();
+        $fastFoodStore = FastFoodStore::findOrFail($fields['fast_food_store_id']);
+
+        $entry = $user->calendarEntries()->create([
+            'fast_food_store_id' => $fastFoodStore->id,
+            'entry_type' => 'from_fast_food_store',
+            'calories' => 0,
+            'date' => $fields['date'],
+            'meal_order' => $fields['meal_order'],
+            'recipe_id' => 0
+        ]);
+
+        return ResponseUtils::generateSuccessResponse($entry);
+    }
+
+    public function updateFromFastFoodStore(Request $request) {
+        $fields = $request->validate([
+            'fast_food_store_id' => 'required|integer',
+            'date' => 'required|date',
+            'meal_order' => 'integer|required',
+        ]);
+
+        $user = $request->user();
+        $fastFoodStore = FastFoodStore::findOrFail($fields['fast_food_store_id']);
+
+        $entry = $user->calendarEntries()->create([
+            'fast_food_store_id' => $fastFoodStore->id,
+            'entry_type' => 'from_fast_food_store',
+            'calories' => 0,
+            'date' => $fields['date'],
+            'meal_order' => $fields['meal_order'],
+            'recipe_id' => 0
+        ]);
+
+        return ResponseUtils::generateSuccessResponse($entry);
+    }
 
     public function storeFromRecipe(Request $request) {
         $fields = $request->validate([

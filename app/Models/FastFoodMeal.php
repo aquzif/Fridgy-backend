@@ -55,6 +55,12 @@ class FastFoodMeal extends Model
             foreach($fastFoodSets as $fastFoodSet) {
                 $fastFoodSet->recalculate();
             }
+
+            $mealEntries = CalendarEntryFastFoodMeal::where('fast_food_meal_id',$fastFoodMeal->id)->get();
+            foreach($mealEntries as $mealEntry) {
+                $mealEntry->recalculate();
+            }
+
         });
 
         static::updated(function($fastFoodMeal) {
@@ -63,6 +69,11 @@ class FastFoodMeal extends Model
             $fastFoodSets = FastFoodMealSet::where('fast_food_store_id',$fastFoodMeal->fast_food_store_id)->get();
             foreach($fastFoodSets as $fastFoodSet) {
                 $fastFoodSet->recalculate();
+            }
+            $mealEntries = CalendarEntryFastFoodMeal::
+                where('fast_food_meal_id',$fastFoodMeal->id)->with('calendarEntry')->get();
+            foreach($mealEntries as $mealEntry) {
+                $mealEntry->recalculate();
             }
         });
 
@@ -73,6 +84,11 @@ class FastFoodMeal extends Model
 
             foreach($fastFoodSets as $fastFoodSet) {
                 $fastFoodSet->recalculate();
+            }
+            $mealEntries = CalendarEntryFastFoodMeal::where('fast_food_meal_id',$fastFoodMeal->id)->get();
+            foreach($mealEntries as $mealEntry) {
+                $mealEntry->recalculate();
+
             }
         });
     }

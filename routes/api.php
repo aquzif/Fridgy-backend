@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalendarEntriesController;
+use App\Http\Controllers\CalendarEntryFastFoodMealsController;
 use App\Http\Controllers\FastFoodMealsController;
 use App\Http\Controllers\FastFoodMealSetMealsController;
 use App\Http\Controllers\FastFoodMealSetsController;
@@ -174,6 +175,19 @@ Route::middleware('auth:sanctum')->group(fn() => [
         Route::get('/{calendarEntry}',[CalendarEntriesController::class,'show']),
         Route::match(['put','patch'],'/{calendarEntry}',[CalendarEntriesController::class,'update']),
         Route::delete('/{calendarEntry}',[CalendarEntriesController::class,'destroy']),
+
+        //-----------------------------
+        //Recipe Calendar Entry Fast Food Meals routes
+        //-----------------------------
+        Route::prefix('/{calendarEntry}/fast-food-meal')
+            ->group(fn() => [
+                Route::get('/',[CalendarEntryFastFoodMealsController::class,'index']),
+                Route::post('/',[CalendarEntryFastFoodMealsController::class,'store']),
+                Route::get('/{calendarEntryFastFoodMeal}',[CalendarEntryFastFoodMealsController::class,'show']),
+                Route::match(['put','patch'],'/{calendarEntryFastFoodMeal}',[CalendarEntryFastFoodMealsController::class,'update']),
+                Route::delete('/{calendarEntryFastFoodMeal}',[CalendarEntryFastFoodMealsController::class,'destroy']),
+            ]),
+
     ]),
 
     //-----------------------------
