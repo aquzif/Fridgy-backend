@@ -31,6 +31,7 @@ class ShoppingListsController extends Controller {
             $request->user()->calendarEntries()
                 ->whereBetween('date', [$fields['date_from'], $fields['date_to']])
                 ->whereIn('id', $fields['entries_ids'])
+                ->where('entry_type', 'from_recipe')
                 ->orderBy('date')
                 ->get();
 
