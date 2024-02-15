@@ -92,7 +92,7 @@ class ShoppingListsController extends Controller {
         $shoppingList->entries()->delete();
 
         foreach ($shoppingListEntriesToInsert as &$item) {
-            $item['amount'] = MathUtils::roundUp($item['amount']);
+            $item['amount'] = MathUtils::roundUp($item['amount'],0);
 
 
             $shoppingList->entries()->create($item);
