@@ -135,6 +135,7 @@ Route::middleware('auth:sanctum')->group(fn() => [
     //Recipes
     //-----------------------------
     Route::prefix('/recipe')->group(fn() => [
+        Route::get('/random',[RecipesController::class,'random']),
         Route::get('/search',[RecipesController::class,'search']),
         Route::get('/',[RecipesController::class,'index']),
         Route::post('/',[RecipesController::class,'store']),

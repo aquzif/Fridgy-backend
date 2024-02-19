@@ -44,6 +44,16 @@ class RecipesController extends Controller {
         );
     }
 
+    public function random() {
+        $recipesIds = Recipe::all()->pluck('id')->toArray();
+
+        $randomRecipeId = $recipesIds[array_rand($recipesIds)];
+
+        return ResponseUtils::generateSuccessResponse(
+            Recipe::where('id',$randomRecipeId)->first()
+        );
+    }
+
     public function search(Request $request) {
         return ResponseUtils::generateSuccessResponse(
             Recipe::search($request->input('query'))
