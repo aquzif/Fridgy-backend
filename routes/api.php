@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AIController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalendarEntriesController;
 use App\Http\Controllers\CalendarEntryFastFoodMealsController;
@@ -56,6 +57,14 @@ Route::middleware('auth:sanctum')->group(fn() => [
 
     Route::get('/user',[UserController::class,'index']),
     Route::match(['put','patch'],'/user',[UserController::class,'update']),
+
+    //-----------------------------
+    //AI endpoints
+    //-----------------------------
+    Route::prefix('ai')->group(fn() => [
+        Route::get('/nutrition',[AIController::class,'nutrition']),
+        Route::get('/shopping-list/{shoppingList}/prices',[AIController::class,'shoppingListPrices']),
+    ]),
 
     //-----------------------------
     //Shopping list routes
