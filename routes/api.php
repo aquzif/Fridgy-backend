@@ -19,6 +19,7 @@ use App\Http\Controllers\RecipesController;
 use App\Http\Controllers\RecipeTagsController;
 use App\Http\Controllers\ShoppingListEntriesController;
 use App\Http\Controllers\ShoppingListsController;
+use App\Http\Controllers\TrainingsController;
 use App\Http\Controllers\UserController;
 use App\Models\Product;
     use App\Models\ProductUnit;
@@ -245,6 +246,17 @@ Route::middleware('auth:sanctum')->group(fn() => [
 
             ]),
 
+    ]),
+
+    //-----------------------------
+    //Training routes
+    //-----------------------------
+    Route::prefix('/training')->group(fn() => [
+        Route::get('/',[TrainingsController::class,'index']),
+        Route::post('/',[TrainingsController::class,'store']),
+        Route::get('/{training}',[TrainingsController::class,'show']),
+        Route::match(['put','patch'],'/{training}',[TrainingsController::class,'update']),
+        Route::delete('/{training}',[TrainingsController::class,'destroy']),
     ]),
 
 ]);

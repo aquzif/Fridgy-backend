@@ -66,6 +66,9 @@ class User extends Authenticatable
         });
     }
 
+    public function trainings(): \Illuminate\Database\Eloquent\Relations\HasMany {
+        return $this->hasMany(Training::class);
+    }
 
     public function recalculate() {
 
