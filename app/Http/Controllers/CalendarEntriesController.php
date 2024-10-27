@@ -42,7 +42,7 @@ class CalendarEntriesController extends Controller
 
         $user = $request->user();
 
-        $user->calendarEntries()->where('date', $request['date'])->where('meal_order', $request['meal_order'])->delete();
+        //$user->calendarEntries()->where('date', $request['date'])->where('meal_order', $request['meal_order'])->delete();
 
         return match ($params['type']) {
             'from_recipe' => $this->storeFromRecipe($request),
