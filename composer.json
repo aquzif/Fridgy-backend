@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1.0",
+        "doctrine/dbal": "^3.8",
         "guzzlehttp/guzzle": "^7.2",
         "http-interop/http-factory-guzzle": "^1.2",
         "laravel/framework": "^9.19",
@@ -15,6 +16,7 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.2",
         "meilisearch/meilisearch-php": "^1.2",
+        "openai-php/client": "^0.8.4",
         "spatie/laravel-ray": "^1.32"
     },
     "require-dev": {

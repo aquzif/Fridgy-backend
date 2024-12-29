@@ -43,6 +43,23 @@
         protected static function boot() {
             parent::boot();
 
+            static::retrieved(function ($product) {
+                $product['category'] = $product->productCategory ? $product->productCategory->name : null;
+            });
+
+            static::updating(function ($product) {
+                unset($product['category']);
+            });
+
+            static::updated(function ($product) {
+                $ingredients = Ingredient::where('product_id', $product->id)->get();
+
+                foreach ($ingredients as $ingredient) {
+                    $ingredient->recipe->recalculate();
+                }
+
+            });
+
             static::created(function ($product) {
                 $unit = $product->units()->create([
                     'name' => 'g',

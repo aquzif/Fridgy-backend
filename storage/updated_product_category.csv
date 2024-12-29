@@ -1,599 +1,599 @@
-"22","Agrest","Owoce"
-"23","Ananas","Owoce"
-"24","Ananas, plastry w syropie",""
-"25","Ananasy, dżem niskosłodzony","Owoce"
-"26","Arbuz","Owoce"
-"27","Awokado","Owoce"
-"28","Babka biszkoptowa",""
-"29","Bagietki francuskie","Pieczywo"
-"30","Bakłażan",""
-"31","Baleron gotowany",""
-"32","Banan","Owoce"
-"33","Baranina, łopatka",""
-"34","Baranina, udziec",""
-"35","Barszcz czerwony zabielany",""
-"36","Barszcz ukraiński",""
-"37","Barszcz ukraiński mrożony",""
-"38","Barszcz z boćwiną",""
-"39","Baton Bounty","Słodycze"
-"40","Baton Mars","Słodycze"
-"41","Baton Milky Way","Słodycze"
-"42","Baton Snickers","Słodycze"
-"43","Baton szynkowy z indyka","Słodycze"
-"44","Baton Twix","Słodycze"
-"45","Baton z kurczaka","Mięso i wędliny"
-"46","Befsztyk bity wiejski",""
-"47","Białko jaja kurzego",""
-"48","Bigos",""
-"49","Bitki wieprzowe",""
-"50","Bitki wieprzowe w jarzynach",""
-"51","Bitki wołowe",""
-"52","Bitki wołowe w jarzynach",""
-"53","Bliny ziemniaczane",""
-"54","Boćwina",""
-"55","Boeuf Strogonow",""
-"56","Bób",""
-"57","Brokuły",""
-"58","Brokuły mrożone",""
-"59","Brukselka",""
-"60","Brukselka mrożona",""
-"61","Brukselka z wody",""
-"62","Bryzol wołowy z polędwicy",""
-"63","Brzoskwinia",""
-"64","Brzoskwinie w syropie",""
-"65","Brzoskwinie, dżem niskosłodzony","Produkty konserwowe"
-"66","Buchty drożdżowe",""
-"67","Budyń z mięsa i makaronu",""
-"68","Bułka tarta","Pieczywo"
-"69","Bułki grahamki",""
-"70","Bułki kajzerki",""
-"71","Bułki maślane",""
-"72","Bułki pszenne zwykłe",""
-"73","Bułki wrocławskie",""
-"74","Burak",""
-"75","Buraki mrożone, puree",""
-"76","Buraki z jabłkami",""
-"77","Buraki zasmażane",""
-"78","Buraki ze śmietaną",""
-"79","Cebula","Warzywa"
-"80","Chałki",""
-"81","Chipsy bekonowe",""
-"82","Chipsy paprykowe",""
-"83","Chipsy solone",""
-"84","Chleb baltonowski","Pieczywo"
-"85","Chleb chrupki","Pieczywo"
-"86","Chleb Graham","Pieczywo"
-"87","Chleb mazowiecki","Pieczywo"
-"88","Chleb mieszany słonecznikowy","Pieczywo"
-"89","Chleb mieszany sojowy","Pieczywo"
-"90","Chleb praski","Pieczywo"
-"91","Chleb pszenny","Pieczywo"
-"92","Chleb staropolski","Pieczywo"
-"93","Chleb wiejski","Pieczywo"
-"94","Chleb zwykły","Pieczywo"
-"95","Chleb żytni jasny","Pieczywo"
-"96","Chleb żytni jasny mleczny","Pieczywo"
-"97","Chleb żytni pełnoziarnisty","Pieczywo"
-"98","Chleb żytni razowy","Pieczywo"
-"99","Chleb żytni razowy na miodzie","Pieczywo"
-"100","Chleb żytni razowy z soją i słonecznikiem","Pieczywo"
-"101","Chleb żytni wileński","Pieczywo"
-"102","Chrupki kukurydziane",""
-"103","Chrzan",""
-"104","Ciastka francuskie ze śliwkami",""
-"105","Ciastka Karpatki",""
-"106","Ciastka Napoleonki",""
-"107","Ciastka tortowe z owocami",""
-"108","Ciasto drożdżowe",""
-"109","Ciasto kruche podstawowe",""
-"110","Ciasto naleśnikowe bez piany",""
-"111","Ciasto naleśnikowe biszkoptowe",""
-"112","Cielęcina w potrawce",""
-"113","Cielęcina, łopatka",""
-"114","Cielęcina, sznyclówka",""
-"115","Cielęcina, udziec",""
-"116","Coca Cola",""
-"117","Cukier","Słodycze"
-"118","Cukierki irysy","Słodycze"
-"119","Cukierki krówki","Słodycze"
-"120","Cukinia",""
-"121","Cykoria",""
-"122","Cytryna","Owoce"
-"123","Czarne jagody",""
-"124","Czarne porzeczki, dżem niskosłodzony","Produkty konserwowe"
-"125","Czarne porzeczki, dżem wysokosłodzony","Napoje"
-"126","Czekolada biała","Słodycze"
-"127","Czekolada deserowa","Nabiał"
-"128","Czekolada gorzka","Słodycze"
-"129","Czekolada kawowa","Słodycze"
-"130","Czekolada mleczna","Słodycze"
-"131","Czekolada mleczna z orzechami laskowymi","Słodycze"
-"132","Czekolada nadziewana","Słodycze"
-"133","Czereśnie",""
-"134","Czosnek",""
-"135","Ćwikła",""
-"136","Daktyle suszone",""
-"137","Delicje szampańskie",""
-"138","Deser ryżowy jabłkowy","Nabiał"
-"139","Deser ryżowy waniliowy","Nabiał"
-"140","Deser twarogowy termizowany kakaowy","Nabiał"
-"141","Deser twarogowy termizowany truskawkowy","Nabiał"
-"142","Dorsz świeży",""
-"143","Dorsz świeży, filety bez skóry",""
-"144","Dorsz w jarzynach",""
-"145","Dorsz wędzony",""
-"146","Dorsz z rusztu",""
-"147","Dorsz, filety po grecku",""
-"148","Dorsz, filety smażone panierowane",""
-"149","Dorsz, kotlet mielony",""
-"150","Dorsz, pulpety",""
-"151","Dorsz, sałatka","Posiłek"
-"152","Dynia",""
-"153","Dynia z pomidorami","Warzywa"
-"154","Dynia, pestki","Orzechy"
-"155","Eklerki z bitą śmietaną",""
-"156","Fasola biała, suche nasiona","Orzechy"
-"157","Fasola cięta konserwowa","Nabiał"
-"158","Fasola szparagowa",""
-"159","Fasolka flageolet konserwowa","Nabiał"
-"160","Fasolka po bretońsku",""
-"161","Fasolka szparagowa",""
-"162","Fasolka szparagowa mrożona",""
-"163","Figi suszone",""
-"164","Flaki",""
-"165","Flądra świeża",""
-"166","Galaretka z nóżek wieprzowych",""
-"167","Gęś, tuszka",""
-"168","Gołąbki z mięsem i ryżem w sosie pomidorowym","Warzywa"
-"169","Grejpfrut",""
-"170","Groch, suche nasiona","Orzechy"
-"171","Groszek zielony",""
-"172","Groszek zielony konserwowy","Nabiał"
-"173","Groszek zielony mrożony",""
-"174","Groszek zielony z masłem",""
-"175","Gruszka","Owoce"
-"176","Gruszki w sosie waniliowym","Produkty konserwowe"
-"177","Gulasz wołowy",""
-"178","Halibut biały świeży",""
-"179","Herbata bez cukru","Napoje"
-"180","Herbatniki",""
-"181","Herbatniki Corso",""
-"182","Herbatniki kakaowe",""
-"183","Herbatniki kokosowe",""
-"184","Herbatniki sezamowe",""
-"185","Herbatniki w czekoladzie",""
-"186","Herbatniki z cukrem",""
-"187","Herbatniki z nadzieniem czekoladowym",""
-"188","Herbatniki z nadzieniem owocowym",""
-"189","Indyk, mięso z piersi bez skóry","Mięso i wędliny"
-"190","Indyk, mięso z podudzia ze skórą","Mięso i wędliny"
-"191","Indyk, mięso z udźca ze skórą","Mięso i wędliny"
-"192","Indyk, skrzydło",""
-"193","Jabłka pieczone",""
-"194","Jabłka suszone",""
-"195","Jabłka w kruchym cieście",""
-"196","Jabłko","Owoce"
-"197","Jagody, dżem niskosłodzony","Produkty konserwowe"
-"198","Jagodzianki",""
-"199","Jaja gotowane",""
-"200","Jaja kurze całe",""
-"201","Jaja sadzone",""
-"202","Jajecznica",""
-"203","Jarmuż",""
-"204","Jarzyny mrożone",""
-"205","Jogurt bananowy 1,5 %","Nabiał"
-"206","Jogurt jagodowy 1,5 %","Nabiał"
-"207","Jogurt morelowy 1,5 %","Nabiał"
-"208","Jogurt naturalny 2 %","Nabiał"
-"209","Jogurt truskawkowy 1,5 %","Nabiał"
-"210","Jogurt wiśniowy 1,5 %","Nabiał"
-"211","Kabanosy",""
-"212","Kabanosy z kurczaka","Mięso i wędliny"
-"213","Kaczka, tuszka","Mięso i wędliny"
-"214","Kakao w proszku 16 %",""
-"215","Kalafior",""
-"216","Kalafior mrożony",""
-"217","Kalafior z wody",""
-"218","Kalarepa",""
-"219","Kapusta biała","Warzywa"
-"220","Kapusta biała zasmażana","Warzywa"
-"221","Kapusta czerwona","Warzywa"
-"222","Kapusta kwaszona","Warzywa"
-"223","Kapusta pekińska","Warzywa"
-"224","Kapusta włoska","Warzywa"
-"225","Kapuśniak z kapusty kwaszonej",""
-"226","Kapuśniak z kapusty słodkiej",""
-"227","Karmelki nadziewane","Słodycze"
-"228","Karmelki twarde","Słodycze"
-"229","Karp świeży",""
-"230","Karp w galarecie z warzywami",""
-"231","Karp z wody",""
-"232","Kasza gryczana",""
-"233","Kasza gryczana na sypko",""
-"234","Kasza jaglana",""
-"235","Kasza jęczmienna na mleku",""
-"236","Kasza jęczmienna perłowa",""
-"237","Kasza jęczmienna pęczak",""
-"238","Kasza manna",""
-"239","Kasza manna na mleku",""
-"240","Kasza manna na wywarze jarzynowym",""
-"241","Kasza perłowa na sypko",""
-"242","Kaszanka z kurczaka","Mięso i wędliny"
-"243","Kawa bez cukru","Napoje"
-"244","Kefir 2 %","Nabiał"
-"245","Keks bakaliowy",""
-"246","Ketchup",""
-"247","Kiełbasa jałowcowa z kurczaka","Mięso i wędliny"
-"248","Kiełbasa krakowska sucha","Mięso i wędliny"
-"249","Kiełbasa mazurska z indyka","Mięso i wędliny"
-"250","Kiełbasa mortadela","Mięso i wędliny"
-"251","Kiełbasa myśliwska sucha","Mięso i wędliny"
-"252","Kiełbasa parówkowa","Mięso i wędliny"
-"253","Kiełbasa podlaska z kurczaka","Mięso i wędliny"
-"254","Kiełbasa podsuszana z kurczaka","Mięso i wędliny"
-"255","Kiełbasa podwawelska","Mięso i wędliny"
-"256","Kiełbasa szynkowa z indyka","Mięso i wędliny"
-"257","Kiełbasa szynkowa z kurczaka","Mięso i wędliny"
-"258","Kiełbasa śląska","Mięso i wędliny"
-"259","Kiełbasa toruńska","Mięso i wędliny"
-"260","Kiełbasa zwyczajna","Mięso i wędliny"
-"261","Kiełbasa żywiecka","Mięso i wędliny"
-"262","Kisiel porzeczkowy",""
-"263","Kisiel waniliowy",""
-"264","Kiszka kaszana jęczmienna",""
-"265","Kiszka krwista",""
-"266","Kiszka pasztetowa",""
-"267","Kiwi",""
-"268","Kiwi, dżem niskosłodzony","Produkty konserwowe"
-"269","Klopsiki cielęce mielone",""
-"270","Klopsiki mielone z mięsa mieszanego",""
-"271","Kluski kładzione",""
-"272","Kluski lane",""
-"273","Kluski lane na mleku",""
-"274","Kluski śląskie",""
-"275","Knedle ze śliwkami",""
-"276","Kompot z jabłek",""
-"277","Kompot z wiśni",""
-"278","Koncentrat pomidorowy 30 %","Warzywa"
-"279","Koper",""
-"280","Kopytka",""
-"281","Kotlet cielęcy panierowany",""
-"282","Kotlet mielony z mięsa mieszanego",""
-"283","Kotlet schabowy panierowany",""
-"284","Kotlet z kurczaka smażony panierowany","Mięso i wędliny"
-"285","Kotlet z kurczaka smażony saute","Mięso i wędliny"
-"286","Kotlet z kury mielony",""
-"287","Kotlety z jaj",""
-"288","Kotlety ziemniaczane",""
-"289","Krem z zielonego groszku",""
-"290","Królik, tuszka",""
-"291","Krupnik z kaszy gryczanej",""
-"292","Krupnik z kaszy jęczmiennej",""
-"293","Krupnik z ryżu",""
-"294","Kukurydza",""
-"295","Kukurydza konserwowa","Nabiał"
-"296","Kulebiak",""
-"297","Kura w galarecie",""
-"298","Kura, tuszka",""
-"299","Kurczak faszerowany pieczony","Mięso i wędliny"
-"300","Kurczak gotowany w jarzynach","Mięso i wędliny"
-"301","Kurczak pieczony","Mięso i wędliny"
-"302","Kurczak, mięso z piersi bez skóry","Mięso i wędliny"
-"303","Kurczak, mięso z uda ze skórą","Mięso i wędliny"
-"304","Kurczak, skrzydło","Mięso i wędliny"
-"305","Kurczak, tuszka","Mięso i wędliny"
-"306","Kurczak, wątroba","Mięso i wędliny"
-"307","Kurczak, żołądek","Mięso i wędliny"
-"308","Lody mleczno-owocowe",""
-"309","Lody śmietankowe",""
-"310","Łosoś smażony saute","Ryby"
-"311","Łosoś świeży","Ryby"
-"312","Łosoś wędzony","Ryby"
-"313","Łosoś z rusztu","Ryby"
-"314","Majonez z olejem rzepakowym","Oleje"
-"315","Majonez z olejem słonecznikowym","Oleje"
-"316","Mak niebieski",""
-"317","Makaron bezjajeczny",""
-"318","Makaron czterojajeczny",""
-"319","Makaron dwujajeczny",""
-"320","Makaron na mleku",""
-"321","Makrela świeża","Ryby"
-"322","Makrela wędzona","Ryby"
-"323","Makrela, filety z czerwoną fasolą","Ryby"
-"324","Makrela, filety z warzywami","Ryby"
-"325","Makrela, sałatka pikantna","Posiłek"
-"326","Maliny",""
-"327","Mandarynki",""
-"328","Marchew","Warzywa"
-"329","Marchew mrożona","Warzywa"
-"330","Marchew z groszkiem","Warzywa"
-"331","Marchew zasmażana","Warzywa"
-"332","Margaryna Bona",""
-"333","Margaryna Flora",""
-"334","Margaryna Kama",""
-"335","Margaryna mleczna",""
-"336","Margaryna Palma",""
-"337","Margaryna Rama",""
-"338","Margaryna Słoneczna",""
-"339","Margaryna Tina",""
-"340","Margaryna zwykła",""
-"341","Markizy",""
-"342","Masło ekstra","Nabiał"
-"343","Masło roślinne Nova","Nabiał"
-"344","Masło roślinne zwykłe","Nabiał"
-"345","Masło śmietankowe","Nabiał"
-"346","Maślanka 0,5 %",""
-"347","Mąka pszenna typ 500",""
-"348","Mąka pszenna typ 550",""
-"349","Medaliony z indyka",""
-"350","Melon",""
-"351","Mielonka",""
-"352","Migdały","Orzechy"
-"353","Mintaj świeży",""
-"354","Miód pszczeli",""
-"355","Mizeria ze śmietaną",""
-"356","Mleko kozie","Nabiał"
-"357","Mleko owcze","Nabiał"
-"358","Mleko spożywcze 0,5 %","Nabiał"
-"359","Mleko spożywcze 1,5 %","Nabiał"
-"360","Mleko spożywcze 2 %","Nabiał"
-"361","Mleko spożywcze 3,2 %","Nabiał"
-"362","Mleko spożywcze 3,5 %","Nabiał"
-"363","Mleko w proszku odtłuszczone","Nabiał"
-"364","Mleko w proszku pełne","Nabiał"
-"365","Mleko zagęszczone niesłodzone","Nabiał"
-"366","Mleko zagęszczone słodzone","Nabiał"
-"367","Morela",""
-"368","Morele suszone",""
-"369","Morele, dżem niskosłodzony","Produkty konserwowe"
-"370","Morszczuk świeży",""
-"371","Mus jabłkowy","Owoce"
-"372","Musli z owocami suszonymi",""
-"373","Musli z rodzynkami i orzechami","Orzechy"
-"374","Musztarda",""
-"375","Naleśniki z kapustą",""
-"376","Naleśniki z serem","Nabiał"
-"377","Napój mleczny jogurtowy","Nabiał"
-"378","Napój mleczny kakaowy","Napoje"
-"379","Napój owocowy gazowany","Napoje"
-"380","Nektarynka",""
-"381","Nerki wieprzowe",""
-"382","Nogi wieprzowe",""
-"383","Ocet winny",""
-"384","Ogórek","Warzywa"
-"385","Ogórek kiszony","Warzywa"
-"386","Olej kukurydziany","Oleje"
-"387","Olej lniany","Oleje"
-"388","Olej rzepakowy","Oleje"
-"389","Olej słonecznikowy","Oleje"
-"390","Olej sojowy","Oleje"
-"391","Oliwa z oliwek","Oleje"
-"392","Oliwki",""
-"393","Orzechy arachidowe","Orzechy"
-"394","Orzechy laskowe","Orzechy"
-"395","Orzechy nerkowca","Orzechy"
-"396","Orzechy pistacjowe","Orzechy"
-"397","Orzechy włoskie","Orzechy"
-"398","Orzeszki ziemne",""
-"399","Ostrygi",""
-"400","Otręby pszenne",""
-"401","Ozory cielęce",""
-"402","Ozory wieprzowe",""
-"403","Paluszki",""
-"404","Papaja",""
-"405","Papryka czerwona",""
-"406","Papryka konserwowa","Nabiał"
-"407","Paprykarz Szczeciński",""
-"408","Parówki dla dzieci Morlinki",""
-"409","Parówki popularne",""
-"410","Parówki z kurczaka","Mięso i wędliny"
-"411","Pasternak",""
-"412","Pasztet popularny",""
-"413","Pasztet z drobiu",""
-"414","Pączki",""
-"415","Pepsi, Cola, napój","Napoje"
-"416","Pepsi, Cola light, napój","Napoje"
-"417","Pestki dyni","Orzechy"
-"418","Pędy bambusa",""
-"419","Pędy bambusa, konserwa, odsączone","Nabiał"
-"420","Pieczarka suszona",""
-"421","Pieczarka świeża",""
-"422","Pieczywo chrupkie pszenne Wasa","Pieczywo"
-"423","Pierogi leniwe mrożone",""
-"424","Pierogi ruskie mrożone",""
-"425","Pierogi z kapustą i grzybami mrożone",""
-"426","Pierogi z mięsem mrożone",""
-"427","Pierogi z serem mrożone","Nabiał"
-"428","Pierogi z truskawkami mrożone",""
-"429","Piernik czekoladowy",""
-"430","Piersi bez skóry indycze",""
-"431","Piersi bez skóry z kurczaka","Mięso i wędliny"
-"432","Piersi ze skórą z kurczaka","Mięso i wędliny"
-"433","Pietruszka korzeń",""
-"434","Pietruszka liście",""
-"435","Pikling",""
-"436","Piwo bezalkoholowe","Alkohol"
-"437","Piwo ciemne pełne","Alkohol"
-"438","Piwo jasne mocne","Alkohol"
-"439","Piwo jasne pełne","Alkohol"
-"440","Pizza z pieczarkami i cebulą",""
-"441","Pizza z szynką",""
-"442","Planta, tłuszcz roślinny",""
-"443","Płatki jęczmienne",""
-"444","Płatki kukurydziane",""
-"445","Płatki kukurydziane Nestle Corn Flakes",""
-"446","Płatki owsiane",""
-"447","Płatki pszenne",""
-"448","Płatki żytnie",""
-"449","Polędwica wołowa",""
-"450","Pomidor","Warzywa"
-"451","Por",""
-"452","Pomarańcza","Owoce"
-"453","Popcorn bez tłuszczu",""
-"454","Popcorn z tłuszczem",""
-"455","Porzeczki białe",""
-"456","Porzeczki czarne",""
-"457","Porzeczki czerwone",""
-"458","Powidła śliwkowe",""
-"459","Poziomki",""
-"460","Precelki",""
-"461","Prince Polo, wafel",""
-"462","Princessa, wafel",""
-"463","Przyprawa do zup Maggi",""
-"464","Pstrąg świeży",""
-"465","Ptyś z bitą śmietaną, ciastko","Słodycze"
-"466","Pyzy z mięsem mrożone",""
-"467","Pyzy ziemniaczane mrożone",""
-"468","Rabarabar",""
-"469","Raffaello, czekoladki",""
-"470","Rama Classic, margaryna",""
-"471","Red Bull, napój","Napoje"
-"472","Rodzynki",""
-"473","Rostbef wołowy",""
-"474","Rozbratel wołowy",""
-"475","Ryż biały",""
-"476","Ryż brązowy",""
-"477","Ryż dziki amerykański",""
-"478","Ryż preparowany",""
-"479","Rzeżucha",""
-"480","Rzodkiewka",""
-"481","Salceson czarny",""
-"482","Salceson włoski",""
-"483","Sałata","Warzywa"
-"484","Sandacz świeży",""
-"485","Sardynki w oleju, konserwa","Nabiał"
-"486","Sardynki w sosie pomidorowym, konserwa","Nabiał"
-"487","Sarnina",""
-"488","Schab surowy wieprzowy",""
-"489","Schab wędzony",""
-"490","Seler korzeń",""
-"491","Ser Feta","Nabiał"
-"492","Ser pleśniowy Brie pełnotłusty","Nabiał"
-"493","Ser pleśniowy Rokpol pełnotłusty","Nabiał"
-"494","Ser podpuszczkowy Brie pełnotłusty","Nabiał"
-"495","Ser podpuszczkowy Camembert tłusty","Nabiał"
-"496","Ser podpuszczkowy Cheddar pełnotłusty","Nabiał"
-"497","Ser podpuszczkowy Ementaler pełnotłusty","Nabiał"
-"498","Ser podpuszczkowy Ementaler tłusty","Nabiał"
-"499","Ser podpuszczkowy Gouda tłusty","Nabiał"
-"500","Ser podpuszczkowy Mozarella tłusty","Nabiał"
-"501","Ser podpuszczkowy Myśliwski pełnotłusty","Nabiał"
-"502","Ser podpuszczkowy Parmezan","Nabiał"
-"503","Ser podpuszczkowy Salami pełnotłusty","Nabiał"
-"504","Ser podpuszczkowy Salami tłusty","Nabiał"
-"505","Ser podpuszczkowy Tylżycki pełnotłusty","Nabiał"
-"506","Ser podpuszczkowy Tylżycki tłusty","Nabiał"
-"507","Ser topiony tłusty","Nabiał"
-"508","Ser twarogowy chudy","Nabiał"
-"509","Ser twarogowy półtłusty","Nabiał"
-"510","Ser twarogowy pełnotłusty","Nabiał"
-"511","Serca wieprzowe","Nabiał"
-"512","Serdelki drobiowe","Nabiał"
-"513","Serek Fromage naturalny","Nabiał"
-"514","Serek homogenizowany truskawkowy","Nabiał"
-"515","Serek homogenizowany waniliowy","Nabiał"
-"516","Serek twarogowy ziarnisty","Nabiał"
-"517","Sernik","Nabiał"
-"518","Sernik z rodzynkami, ciasto","Nabiał"
-"519","Serwatka płynna","Nabiał"
-"520","Sezamki",""
-"521","Skrobia kukurydziana",""
-"522","Skrzydło bez skóry indycze",""
-"523","Słonecznik ziarno",""
-"524","Słonina",""
-"525","Smalec",""
-"526","Snickers, baton","Słodycze"
-"527","Soczewica, suche ziarno",""
-"528","Soja, suche ziarno",""
-"529","Sola świeża",""
-"530","Sok ananasowy","Owoce"
-"531","Sok grejfrutowy","Napoje"
-"532","Sok jabłkowy","Owoce"
-"533","Sok marchwiowy","Napoje"
-"534","Sok pomarańczowy","Napoje"
-"535","Sok pomidorowy","Warzywa"
-"536","Sok z czarnej porzeczki","Napoje"
-"537","Sprite, napój","Napoje"
-"538","Syrop truskawkowy",""
-"539","Szampan półsłodki","Alkohol"
-"540","Szampan półwytrawny","Alkohol"
-"541","Szampan słodki","Alkohol"
-"542","Szczaw",""
-"543","Szczupak świeży","Posiłek"
-"544","Szczypiorek",""
-"545","Szparagi",""
-"546","Szpinak",""
-"547","Szponder wołowy",""
-"548","Szprot wędzony",""
-"549","Szynka surowa wieprzowa","Mięso i wędliny"
-"550","Szynka wędzona gotowana","Mięso i wędliny"
-"551","Śmietana 12% tłuszczu","Nabiał"
-"552","Śmietana 18% tłuszczu","Nabiał"
-"553","Śmietanka do kawy 9% tłuszczu",""
-"554","Śmietanka kremowa 30% tłuszczu",""
-"555","Śledź solony",""
-"556","Śledź świeży",""
-"557","Śledź w oleju, konserwa","Nabiał"
-"558","Śledź w pomidorach, konserwa","Nabiał"
-"559","Śliwki",""
-"560","Śliwki suszone",""
-"561","Truskawki",""
-"562","Truskawki w galaretce",""
-"563","Truskawki z bitą śmietaną",""
-"564","Truskawki, dżem niskosłodzony","Produkty konserwowe"
-"565","Truskawki, dżem wysokosłodzony","Napoje"
-"566","Tuńczyk w oleju","Oleje"
-"567","Tuńczyk w wodzie","Ryby"
-"568","Wafle nadziewane",""
-"569","Wafle w czekoladzie",""
-"570","Wątroba cielęca",""
-"571","Wątroba wieprzowa",""
-"572","Wątroba wołowa",""
-"573","Wątróbka wieprzowa saute",""
-"574","Wędzonka wołowa gotowana",""
-"575","Węgorz wędzony",""
-"576","Wieprzowina duszona","Mięso i wędliny"
-"577","Wieprzowina gotowana","Mięso i wędliny"
-"578","Winogrona","Alkohol"
-"579","Wiórki kokosowe",""
-"580","Wiśnie",""
-"581","Wiśnie, dżem niskosłodzony","Produkty konserwowe"
-"582","Wiśnie, dżem wysokosłodzony","Napoje"
-"583","Włoszczyzna mrożona",""
-"584","Wołowina, pieczeń","Mięso i wędliny"
-"585","Wołowina, polędwica","Mięso i wędliny"
-"586","Wołowina, rostbef","Mięso i wędliny"
-"587","Wołowina, rozbratel","Mięso i wędliny"
-"588","Wołowina, szponder","Mięso i wędliny"
-"589","Ziemniaki późne","Warzywa"
-"590","Ziemniaki puree","Warzywa"
-"591","Ziemniaki wczesne","Warzywa"
-"592","Ziemniaki z tłuszczem","Warzywa"
-"593","Zupa cebulowa","Posiłek"
-"594","Zupa cytrynowa z ryżem","Posiłek"
-"595","Zupa fasolowa","Posiłek"
-"596","Zupa grochowa","Posiłek"
-"597","Zupa grzybowa zabielana","Posiłek"
-"598","Zupa jarzynowa","Posiłek"
-"599","Zupa jesienna mrożona","Posiłek"
-"600","Zupa kalafiorowa","Posiłek"
-"601","Zupa kalafiorowa mrożona","Posiłek"
-"602","Zupa neapolitańska","Posiłek"
-"603","Zupa ogórkowa","Posiłek"
-"604","Zupa owocowa z jabłek","Posiłek"
-"605","Zupa pomidorowa","Warzywa"
-"606","Zupa pomidorowa z makaronem","Warzywa"
-"607","Zupa pomidorowa z ryżem","Warzywa"
-"608","Zupa pomidorowa zabielana","Warzywa"
-"609","Zupa selerowa","Posiłek"
-"610","Zupa selerowa z grzankami","Posiłek"
-"611","Zupa szczawiowa","Posiłek"
-"612","Zupa szpinakowa z ziemniakami","Warzywa"
-"613","Zupa włoska mrożona","Posiłek"
-"614","Zupa z fasoli szparagowej","Posiłek"
-"615","Zupa z porów z makaronem","Posiłek"
-"616","Zupa z zielonego groszku","Posiłek"
-"617","Zupa ziemniaczana","Posiłek"
-"618","Zupa zimowa mrożona","Posiłek"
-"619","Żeberka wieprzowe duszone",""
-"620","Żółtko jaja kurzego",""
+1,Agrest,Owoce
+2,Ananas,Owoce
+3,"Ananas, plastry w syropie",Produkty konserwowe
+4,"Ananasy, dżem niskosłodzony",Produkty konserwowe
+5,Arbuz,Owoce
+6,Awokado,Owoce
+7,Babka biszkoptowa,Słodycze
+8,Bagietki francuskie,Pieczywo
+9,Bakłażan,Warzywa
+10,Baleron gotowany,Mięso i wędliny
+11,Banan,Owoce
+12,"Baranina, łopatka",Mięso i wędliny
+13,"Baranina, udziec",Mięso i wędliny
+14,Barszcz czerwony zabielany,Posiłek
+15,Barszcz ukraiński,Posiłek
+16,Barszcz ukraiński mrożony,Posiłek
+17,Barszcz z boćwiną,Posiłek
+18,Baton Bounty,Słodycze
+19,Baton Mars,Słodycze
+20,Baton Milky Way,Słodycze
+21,Baton Snickers,Słodycze
+22,Baton szynkowy z indyka,Mięso i wędliny
+23,Baton Twix,Słodycze
+24,Baton z kurczaka,Mięso i wędliny
+25,Befsztyk bity wiejski,Mięso i wędliny
+26,Białko jaja kurzego,Nabiał
+27,Bigos,Posiłek
+28,Bitki wieprzowe,Posiłek
+29,Bitki wieprzowe w jarzynach,Posiłek
+30,Bitki wołowe,Posiłek
+31,Bitki wołowe w jarzynach,Posiłek
+32,Bliny ziemniaczane,Posiłek
+33,Boćwina,Posiłek
+34,Boeuf Strogonow,Posiłek
+35,Bób,Warzywa
+36,Brokuły,Warzywa
+37,Brokuły mrożone,Warzywa
+38,Brukselka,Warzywa
+39,Brukselka mrożona,Warzywa
+40,Brukselka z wody,Posiłek
+41,Bryzol wołowy z polędwicy,Posiłek
+42,Brzoskwinia,Owoce
+43,Brzoskwinie w syropie,Produkty konserwowe
+44,"Brzoskwinie, dżem niskosłodzony",Produkty konserwowe
+45,Buchty drożdżowe,Posiłek
+46,Budyń z mięsa i makaronu,Posiłek
+47,Bułka tarta,Pieczywo
+48,Bułki grahamki,Pieczywo
+49,Bułki kajzerki,Pieczywo
+50,Bułki maślane,Pieczywo
+51,Bułki pszenne zwykłe,Pieczywo
+52,Bułki wrocławskie,Pieczywo
+53,Burak,Warzywa
+54,"Buraki mrożone, puree",Warzywa
+55,Buraki z jabłkami,Posiłek
+56,Buraki zasmażane,Posiłek
+57,Buraki ze śmietaną,Posiłek
+58,Cebula,Warzywa
+59,Chałki,Pieczywo
+60,Chipsy bekonowe,Słodycze
+61,Chipsy paprykowe,Słodycze
+62,Chipsy solone,Słodycze
+63,Chleb baltonowski,Pieczywo
+64,Chleb chrupki,Pieczywo
+65,Chleb Graham,Pieczywo
+66,Chleb mazowiecki,Pieczywo
+67,Chleb mieszany słonecznikowy,Pieczywo
+68,Chleb mieszany sojowy,Pieczywo
+69,Chleb praski,Pieczywo
+70,Chleb pszenny,Pieczywo
+71,Chleb staropolski,Pieczywo
+72,Chleb wiejski,Pieczywo
+73,Chleb zwykły,Pieczywo
+74,Chleb żytni jasny,Pieczywo
+75,Chleb żytni jasny mleczny,Pieczywo
+76,Chleb żytni pełnoziarnisty,Pieczywo
+77,Chleb żytni razowy,Pieczywo
+78,Chleb żytni razowy na miodzie,Pieczywo
+79,Chleb żytni razowy z soją i słonecznikiem,Pieczywo
+80,Chleb żytni wileński,Pieczywo
+81,Chrupki kukurydziane,Słodycze
+82,Chrzan,Warzywa
+83,Ciastka francuskie ze śliwkami,Słodycze
+84,Ciastka Karpatki,Słodycze
+85,Ciastka Napoleonki,Słodycze
+86,Ciastka tortowe z owocami,Słodycze
+87,Ciasto drożdżowe,Pieczywo
+88,Ciasto kruche podstawowe,Pieczywo
+89,Ciasto naleśnikowe bez piany,Pieczywo
+90,Ciasto naleśnikowe biszkoptowe,Pieczywo
+91,Cielęcina w potrawce,Mięso i wędliny
+92,"Cielęcina, łopatka",Mięso i wędliny
+93,"Cielęcina, sznyclówka",Mięso i wędliny
+94,"Cielęcina, udziec",Mięso i wędliny
+95,Coca Cola,Napoje
+96,Cukier,Słodycze
+97,Cukierki irysy,Słodycze
+98,Cukierki krówki,Słodycze
+99,Cukinia,Warzywa
+100,Cykoria,Warzywa
+101,Cytryna,Owoce
+102,Czarne jagody,Owoce
+103,"Czarne porzeczki, dżem niskosłodzony",Produkty konserwowe
+104,"Czarne porzeczki, dżem wysokosłodzony",Produkty konserwowe
+105,Czekolada biała,Słodycze
+106,Czekolada deserowa,Słodycze
+107,Czekolada gorzka,Słodycze
+108,Czekolada kawowa,Słodycze
+109,Czekolada mleczna,Słodycze
+110,Czekolada mleczna z orzechami laskowymi,Słodycze
+111,Czekolada nadziewana,Słodycze
+112,Czereśnie,Owoce
+113,Czosnek,Warzywa
+114,Ćwikła,Posiłek
+115,Daktyle suszone,Owoce
+116,Delicje szampańskie,Słodycze
+117,Deser ryżowy jabłkowy,Posiłek
+118,Deser ryżowy waniliowy,Posiłek
+119,Deser twarogowy termizowany kakaowy,Posiłek
+120,Deser twarogowy termizowany truskawkowy,Posiłek
+121,Dorsz świeży,Ryba
+122,"Dorsz świeży, filety bez skóry",Ryba
+123,Dorsz w jarzynach,Posiłek
+124,Dorsz wędzony,Ryba
+125,Dorsz z rusztu,Ryba
+126,"Dorsz, filety po grecku",Posiłek
+127,"Dorsz, filety smażone panierowane",Posiłek
+128,"Dorsz, kotlet mielony",Posiłek
+129,"Dorsz, pulpety",Posiłek
+130,"Dorsz, sałatka",Posiłek
+131,Dynia,Warzywa
+132,Dynia z pomidorami,Posiłek
+133,"Dynia, pestki",Orzechy
+134,Eklerki z bitą śmietaną,Słodycze
+135,"Fasola biała, suche nasiona",Produkty konserwowe
+136,Fasola cięta konserwowa,Produkty konserwowe
+137,Fasola szparagowa,Warzywa
+138,Fasolka flageolet konserwowa,Produkty konserwowe
+139,Fasolka po bretońsku,Posiłek
+140,Fasolka szparagowa,Warzywa
+141,Fasolka szparagowa mrożona,Warzywa
+142,Figi suszone,Owoce
+143,Flaki,Posiłek
+144,Flądra świeża,Ryba
+145,Galaretka z nóżek wieprzowych,Posiłek
+146,"Gęś, tuszka",
+147,Gołąbki z mięsem i ryżem w sosie pomidorowym,Warzywa
+148,Grejpfrut,
+149,"Groch, suche nasiona",Orzechy
+150,Groszek zielony,
+151,Groszek zielony konserwowy,Nabiał
+152,Groszek zielony mrożony,
+153,Groszek zielony z masłem,
+154,Gruszka,Owoce
+155,Gruszki w sosie waniliowym,Produkty konserwowe
+156,Gulasz wołowy,
+157,Halibut biały świeży,
+158,Herbata bez cukru,Napoje
+159,Herbatniki,
+160,Herbatniki Corso,
+161,Herbatniki kakaowe,
+162,Herbatniki kokosowe,
+163,Herbatniki sezamowe,
+164,Herbatniki w czekoladzie,
+165,Herbatniki z cukrem,
+166,Herbatniki z nadzieniem czekoladowym,
+167,Herbatniki z nadzieniem owocowym,
+168,"Indyk, mięso z piersi bez skóry",Mięso i wędliny
+169,"Indyk, mięso z podudzia ze skórą",Mięso i wędliny
+170,"Indyk, mięso z udźca ze skórą",Mięso i wędliny
+171,"Indyk, skrzydło",
+172,Jabłka pieczone,
+173,Jabłka suszone,
+174,Jabłka w kruchym cieście,
+175,Jabłko,Owoce
+176,"Jagody, dżem niskosłodzony",Produkty konserwowe
+177,Jagodzianki,
+178,Jaja gotowane,
+179,Jaja kurze całe,
+180,Jaja sadzone,
+181,Jajecznica,
+182,Jarmuż,
+183,Jarzyny mrożone,
+184,"Jogurt bananowy 1,5 %",Nabiał
+185,"Jogurt jagodowy 1,5 %",Nabiał
+186,"Jogurt morelowy 1,5 %",Nabiał
+187,Jogurt naturalny 2 %,Nabiał
+188,"Jogurt truskawkowy 1,5 %",Nabiał
+189,"Jogurt wiśniowy 1,5 %",Nabiał
+190,Kabanosy,
+191,Kabanosy z kurczaka,Mięso i wędliny
+192,"Kaczka, tuszka",Mięso i wędliny
+193,Kakao w proszku 16 %,
+194,Kalafior,
+195,Kalafior mrożony,
+196,Kalafior z wody,
+197,Kalarepa,
+198,Kapusta biała,Warzywa
+199,Kapusta biała zasmażana,Warzywa
+200,Kapusta czerwona,Warzywa
+201,Kapusta kwaszona,Warzywa
+202,Kapusta pekińska,Warzywa
+203,Kapusta włoska,Warzywa
+204,Kapuśniak z kapusty kwaszonej,
+205,Kapuśniak z kapusty słodkiej,
+206,Karmelki nadziewane,Słodycze
+207,Karmelki twarde,Słodycze
+208,Karp świeży,
+209,Karp w galarecie z warzywami,
+210,Karp z wody,
+211,Kasza gryczana,
+212,Kasza gryczana na sypko,
+213,Kasza jaglana,
+214,Kasza jęczmienna na mleku,
+215,Kasza jęczmienna perłowa,
+216,Kasza jęczmienna pęczak,
+217,Kasza manna,
+218,Kasza manna na mleku,
+219,Kasza manna na wywarze jarzynowym,
+220,Kasza perłowa na sypko,
+221,Kaszanka z kurczaka,Mięso i wędliny
+222,Kawa bez cukru,Napoje
+223,Kefir 2 %,Nabiał
+224,Keks bakaliowy,
+225,Ketchup,
+226,Kiełbasa jałowcowa z kurczaka,Mięso i wędliny
+227,Kiełbasa krakowska sucha,Mięso i wędliny
+228,Kiełbasa mazurska z indyka,Mięso i wędliny
+229,Kiełbasa mortadela,Mięso i wędliny
+230,Kiełbasa myśliwska sucha,Mięso i wędliny
+231,Kiełbasa parówkowa,Mięso i wędliny
+232,Kiełbasa podlaska z kurczaka,Mięso i wędliny
+233,Kiełbasa podsuszana z kurczaka,Mięso i wędliny
+234,Kiełbasa podwawelska,Mięso i wędliny
+235,Kiełbasa szynkowa z indyka,Mięso i wędliny
+236,Kiełbasa szynkowa z kurczaka,Mięso i wędliny
+237,Kiełbasa śląska,Mięso i wędliny
+238,Kiełbasa toruńska,Mięso i wędliny
+239,Kiełbasa zwyczajna,Mięso i wędliny
+240,Kiełbasa żywiecka,Mięso i wędliny
+241,Kisiel porzeczkowy,
+242,Kisiel waniliowy,
+243,Kiszka kaszana jęczmienna,
+244,Kiszka krwista,
+245,Kiszka pasztetowa,
+246,Kiwi,
+247,"Kiwi, dżem niskosłodzony",Produkty konserwowe
+248,Klopsiki cielęce mielone,
+249,Klopsiki mielone z mięsa mieszanego,
+250,Kluski kładzione,
+251,Kluski lane,
+252,Kluski lane na mleku,
+253,Kluski śląskie,
+254,Knedle ze śliwkami,
+255,Kompot z jabłek,
+256,Kompot z wiśni,
+257,Koncentrat pomidorowy 30 %,Warzywa
+258,Koper,
+259,Kopytka,
+260,Kotlet cielęcy panierowany,
+261,Kotlet mielony z mięsa mieszanego,
+262,Kotlet schabowy panierowany,
+263,Kotlet z kurczaka smażony panierowany,Mięso i wędliny
+264,Kotlet z kurczaka smażony saute,Mięso i wędliny
+265,Kotlet z kury mielony,
+266,Kotlety z jaj,
+267,Kotlety ziemniaczane,
+268,Krem z zielonego groszku,
+269,"Królik, tuszka",
+270,Krupnik z kaszy gryczanej,
+271,Krupnik z kaszy jęczmiennej,
+272,Krupnik z ryżu,
+273,Kukurydza,
+274,Kukurydza konserwowa,Nabiał
+275,Kulebiak,
+276,Kura w galarecie,
+277,"Kura, tuszka",
+278,Kurczak faszerowany pieczony,Mięso i wędliny
+279,Kurczak gotowany w jarzynach,Mięso i wędliny
+280,Kurczak pieczony,Mięso i wędliny
+281,"Kurczak, mięso z piersi bez skóry",Mięso i wędliny
+282,"Kurczak, mięso z uda ze skórą",Mięso i wędliny
+283,"Kurczak, skrzydło",Mięso i wędliny
+284,"Kurczak, tuszka",Mięso i wędliny
+285,"Kurczak, wątroba",Mięso i wędliny
+286,"Kurczak, żołądek",Mięso i wędliny
+287,Lody mleczno-owocowe,
+288,Lody śmietankowe,
+289,Łosoś smażony saute,Ryby
+290,Łosoś świeży,Ryby
+291,Łosoś wędzony,Ryby
+292,Łosoś z rusztu,Ryby
+293,Majonez z olejem rzepakowym,Oleje
+294,Majonez z olejem słonecznikowym,Oleje
+295,Mak niebieski,
+296,Makaron bezjajeczny,
+297,Makaron czterojajeczny,
+298,Makaron dwujajeczny,
+299,Makaron na mleku,
+300,Makrela świeża,Ryby
+301,Makrela wędzona,Ryby
+302,"Makrela, filety z czerwoną fasolą",Ryby
+303,"Makrela, filety z warzywami",Ryby
+304,"Makrela, sałatka pikantna",Posiłek
+305,Maliny,
+306,Mandarynki,
+307,Marchew,Warzywa
+308,Marchew mrożona,Warzywa
+309,Marchew z groszkiem,Warzywa
+310,Marchew zasmażana,Warzywa
+311,Margaryna Bona,
+312,Margaryna Flora,
+313,Margaryna Kama,
+314,Margaryna mleczna,
+315,Margaryna Palma,
+316,Margaryna Rama,
+317,Margaryna Słoneczna,
+318,Margaryna Tina,
+319,Margaryna zwykła,
+320,Markizy,
+321,Masło ekstra,Nabiał
+322,Masło roślinne Nova,Nabiał
+323,Masło roślinne zwykłe,Nabiał
+324,Masło śmietankowe,Nabiał
+325,"Maślanka 0,5 %",
+326,Mąka pszenna typ 500,
+327,Mąka pszenna typ 550,
+328,Medaliony z indyka,
+329,Melon,
+330,Mielonka,
+331,Migdały,Orzechy
+332,Mintaj świeży,
+333,Miód pszczeli,
+334,Mizeria ze śmietaną,
+335,Mleko kozie,Nabiał
+336,Mleko owcze,Nabiał
+337,"Mleko spożywcze 0,5 %",Nabiał
+338,"Mleko spożywcze 1,5 %",Nabiał
+339,Mleko spożywcze 2 %,Nabiał
+340,"Mleko spożywcze 3,2 %",Nabiał
+341,"Mleko spożywcze 3,5 %",Nabiał
+342,Mleko w proszku odtłuszczone,Nabiał
+343,Mleko w proszku pełne,Nabiał
+344,Mleko zagęszczone niesłodzone,Nabiał
+345,Mleko zagęszczone słodzone,Nabiał
+346,Morela,
+347,Morele suszone,
+348,"Morele, dżem niskosłodzony",Produkty konserwowe
+349,Morszczuk świeży,
+350,Mus jabłkowy,Owoce
+351,Musli z owocami suszonymi,
+352,Musli z rodzynkami i orzechami,Orzechy
+353,Musztarda,
+354,Naleśniki z kapustą,
+355,Naleśniki z serem,Nabiał
+356,Napój mleczny jogurtowy,Nabiał
+357,Napój mleczny kakaowy,Napoje
+358,Napój owocowy gazowany,Napoje
+359,Nektarynka,
+360,Nerki wieprzowe,
+361,Nogi wieprzowe,
+362,Ocet winny,
+363,Ogórek,Warzywa
+364,Ogórek kiszony,Warzywa
+365,Olej kukurydziany,Oleje
+366,Olej lniany,Oleje
+367,Olej rzepakowy,Oleje
+368,Olej słonecznikowy,Oleje
+369,Olej sojowy,Oleje
+370,Oliwa z oliwek,Oleje
+371,Oliwki,
+372,Orzechy arachidowe,Orzechy
+373,Orzechy laskowe,Orzechy
+374,Orzechy nerkowca,Orzechy
+375,Orzechy pistacjowe,Orzechy
+376,Orzechy włoskie,Orzechy
+377,Orzeszki ziemne,
+378,Ostrygi,
+379,Otręby pszenne,
+380,Ozory cielęce,
+381,Ozory wieprzowe,
+382,Paluszki,
+383,Papaja,
+384,Papryka czerwona,
+385,Papryka konserwowa,Nabiał
+386,Paprykarz Szczeciński,
+387,Parówki dla dzieci Morlinki,
+388,Parówki popularne,
+389,Parówki z kurczaka,Mięso i wędliny
+390,Pasternak,
+391,Pasztet popularny,
+392,Pasztet z drobiu,
+393,Pączki,
+394,"Pepsi, Cola, napój",Napoje
+395,"Pepsi, Cola light, napój",Napoje
+396,Pestki dyni,Orzechy
+397,Pędy bambusa,
+398,"Pędy bambusa, konserwa, odsączone",Nabiał
+399,Pieczarka suszona,
+400,Pieczarka świeża,
+401,Pieczywo chrupkie pszenne Wasa,Pieczywo
+402,Pierogi leniwe mrożone,
+403,Pierogi ruskie mrożone,
+404,Pierogi z kapustą i grzybami mrożone,
+405,Pierogi z mięsem mrożone,
+406,Pierogi z serem mrożone,Nabiał
+407,Pierogi z truskawkami mrożone,
+408,Piernik czekoladowy,
+409,Piersi bez skóry indycze,
+410,Piersi bez skóry z kurczaka,Mięso i wędliny
+411,Piersi ze skórą z kurczaka,Mięso i wędliny
+412,Pietruszka korzeń,
+413,Pietruszka liście,
+414,Pikling,
+415,Piwo bezalkoholowe,Alkohol
+416,Piwo ciemne pełne,Alkohol
+417,Piwo jasne mocne,Alkohol
+418,Piwo jasne pełne,Alkohol
+419,Pizza z pieczarkami i cebulą,
+420,Pizza z szynką,
+421,"Planta, tłuszcz roślinny",
+422,Płatki jęczmienne,
+423,Płatki kukurydziane,
+424,Płatki kukurydziane Nestle Corn Flakes,
+425,Płatki owsiane,
+426,Płatki pszenne,
+427,Płatki żytnie,
+428,Polędwica wołowa,
+429,Pomidor,Warzywa
+430,Por,
+431,Pomarańcza,Owoce
+432,Popcorn bez tłuszczu,
+433,Popcorn z tłuszczem,
+434,Porzeczki białe,
+435,Porzeczki czarne,
+436,Porzeczki czerwone,
+437,Powidła śliwkowe,
+438,Poziomki,
+439,Precelki,
+440,"Prince Polo, wafel",
+441,"Princessa, wafel",
+442,Przyprawa do zup Maggi,
+443,Pstrąg świeży,
+444,"Ptyś z bitą śmietaną, ciastko",Słodycze
+445,Pyzy z mięsem mrożone,
+446,Pyzy ziemniaczane mrożone,
+447,Rabarabar,
+448,"Raffaello, czekoladki",
+449,"Rama Classic, margaryna",
+450,"Red Bull, napój",Napoje
+451,Rodzynki,
+452,Rostbef wołowy,
+453,Rozbratel wołowy,
+454,Ryż biały,
+455,Ryż brązowy,
+456,Ryż dziki amerykański,
+457,Ryż preparowany,
+458,Rzeżucha,
+459,Rzodkiewka,
+460,Salceson czarny,
+461,Salceson włoski,
+462,Sałata,Warzywa
+463,Sandacz świeży,
+464,"Sardynki w oleju, konserwa",Nabiał
+465,"Sardynki w sosie pomidorowym, konserwa",Nabiał
+466,Sarnina,
+467,Schab surowy wieprzowy,
+468,Schab wędzony,
+469,Seler korzeń,
+470,Ser Feta,Nabiał
+471,Ser pleśniowy Brie pełnotłusty,Nabiał
+472,Ser pleśniowy Rokpol pełnotłusty,Nabiał
+473,Ser podpuszczkowy Brie pełnotłusty,Nabiał
+474,Ser podpuszczkowy Camembert tłusty,Nabiał
+475,Ser podpuszczkowy Cheddar pełnotłusty,Nabiał
+476,Ser podpuszczkowy Ementaler pełnotłusty,Nabiał
+477,Ser podpuszczkowy Ementaler tłusty,Nabiał
+478,Ser podpuszczkowy Gouda tłusty,Nabiał
+479,Ser podpuszczkowy Mozarella tłusty,Nabiał
+480,Ser podpuszczkowy Myśliwski pełnotłusty,Nabiał
+481,Ser podpuszczkowy Parmezan,Nabiał
+482,Ser podpuszczkowy Salami pełnotłusty,Nabiał
+483,Ser podpuszczkowy Salami tłusty,Nabiał
+484,Ser podpuszczkowy Tylżycki pełnotłusty,Nabiał
+485,Ser podpuszczkowy Tylżycki tłusty,Nabiał
+486,Ser topiony tłusty,Nabiał
+487,Ser twarogowy chudy,Nabiał
+488,Ser twarogowy półtłusty,Nabiał
+489,Ser twarogowy pełnotłusty,Nabiał
+490,Serca wieprzowe,Nabiał
+491,Serdelki drobiowe,Nabiał
+492,Serek Fromage naturalny,Nabiał
+493,Serek homogenizowany truskawkowy,Nabiał
+494,Serek homogenizowany waniliowy,Nabiał
+495,Serek twarogowy ziarnisty,Nabiał
+496,Sernik,Nabiał
+497,"Sernik z rodzynkami, ciasto",Nabiał
+498,Serwatka płynna,Nabiał
+499,Sezamki,
+500,Skrobia kukurydziana,
+501,Skrzydło bez skóry indycze,
+502,Słonecznik ziarno,
+503,Słonina,
+504,Smalec,
+505,"Snickers, baton",Słodycze
+506,"Soczewica, suche ziarno",
+507,"Soja, suche ziarno",
+508,Sola świeża,
+509,Sok ananasowy,Owoce
+510,Sok grejfrutowy,Napoje
+511,Sok jabłkowy,Owoce
+512,Sok marchwiowy,Napoje
+513,Sok pomarańczowy,Napoje
+514,Sok pomidorowy,Warzywa
+515,Sok z czarnej porzeczki,Napoje
+516,"Sprite, napój",Napoje
+517,Syrop truskawkowy,
+518,Szampan półsłodki,Alkohol
+519,Szampan półwytrawny,Alkohol
+520,Szampan słodki,Alkohol
+521,Szczaw,
+522,Szczupak świeży,Posiłek
+523,Szczypiorek,
+524,Szparagi,
+525,Szpinak,
+526,Szponder wołowy,
+527,Szprot wędzony,
+528,Szynka surowa wieprzowa,Mięso i wędliny
+529,Szynka wędzona gotowana,Mięso i wędliny
+530,Śmietana 12% tłuszczu,Nabiał
+531,Śmietana 18% tłuszczu,Nabiał
+532,Śmietanka do kawy 9% tłuszczu,
+533,Śmietanka kremowa 30% tłuszczu,
+534,Śledź solony,
+535,Śledź świeży,
+536,"Śledź w oleju, konserwa",Nabiał
+537,"Śledź w pomidorach, konserwa",Nabiał
+538,Śliwki,
+539,Śliwki suszone,
+540,Truskawki,
+541,Truskawki w galaretce,
+542,Truskawki z bitą śmietaną,
+543,"Truskawki, dżem niskosłodzony",Produkty konserwowe
+544,"Truskawki, dżem wysokosłodzony",Napoje
+545,Tuńczyk w oleju,Oleje
+546,Tuńczyk w wodzie,Ryby
+547,Wafle nadziewane,
+548,Wafle w czekoladzie,
+549,Wątroba cielęca,
+550,Wątroba wieprzowa,
+551,Wątroba wołowa,
+552,Wątróbka wieprzowa saute,
+553,Wędzonka wołowa gotowana,
+554,Węgorz wędzony,
+555,Wieprzowina duszona,Mięso i wędliny
+556,Wieprzowina gotowana,Mięso i wędliny
+557,Winogrona,Alkohol
+558,Wiórki kokosowe,
+559,Wiśnie,
+560,"Wiśnie, dżem niskosłodzony",Produkty konserwowe
+561,"Wiśnie, dżem wysokosłodzony",Napoje
+562,Włoszczyzna mrożona,
+563,"Wołowina, pieczeń",Mięso i wędliny
+564,"Wołowina, polędwica",Mięso i wędliny
+565,"Wołowina, rostbef",Mięso i wędliny
+566,"Wołowina, rozbratel",Mięso i wędliny
+567,"Wołowina, szponder",Mięso i wędliny
+568,Ziemniaki późne,Warzywa
+569,Ziemniaki puree,Warzywa
+570,Ziemniaki wczesne,Warzywa
+571,Ziemniaki z tłuszczem,Warzywa
+572,Zupa cebulowa,Posiłek
+573,Zupa cytrynowa z ryżem,Posiłek
+574,Zupa fasolowa,Posiłek
+575,Zupa grochowa,Posiłek
+576,Zupa grzybowa zabielana,Posiłek
+577,Zupa jarzynowa,Posiłek
+578,Zupa jesienna mrożona,Posiłek
+579,Zupa kalafiorowa,Posiłek
+580,Zupa kalafiorowa mrożona,Posiłek
+581,Zupa neapolitańska,Posiłek
+582,Zupa ogórkowa,Posiłek
+583,Zupa owocowa z jabłek,Posiłek
+584,Zupa pomidorowa,Warzywa
+585,Zupa pomidorowa z makaronem,Warzywa
+586,Zupa pomidorowa z ryżem,Warzywa
+587,Zupa pomidorowa zabielana,Warzywa
+588,Zupa selerowa,Posiłek
+589,Zupa selerowa z grzankami,Posiłek
+590,Zupa szczawiowa,Posiłek
+591,Zupa szpinakowa z ziemniakami,Warzywa
+592,Zupa włoska mrożona,Posiłek
+593,Zupa z fasoli szparagowej,Posiłek
+594,Zupa z porów z makaronem,Posiłek
+595,Zupa z zielonego groszku,Posiłek
+596,Zupa ziemniaczana,Posiłek
+597,Zupa zimowa mrożona,Posiłek
+598,Żeberka wieprzowe duszone,
+599,Żółtko jaja kurzego,

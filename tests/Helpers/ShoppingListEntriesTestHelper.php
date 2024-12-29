@@ -19,7 +19,7 @@ class ShoppingListEntriesTestHelper {
         return [
             'product_name' => $faker->name,
             'unit_id' => $globalProductID,
-            'amount' => $faker->randomDigit(),
+            'amount' => (float)$faker->randomDigit(),
             'type' => 'raw_product',
             'checked' => $faker->boolean(),
             'category_id' => 0
