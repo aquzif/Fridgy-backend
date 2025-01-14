@@ -18,7 +18,9 @@ class Recipe extends Model {
         'video_url',
         'image',
         'steps',
-        'tags'
+        'tags',
+        'type',
+        'created_by',
     ];
 
     protected $with = ['ingredients'];
@@ -71,6 +73,7 @@ class Recipe extends Model {
         parent::boot();
         self::creating(function($model) {
             $model->tags = '[]';
+            $model->created_by = auth()->id();
         });
         self::deleting(function($model) {
 

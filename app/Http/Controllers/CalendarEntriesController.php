@@ -95,6 +95,12 @@ class CalendarEntriesController extends Controller
             return ResponseUtils::generateErrorResponse('Unauthorized', 401);
         }
 
+        if($calendarEntry->recipe_id !== 0) {
+            $recipe = Recipe::find($calendarEntry->recipe_id);
+            if(isset($recipe) && $recipe->type === 'calendar_entry')
+                $recipe->delete();
+        }
+
         $calendarEntry->delete();
         return ResponseUtils::generateSuccessResponse('OK');
     }

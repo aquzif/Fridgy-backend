@@ -70,6 +70,7 @@ class RecipesController extends Controller {
             'image' => 'string',
             'video_url' => 'string|nullable',
             'steps' => 'json',
+            'type' => 'string|in:global,calendar_entry,private',
         ]);
 
         if(!isset($fields['prepare_time']))
@@ -79,6 +80,7 @@ class RecipesController extends Controller {
             $fields['serving_amount'] = 1;
 
         $newObj = Recipe::create($fields);
+
 
         return ResponseUtils::generateSuccessResponse(
             $newObj->where('id',$newObj['id'])->first()

@@ -17,7 +17,9 @@
         "laravel/ui": "^4.2",
         "meilisearch/meilisearch-php": "^1.2",
         "openai-php/client": "^0.8.4",
-        "spatie/laravel-ray": "^1.32"
+        "spatie/laravel-backup": "^8.2",
+        "spatie/laravel-ray": "^1.32",
+        "yaza/laravel-google-drive-storage": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
