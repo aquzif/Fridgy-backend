@@ -138,7 +138,7 @@ return [
             Recipe::class => [
                 'sortableAttributes' => ['id'],
             ],
-            \App\Models\Ingredient::class => [
+            \App\Models\Product::class => [
                 'filterableAttributes' => ['id', 'name', 'product_id'],
             ],
             // 'users' => [
