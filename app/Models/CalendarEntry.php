@@ -16,7 +16,7 @@ class CalendarEntry extends Model
         'fast_food_store_id'
     ];
 
-    protected $with = ['recipe', 'fastFoodStore', 'calendarEntryFastFoodMeals'];
+    protected $with = ['recipe', 'fastFoodStore', 'calendarEntryFastFoodMeals', 'calendarEntryIngredients'];
 
     public function recipe() {
         return $this->belongsTo(Recipe::class);
@@ -31,13 +31,21 @@ class CalendarEntry extends Model
         return $this->hasMany(CalendarEntryFastFoodMeal::class, 'calendar_entry_id', 'id');
     }
 
+    public function calendarEntryIngredients(): \Illuminate\Database\Eloquent\Relations\HasMany {
+        return $this->hasMany(CalendarEntryIngredient::class, 'calendar_entry_id', 'id');
+    }
+
     public function recalculate() {
         $calories = 0;
-        if ($this->entry_type == 'recipe') {
-            $calories = $this->recipe->calories;
-        } else {
+        if ($this->entry_type === 'from_recipe') {
+            $calories = $this->recipe->calories_per_serving;
+        } elseif ($this->entry_type === 'from_fast_food_store') {
             foreach ($this->calendarEntryFastFoodMeals as $meal) {
                 $calories += $meal->calories_per_ration * $meal->quantity;
+            }
+        } elseif ($this->entry_type === 'from_ingredients') {
+            foreach ($this->calendarEntryIngredients as $ing) {
+                $calories += $ing->calories;
             }
         }
         $this->calories = $calories;

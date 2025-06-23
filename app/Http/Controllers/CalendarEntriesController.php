@@ -35,7 +35,7 @@ class CalendarEntriesController extends Controller
     public function store(Request $request) {
 
         $params = $request->validate([
-            'type' => 'required|in:from_recipe,from_fast_food_store',
+            'type' => 'required|in:from_recipe,from_fast_food_store,from_ingredients',
             'meal_order' => 'integer|required',
             'date' => 'required|date',
         ]);
@@ -47,6 +47,7 @@ class CalendarEntriesController extends Controller
         return match ($params['type']) {
             'from_recipe' => $this->storeFromRecipe($request),
             'from_fast_food_store' => $this->storeFromFastFoodStore($request),
+            'from_ingredients' => $this->storeFromIngredients($request),
             default => ResponseUtils::generateErrorResponse('Invalid type'),
         };
 
@@ -67,7 +68,7 @@ class CalendarEntriesController extends Controller
     public function update(Request $request, CalendarEntry $calendarEntry) {
 
         $fields = $request->validate([
-            'type' => 'in:from_recipe',
+            'type' => 'in:from_recipe,from_fast_food_store,from_ingredients',
             'date' => 'date',
             'meal_order' => 'integer',
         ]);
@@ -84,6 +85,7 @@ class CalendarEntriesController extends Controller
         return match ($fields['type']) {
             'from_recipe' => $this->updateFromRecipe($request, $calendarEntry),
             'from_fast_food_store' => $this->updateFromFastFoodStore($request, $calendarEntry),
+            'from_ingredients' => $this->updateFromIngredients($request, $calendarEntry),
             default => ResponseUtils::generateErrorResponse('Invalid type'),
         };
     }
@@ -191,6 +193,63 @@ class CalendarEntriesController extends Controller
             'date' => $request['date'],
             'meal_order' => $request['meal_order'],
         ]);
+
+        return ResponseUtils::generateSuccessResponse($calendarEntry);
+    }
+
+    public function storeFromIngredients(Request $request) {
+        $fields = $request->validate([
+            'date' => 'required|date',
+            'meal_order' => 'integer|required',
+            'ingredients' => 'array',
+            'ingredients.*.ingredient_id' => 'required|exists:products,id',
+            'ingredients.*.unit_id' => 'required|exists:global_units,id',
+            'ingredients.*.amount' => 'numeric|required',
+        ]);
+
+        $user = $request->user();
+
+        $entry = $user->calendarEntries()->create([
+            'entry_type' => 'from_ingredients',
+            'calories' => 0,
+            'date' => $fields['date'],
+            'meal_order' => $fields['meal_order'],
+            'recipe_id' => 0,
+        ]);
+
+        if(isset($fields['ingredients'])) {
+            foreach ($fields['ingredients'] as $ing) {
+                $entry->calendarEntryIngredients()->create($ing);
+            }
+        }
+
+        return ResponseUtils::generateSuccessResponse($entry);
+    }
+
+    public function updateFromIngredients(Request $request, CalendarEntry $calendarEntry) {
+        $fields = $request->validate([
+            'date' => 'date',
+            'meal_order' => 'integer',
+            'ingredients' => 'array',
+            'ingredients.*.ingredient_id' => 'required|exists:products,id',
+            'ingredients.*.unit_id' => 'required|exists:global_units,id',
+            'ingredients.*.amount' => 'numeric|required',
+        ]);
+
+        $calendarEntry->update([
+            'entry_type' => 'from_ingredients',
+            'date' => $fields['date'] ?? $calendarEntry->date,
+            'meal_order' => $fields['meal_order'] ?? $calendarEntry->meal_order,
+            'recipe_id' => 0,
+            'fast_food_store_id' => null,
+        ]);
+
+        if(isset($fields['ingredients'])) {
+            $calendarEntry->calendarEntryIngredients()->delete();
+            foreach ($fields['ingredients'] as $ing) {
+                $calendarEntry->calendarEntryIngredients()->create($ing);
+            }
+        }
 
         return ResponseUtils::generateSuccessResponse($calendarEntry);
     }
