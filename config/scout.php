@@ -137,7 +137,10 @@ return [
         'index-settings' => [
             Recipe::class => [
                 'sortableAttributes' => ['id'],
-            ]
+            ],
+            \App\Models\Ingredient::class => [
+                'filterableAttributes' => ['id', 'name', 'product_id'],
+            ],
             // 'users' => [
             //     'filterableAttributes'=> ['id', 'name', 'email'],
             // ],
