@@ -111,6 +111,7 @@ class ShoppingListsController extends Controller {
             'name' => 'required|string',
             'type' => 'string|in:default,grouped',
             'default' => 'boolean',
+            'sort' => 'boolean',
         ]);
 
          $newShoppingList = ShoppingList::create([
@@ -134,6 +135,7 @@ class ShoppingListsController extends Controller {
             'name' => 'string',
             'type' => 'string|in:default,grouped',
             'default' => 'boolean',
+            'sort' => 'boolean',
         ]);
 
         $shoppingList->update($fields);
@@ -151,6 +153,19 @@ class ShoppingListsController extends Controller {
         $this->authorize('update', $shoppingList);
 
         $shoppingList->update(['default' => true]);
+        $shoppingList = $shoppingList->refresh();
+
+        return ResponseUtils::generateSuccessResponse($shoppingList);
+    }
+
+    public function setSort(ShoppingList $shoppingList, Request $request) {
+        $this->authorize('update', $shoppingList);
+
+        $fields = $request->validate([
+            'sort' => 'required|boolean',
+        ]);
+
+        $shoppingList->update(['sort' => $fields['sort']]);
         $shoppingList = $shoppingList->refresh();
 
         return ResponseUtils::generateSuccessResponse($shoppingList);

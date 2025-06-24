@@ -10,10 +10,12 @@ class ShoppingList extends Model {
         'user_id',
         'type',
         'default',
+        'sort',
     ];
 
     protected $casts = [
         'default' => 'boolean',
+        'sort' => 'boolean',
     ];
 
     protected $with = [

@@ -32,6 +32,10 @@ export default class ShoppingListsAPI {
         return await RequestUtils.apiPut('/api/shopping-list/' + id + '/default');
     }
 
+    static async setSort(id, sort) {
+        return await RequestUtils.apiPut('/api/shopping-list/' + id + '/sort', {sort});
+    }
+
     static async delete(id) {
         return await RequestUtils.apiDelete('/api/shopping-list/' + id);
     }
