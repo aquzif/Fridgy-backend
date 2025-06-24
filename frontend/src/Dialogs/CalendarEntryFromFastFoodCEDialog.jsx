@@ -344,8 +344,7 @@ const CalendarEntryFromFastFoodCEDialog = (
             open={open}
 
             fullScreen={stage === 1}
-
-
+            maxWidth={'md'}
             fullWidth
             onClose={onClose}
         >
