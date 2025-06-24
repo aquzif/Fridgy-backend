@@ -10,7 +10,8 @@ on:
 jobs:
   test:
     defaults:
-      working-directory: backend
+      run:
+        working-directory: backend
     services:
       mysql:
         image: mysql:8.0.21
@@ -54,7 +55,8 @@ jobs:
         run: php artisan test
   deploy-dev:
     defaults:
-      working-directory: backend
+      run:
+        working-directory: backend
     runs-on: ubuntu-latest
     needs: [ test ]
     if: github.ref == 'refs/heads/dev'
@@ -90,7 +92,8 @@ jobs:
         run: ssh -p 22 ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }} "cd ${{ secrets.SSH_DIR_DEV_B }} && sudo su && ./vendor/bin/sail artisan scout:sync-index-settings"
   deploy-prod:
     defaults:
-      working-directory: backend
+      run:
+        working-directory: backend
     runs-on: ubuntu-latest
     needs: [ test ]
     if: github.ref == 'refs/heads/main'
