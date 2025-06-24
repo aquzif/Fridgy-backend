@@ -6,7 +6,7 @@ import store from "@/Store/store";
 import {FormControl, Grid, InputLabel, LinearProgress, MenuItem, Select} from "@mui/material";
 
 
-import {Add, Delete, EditNote, Refresh} from "@mui/icons-material";
+import {Add, Delete, EditNote, Refresh, Star, StarBorder} from "@mui/icons-material";
 import FAB from "@/Components/FAB/FAB";
 import ShoppingListCEDialog from "@/Dialogs/ShoppingListCEDialog";
 import ConfirmDialog from "@/Dialogs/ConfirmDialog";
@@ -96,6 +96,19 @@ const ShoppingListView = () => {
     const handleOpenShoppingListEntryCreateDialog = () => {
         setEditMode(false);
         setShoppingListEntryCUDialogOpen(true);
+    }
+
+    const handleSetDefault = async () => {
+        if(!selectedShoppingListID) return;
+        await toast.promise(
+            ShoppingListsAPI.setDefault(selectedShoppingListID),
+            {
+                loading: 'Ustawianie domyślnej listy...',
+                success: 'Lista ustawiona jako domyślna',
+                error: 'Nie udało się ustawić listy jako domyślnej'
+            }
+        );
+        store.dispatch(requestShoppingLists());
     }
 
     const handleOpenShoppingListEntryEditDialog = (entryID) => {
@@ -195,6 +208,12 @@ const ShoppingListView = () => {
                             disabled={shoppingLists.length === 0}
                             onClick={handleShoppingListDeleteButton}
                             icon={<Delete />}
+                        />
+                        <TooltipIconButton
+                            title={'Ustaw jako domyślną'}
+                            disabled={shoppingLists.length === 0}
+                            onClick={handleSetDefault}
+                            icon={selectedShoppingList?.default ? <Star /> : <StarBorder />}
                         />
                        <TooltipIconButton
                            title={'Odśwież'}

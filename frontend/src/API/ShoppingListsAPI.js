@@ -28,6 +28,10 @@ export default class ShoppingListsAPI {
         return await RequestUtils.apiPut('/api/shopping-list/' + id, data);
     }
 
+    static async setDefault(id) {
+        return await RequestUtils.apiPut('/api/shopping-list/' + id + '/default');
+    }
+
     static async delete(id) {
         return await RequestUtils.apiDelete('/api/shopping-list/' + id);
     }

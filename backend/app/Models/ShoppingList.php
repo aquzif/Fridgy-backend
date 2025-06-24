@@ -9,11 +9,34 @@ class ShoppingList extends Model {
         'name',
         'user_id',
         'type',
+        'default',
+    ];
+
+    protected $casts = [
+        'default' => 'boolean',
     ];
 
     protected $with = [
         'entries',
     ];
+
+    protected static function boot() {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if($model->default) {
+                ShoppingList::where('user_id', $model->user_id)
+                    ->update(['default' => false]);
+            }
+        });
+
+        static::updating(function ($model) {
+            if($model->default) {
+                ShoppingList::where('user_id', $model->user_id)
+                    ->update(['default' => false]);
+            }
+        });
+    }
 
 
     function entries(): \Illuminate\Database\Eloquent\Relations\HasMany {

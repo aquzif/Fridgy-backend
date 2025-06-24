@@ -110,6 +110,7 @@ class ShoppingListsController extends Controller {
         $fields = $request->validate([
             'name' => 'required|string',
             'type' => 'string|in:default,grouped',
+            'default' => 'boolean',
         ]);
 
          $newShoppingList = ShoppingList::create([
@@ -132,6 +133,7 @@ class ShoppingListsController extends Controller {
         $fields = $request->validate([
             'name' => 'string',
             'type' => 'string|in:default,grouped',
+            'default' => 'boolean',
         ]);
 
         $shoppingList->update($fields);
@@ -143,5 +145,14 @@ class ShoppingListsController extends Controller {
     public function destroy(ShoppingList $shoppingList) {
         $shoppingList->delete();
         return ResponseUtils::generateSuccessResponse();
+    }
+
+    public function setDefault(ShoppingList $shoppingList, Request $request) {
+        $this->authorize('update', $shoppingList);
+
+        $shoppingList->update(['default' => true]);
+        $shoppingList = $shoppingList->refresh();
+
+        return ResponseUtils::generateSuccessResponse($shoppingList);
     }
 }
