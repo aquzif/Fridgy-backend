@@ -35,7 +35,7 @@ class CalendarEntriesController extends Controller
     public function store(Request $request) {
 
         $params = $request->validate([
-            'type' => 'required|in:from_recipe,from_fast_food_store,from_ingredients',
+            'type' => 'required|in:from_recipe,from_fast_food_store,from_ingredients,quick_entry',
             'meal_order' => 'integer|required',
             'date' => 'required|date',
         ]);
@@ -48,6 +48,7 @@ class CalendarEntriesController extends Controller
             'from_recipe' => $this->storeFromRecipe($request),
             'from_fast_food_store' => $this->storeFromFastFoodStore($request),
             'from_ingredients' => $this->storeFromIngredients($request),
+            'quick_entry' => $this->storeFromQuickEntry($request),
             default => ResponseUtils::generateErrorResponse('Invalid type'),
         };
 
@@ -68,7 +69,7 @@ class CalendarEntriesController extends Controller
     public function update(Request $request, CalendarEntry $calendarEntry) {
 
         $fields = $request->validate([
-            'type' => 'in:from_recipe,from_fast_food_store,from_ingredients',
+            'type' => 'in:from_recipe,from_fast_food_store,from_ingredients,quick_entry',
             'date' => 'date',
             'meal_order' => 'integer',
         ]);
@@ -86,6 +87,7 @@ class CalendarEntriesController extends Controller
             'from_recipe' => $this->updateFromRecipe($request, $calendarEntry),
             'from_fast_food_store' => $this->updateFromFastFoodStore($request, $calendarEntry),
             'from_ingredients' => $this->updateFromIngredients($request, $calendarEntry),
+            'quick_entry' => $this->updateFromQuickEntry($request, $calendarEntry),
             default => ResponseUtils::generateErrorResponse('Invalid type'),
         };
     }
@@ -249,6 +251,61 @@ class CalendarEntriesController extends Controller
             foreach ($fields['ingredients'] as $ing) {
                 $calendarEntry->calendarEntryIngredients()->create($ing);
             }
+        }
+
+        return ResponseUtils::generateSuccessResponse($calendarEntry);
+    }
+
+    public function storeFromQuickEntry(Request $request) {
+        $fields = $request->validate([
+            'date' => 'required|date',
+            'meal_order' => 'required|integer',
+            'name' => 'required|string',
+            'calories' => 'required|numeric',
+        ]);
+
+        $user = $request->user();
+
+        $entry = $user->calendarEntries()->create([
+            'entry_type' => 'quick_entry',
+            'calories' => $fields['calories'],
+            'date' => $fields['date'],
+            'meal_order' => $fields['meal_order'],
+            'recipe_id' => 0,
+            'fast_food_store_id' => null,
+        ]);
+
+        $entry->calendarEntryQuickEntries()->create([
+            'name' => $fields['name'],
+            'calories' => $fields['calories'],
+        ]);
+
+        return ResponseUtils::generateSuccessResponse($entry);
+    }
+
+    public function updateFromQuickEntry(Request $request, CalendarEntry $calendarEntry) {
+        $fields = $request->validate([
+            'date' => 'date',
+            'meal_order' => 'integer',
+            'name' => 'string',
+            'calories' => 'numeric',
+        ]);
+
+        $calendarEntry->update([
+            'entry_type' => 'quick_entry',
+            'date' => $fields['date'] ?? $calendarEntry->date,
+            'meal_order' => $fields['meal_order'] ?? $calendarEntry->meal_order,
+            'calories' => $fields['calories'] ?? $calendarEntry->calories,
+            'recipe_id' => 0,
+            'fast_food_store_id' => null,
+        ]);
+
+        $quick = $calendarEntry->calendarEntryQuickEntries()->first();
+        if($quick){
+            $quick->update([
+                'name' => $fields['name'] ?? $quick->name,
+                'calories' => $fields['calories'] ?? $quick->calories,
+            ]);
         }
 
         return ResponseUtils::generateSuccessResponse($calendarEntry);
