@@ -1,0 +1,63 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class CalendarEntry extends Model
+{
+    protected $fillable = [
+        'recipe_id',
+        'entry_type',
+        'calories',
+        'date',
+        'user_id',
+        'meal_order',
+        'fast_food_store_id'
+    ];
+
+    protected $with = ["recipe", "fastFoodStore", "calendarEntryFastFoodMeals", "calendarEntryIngredients", "calendarEntryQuickEntries"];
+
+    public function recipe() {
+        return $this->belongsTo(Recipe::class);
+    }
+
+    public function fastFoodStore(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(FastFoodStore::class);
+    }
+
+    public function calendarEntryFastFoodMeals(): \Illuminate\Database\Eloquent\Relations\HasMany {
+        return $this->hasMany(CalendarEntryFastFoodMeal::class, 'calendar_entry_id', 'id');
+    }
+
+    public function calendarEntryIngredients(): \Illuminate\Database\Eloquent\Relations\HasMany {
+        return $this->hasMany(CalendarEntryIngredient::class, 'calendar_entry_id', 'id');
+    }
+
+    public function calendarEntryQuickEntries(): \Illuminate\Database\Eloquent\Relations\HasMany {
+        return $this->hasMany(CalendarEntryQuickEntry::class, 'calendar_entry_id', 'id');
+    }
+
+    public function recalculate() {
+        $calories = 0;
+        if ($this->entry_type === 'from_recipe') {
+            $calories = $this->recipe->calories_per_serving;
+        } elseif ($this->entry_type === 'from_fast_food_store') {
+            foreach ($this->calendarEntryFastFoodMeals as $meal) {
+                $calories += $meal->calories_per_ration * $meal->quantity;
+            }
+        } elseif ($this->entry_type === 'from_ingredients') {
+            foreach ($this->calendarEntryIngredients as $ing) {
+                $calories += $ing->calories;
+            }
+        } elseif ($this->entry_type === 'quick_entry') {
+            foreach ($this->calendarEntryQuickEntries as $quick) {
+                $calories += $quick->calories;
+            }
+        }
+        $this->calories = $calories;
+        $this->saveQuietly();
+    }
+
+}

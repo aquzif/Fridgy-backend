@@ -1,0 +1,134 @@
+name: "CI/CD - frontend"
+
+on:
+  push:
+    branches: [ "main", "dev" ]
+  pull_request:
+    branches: [ "main", "dev" ]
+
+
+jobs:
+  test:
+    defaults:
+      run:
+        working-directory: frontend
+    services:
+      mysql:
+        image: mysql:8.0.21
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: ""
+          MYSQL_DATABASE: fridgy
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - uses: actions/checkout@v3
+      - name: Install node dependencies
+        run: npm install
+      - name: Execute tests (frontend) via Jest
+        run: npm run test
+  build:
+    defaults:
+      run:
+        working-directory: frontend
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - uses: actions/checkout@v3
+      - name: Install node dependencies
+        run: npm install
+      - name: Build assets
+        run: npm run build
+  deploy-dev:
+    defaults:
+      run:
+        working-directory: frontend
+    runs-on: ubuntu-latest
+    needs: [ test,build ]
+    if: github.ref == 'refs/heads/dev'
+    steps:
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          known_hosts: 'placeholder'
+      - run: echo $(ssh-keyscan -p 22 ${{ secrets.SERVER_HOST }} )
+        working-directory: .
+      - name: Adding Known Hosts
+        run: ssh-keyscan -p 22 ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+        working-directory: .
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - uses: actions/checkout@v3
+      - name: Install node dependencies
+        run: npm install --force
+      - name: Build assets
+        run: npm run build
+      - name: Remove unnesesary files
+        run: |
+          rm -rf node_modules
+      #- name: Remove old files
+      #  run: |
+      #    ssh -p 22 ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }} "rm -rf ${{ secrets.SSH_DIR_DEV_F }}/*"
+      - name: Deploy to server
+        run: rsync -e 'ssh -p 22' -avz  ./build/ ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }}:${{ secrets.SSH_DIR_DEV_F }}
+      - name: Replace logo192.png with logo192_dev.png
+        run: |
+          ssh -p 22 ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }} "rm -rf ${{ secrets.SSH_DIR_DEV_F }}/logo192.png"
+          ssh -p 22 ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }} "cp ${{ secrets.SSH_DIR_DEV_F }}/logo192_dev.png ${{ secrets.SSH_DIR_DEV_F }}/logo192.png"
+      - name: Replace logo512.png with logo512_dev.png
+        run: |
+          ssh -p 22 ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }} "rm -rf ${{ secrets.SSH_DIR_DEV_F }}/logo512.png"
+          ssh -p 22 ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }} "cp ${{ secrets.SSH_DIR_DEV_F }}/logo512_dev.png ${{ secrets.SSH_DIR_DEV_F }}/logo512.png"
+
+      - name: Replace favicon.ico with favicon_dev.ico
+        run: |
+          ssh -p 22 ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }} "rm -rf ${{ secrets.SSH_DIR_DEV_F }}/favicon.ico"
+          ssh -p 22 ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }} "cp ${{ secrets.SSH_DIR_DEV_F }}/favicon_dev.ico ${{ secrets.SSH_DIR_DEV_F }}/favicon.ico"
+  deploy-prod:
+    defaults:
+      run:
+        working-directory: frontend
+    runs-on: ubuntu-latest
+    needs: [ test,build ]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          known_hosts: 'placeholder'
+      - run: echo $(ssh-keyscan -p 22 ${{ secrets.SERVER_HOST }} )
+        working-directory: .
+      - name: Adding Known Hosts
+        run: ssh-keyscan -p 22 ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+        working-directory: .
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - uses: actions/checkout@v3
+      - name: Install node dependencies
+        run: npm install --force
+      - name: Build assets
+        run: npm run build
+      - name: Remove unnesesary files
+        run: |
+          rm -rf node_modules
+      #- name: Remove old files
+      #  run: |
+      #    ssh -p 22 ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }} "rm -rf ${{ secrets.SSH_DIR_PROD_F }}/*"
+      - name: Deploy to server
+        run: rsync -e 'ssh -p 22' -avz  ./build/ ${{secrets.SSH_USERNAME}}@${{ secrets.SERVER_HOST }}:${{ secrets.SSH_DIR_PROD_F }}
