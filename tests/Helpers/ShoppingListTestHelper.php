@@ -9,6 +9,7 @@ class ShoppingListTestHelper {
         return [
             'name' => $faker->name,
             'type' => $type,
+            'is_default' => false,
         ];
     }
 

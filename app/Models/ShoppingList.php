@@ -9,6 +9,7 @@ class ShoppingList extends Model {
         'name',
         'user_id',
         'type',
+        'is_default',
     ];
 
     protected $with = [

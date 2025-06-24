@@ -178,5 +178,29 @@ class ShoppingListsAPITest extends TestCase {
         ]);
     }
 
+    public function test_user_can_set_default_shopping_list(): void {
+        $list1 = $this->createShoppingList($this->user1)->json('data');
+        $list2 = $this->createShoppingList($this->user1)->json('data');
+
+        $url = self::SHOPPING_LIST_ENDPOINT.'/'.$list2['id'].'/default';
+        $response = $this->actingAs($this->user1)->patchJson($url);
+
+        $response->assertStatus(200);
+        $response->assertJsonFragment(['id' => $list2['id'], 'is_default' => true]);
+
+        $this->assertFalse(ShoppingList::find($list1['id'])->is_default);
+        $this->assertTrue(ShoppingList::find($list2['id'])->is_default);
+    }
+
+    public function test_user_cannot_set_default_for_other_user_list(): void {
+        $list = $this->createShoppingList($this->user1)->json('data');
+
+        $url = self::SHOPPING_LIST_ENDPOINT.'/'.$list['id'].'/default';
+        $response = $this->actingAs($this->user2)->patchJson($url);
+
+        $response->assertStatus(403);
+        $response->assertJson(['message' => 'This action is unauthorized.']);
+    }
+
 
 }

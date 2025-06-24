@@ -140,6 +140,19 @@ class ShoppingListsController extends Controller {
 
     }
 
+    public function setDefault(Request $request, ShoppingList $shoppingList) {
+        $this->authorize('update', $shoppingList);
+
+        ShoppingList::where('user_id', $request->user()->id)
+            ->update(['is_default' => false]);
+
+        $shoppingList->is_default = true;
+        $shoppingList->save();
+
+        return ResponseUtils::generateSuccessResponse($shoppingList);
+
+    }
+
     public function destroy(ShoppingList $shoppingList) {
         $shoppingList->delete();
         return ResponseUtils::generateSuccessResponse();
