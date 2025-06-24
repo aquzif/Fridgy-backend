@@ -94,8 +94,10 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           known_hosts: 'placeholder'
       - run: echo $(ssh-keyscan -p 22 ${{ secrets.SERVER_HOST }} )
+        working-directory: .
       - name: Adding Known Hosts
         run: ssh-keyscan -p 22 ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+        working-directory: .
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
