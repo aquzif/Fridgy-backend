@@ -10,22 +10,24 @@ export default class ShoppingListUtils {
 
         if(!shoppingList) return [];
 
-        let {type, entries} = shoppingList;
+        let {type, entries, sort} = shoppingList;
         if(type === 'default'){
             console.log('ENT',entries);
+            let unchecked = entries.filter(entry => !entry.checked).map(entry => ({
+                type: 'entry',
+                ...entry
+            }));
+            let checkedEntries = entries.filter(entry => entry.checked).map(entry => ({
+                type: 'entry',
+                ...entry
+            }));
+            if(sort){
+                unchecked = unchecked.sort((a, b) => a.product_name.localeCompare(b.product_name));
+                checkedEntries = checkedEntries.sort((a, b) => a.product_name.localeCompare(b.product_name));
+            }
             shoppingListToReturn = [
-                ...entries.filter(entry => !entry.checked).map(entry => {
-                    return {
-                        type: 'entry',
-                        ...entry
-                    }
-                }).sort((a, b) => a.product_name.localeCompare(b.product_name)),
-                ...entries.filter(entry => entry.checked).map(entry => {
-                    return {
-                        type: 'entry',
-                        ...entry
-                    }
-                }).sort((a, b) => a.product_name.localeCompare(b.product_name))
+                ...unchecked,
+                ...checkedEntries
             ];
         } else if(type === 'grouped'){
 
@@ -49,17 +51,19 @@ export default class ShoppingListUtils {
                     }
 
 
+                    let items = entries.map(entry => ({
+                        type: 'entry',
+                        ...entry
+                    }));
+                    if(sort)
+                        items = items.sort((a,b) => a.product_name.localeCompare(b.product_name));
+
                     shoppingListToReturn = [...shoppingListToReturn,
                         {
                             type: 'category',
                             category: category
                         },
-                        ...entries.map(entry => {
-                            return {
-                                type: 'entry',
-                                ...entry
-                            }
-                        })
+                        ...items
                     ];
                 });
             if(entries.filter(entry => entry.checked).length > 0){
@@ -68,12 +72,14 @@ export default class ShoppingListUtils {
                         type: 'category',
                         category: 'Zaznaczone'
                     },
-                    ...entries.filter(entry => entry.checked).map(entry => {
-                        return {
-                            type: 'entry',
-                            ...entry
-                        }
-                    })
+                    ...(sort ?
+                        entries.filter(entry => entry.checked)
+                            .map(entry => ({type:'entry',...entry}))
+                            .sort((a,b)=>a.product_name.localeCompare(b.product_name))
+                        :
+                        entries.filter(entry => entry.checked)
+                            .map(entry => ({type:'entry',...entry}))
+                    )
                 ];
             }
         }

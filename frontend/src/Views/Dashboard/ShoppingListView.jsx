@@ -6,7 +6,7 @@ import store from "@/Store/store";
 import {FormControl, Grid, InputLabel, LinearProgress, MenuItem, Select} from "@mui/material";
 
 
-import {Add, Delete, EditNote, Refresh, Star, StarBorder} from "@mui/icons-material";
+import {Add, Delete, EditNote, Refresh, Star, StarBorder, SortByAlpha} from "@mui/icons-material";
 import FAB from "@/Components/FAB/FAB";
 import ShoppingListCEDialog from "@/Dialogs/ShoppingListCEDialog";
 import ConfirmDialog from "@/Dialogs/ConfirmDialog";
@@ -113,6 +113,19 @@ const ShoppingListView = () => {
         store.dispatch(requestShoppingLists());
     }
 
+    const handleToggleSort = async () => {
+        if(!selectedShoppingListID) return;
+        await toast.promise(
+            ShoppingListsAPI.setSort(selectedShoppingListID, !selectedShoppingList.sort),
+            {
+                loading: 'Aktualizowanie sortowania...',
+                success: 'Zmieniono sortowanie',
+                error: 'Nie udało się zmienić sortowania'
+            }
+        );
+        store.dispatch(requestShoppingLists());
+    }
+
     const handleOpenShoppingListEntryEditDialog = (entryID) => {
         setEditEntryID(entryID);
         setEditMode(true);
@@ -214,6 +227,12 @@ const ShoppingListView = () => {
                             disabled={shoppingLists.length === 0}
                             onClick={handleSetDefault}
                             icon={selectedShoppingList?.default ? <Star /> : <StarBorder />}
+                        />
+                        <TooltipIconButton
+                            title={'Sortuj alfabetycznie'}
+                            disabled={shoppingLists.length === 0}
+                            onClick={handleToggleSort}
+                            icon={<SortByAlpha color={selectedShoppingList?.sort ? 'primary' : 'inherit'} />}
                         />
                        <TooltipIconButton
                            title={'Odśwież'}
