@@ -35,7 +35,9 @@ class ShoppingList extends Model {
         static::updating(function ($model) {
             if($model->default) {
                 ShoppingList::where('user_id', $model->user_id)
+                    ->where('id', '!=', $model->id)
                     ->update(['default' => false]);
+
             }
         });
     }
