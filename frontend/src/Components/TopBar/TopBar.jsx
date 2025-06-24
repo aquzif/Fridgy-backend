@@ -49,7 +49,7 @@ const TopBar = ({
         <Container>
             {isMobile && <>
                 <OpenIcon icon={menuIcon} onClick={onOpen} />
-                <Logo>Fridgy</Logo>
+                <Logo>Fridgy TEST</Logo>
                 <OpenIcon icon={barcodeScan} onClick={() => navigate('/skaner')} />
             </>}
 
