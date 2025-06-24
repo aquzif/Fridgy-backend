@@ -29,16 +29,6 @@ jobs:
         with:
           php-version: '8.1'
       - uses: actions/checkout@v3
-      - name: ls
-        run: ls -la
-      - name: pdw
-        run: pwd
-      - name: move to backend directory
-        run: cd backend
-      - name: ls
-        run: ls -la
-      - name: pdw
-        run: pwd
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
       - name: Update composer dependencies
@@ -74,8 +64,6 @@ jobs:
         with:
           php-version: '8.1'
       - uses: actions/checkout@v3
-      - name: move to frontend directory
-        run: cd backend
       - name: Update composer dependencies
         run: composer update -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Install composer Dependencies
@@ -111,8 +99,6 @@ jobs:
         with:
           php-version: '8.1'
       - uses: actions/checkout@v3
-      - name: move to backend directory
-        run: cd backend
       - name: Update composer dependencies
         run: composer update -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Install composer Dependencies
