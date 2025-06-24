@@ -23,18 +23,18 @@ const CalendarEntryFromIngredientsCEDialog = ({open, onClose, onSelect}) => {
             return;
         }
 
-        setItems([...items,{product, quantity:1, unitId: product?.units?.[0]?.id || 0}]);
+        setItems([...items,{product, amount:1, unitId: product?.units?.[0]?.id || 0}]);
     };
 
-    const updateQuantity = (id,val) => setItems(items.map(it=>it.product.id===id?{...it,quantity:val}:it));
+    const updateQuantity = (id,val) => setItems(items.map(it=>it.product.id===id?{...it,amount:val}:it));
     const updateUnit = (id,val) => setItems(items.map(it=>it.product.id===id?{...it,unitId:val}:it));
     const removeItem = (id) => setItems(items.filter(it=>it.product.id!==id));
 
     const handleSave = () => {
         const data = items.map(it=>({
-            product_id: it.product.id,
+            ingredient_id: it.product.id,
             unit_id: it.unitId,
-            quantity: it.quantity
+            amount: it.amount
         }));
         console.log({ingredients: data});
         if(onSelect) onSelect({ingredients: data});
@@ -73,7 +73,7 @@ const CalendarEntryFromIngredientsCEDialog = ({open, onClose, onSelect}) => {
                                         ))}
                                     </Select>
                                 </FormControl>
-                                <NumberInput withoutButtons={true} value={item.quantity} min={0} max={1000} onChange={(e, val) => updateQuantity(item.product.id, val)} />
+                                <NumberInput withoutButtons={true} value={item.amount} min={0} max={1000} onChange={(e, val) => updateQuantity(item.product.id, val)} />
                                 <IconButton onClick={() => removeItem(item.product.id)}><Delete /></IconButton>
                             </Box>
                         </Box>

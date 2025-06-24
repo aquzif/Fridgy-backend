@@ -23,6 +23,8 @@ import {refreshUser} from "@/Store/Reducers/AuthReducer";
 import store from "@/Store/store";
 import CalendarMealPlaceholder from "@/Components/CalendarMealEntry/CalendarMealPlaceholder";
 import CalendarMealRecipe from "@/Components/CalendarMealEntry/CalendarMealRecipe";
+import CalendarIngredientsEntry from "@/Components/CalendarMealEntry/CalendarIngredientsEntry";
+import CalendarQuickEntry from "@/Components/CalendarMealEntry/CalendarQuickEntry";
 import RecipeSelectorDialog from "@/Dialogs/RecipeSelectorDialog";
 import SourceSelectDialog from "@/Dialogs/SourceSelectDialog";
 import {Swiper, SwiperSlide} from "swiper/react";
@@ -38,7 +40,10 @@ import ConfirmDialog from "@/Dialogs/ConfirmDialog";
 import CalendarFastFoodRecipe from "@/Components/CalendarMealEntry/CalendarFastFoodRecipe";
 import CalendarEntryFromFastFoodCEDialog from "@/Dialogs/CalendarEntryFromFastFoodCEDialog";
 import CalendarEntryFastFoodAPI from "@/API/CalendarEntryFastFoodAPI";
+import CalendarEntryQuickEntriesAPI from "@/API/CalendarEntryQuickEntriesAPI";
 import FastFoodEntryViewDialog from "@/Dialogs/FastFoodEntryViewDialog";
+import IngredientsEntryViewDialog from "@/Dialogs/IngredientsEntryViewDialog";
+import QuickEntryViewDialog from "@/Dialogs/QuickEntryViewDialog";
 import TrainingsAPI from "@/API/TrainingsAPI";
 import CalendarQuickAddDialog from "@/Dialogs/CalendarQuickAddDialog";
 
@@ -141,7 +146,31 @@ const GetMealFromData = ({date,mealNo,meals,title, onClick, onEdit,selectMode, o
                     selectMode={selectMode}
                     editMode={editMode}
                     mealName={title}
-                    onClick={() => onClick(meal.id)}
+                    onClick={() => onClick(meal.id,'from_fast_food_store')}
+                    onEdit={onEdit}
+                    onCheck={onCheck}
+                />
+            }
+            case "from_ingredients":{
+                return <CalendarIngredientsEntry
+                    meal={meal}
+                    onDelete={onDelete}
+                    selectMode={selectMode}
+                    editMode={editMode}
+                    mealName={title}
+                    onClick={() => onClick(meal.id,'from_ingredients')}
+                    onEdit={onEdit}
+                    onCheck={onCheck}
+                />
+            }
+            case "quick_entry":{
+                return <CalendarQuickEntry
+                    meal={meal}
+                    onDelete={onDelete}
+                    selectMode={selectMode}
+                    editMode={editMode}
+                    mealName={title}
+                    onClick={() => onClick(meal.id,'quick_entry')}
                     onEdit={onEdit}
                     onCheck={onCheck}
                 />
@@ -188,7 +217,9 @@ const CalendarView = () => {
     const [openSourceSelectDialog,setOpenSourceSelectDialog] = useState(false);
     const [selectedSource,setSelectedSource] = useState(null);
     const [selectedEditData,setSelectedEditData] = useState(null);
-    const [selectedViewId,setSelectedViewId] = useState(null);
+    const [selectedFastFoodViewId,setSelectedFastFoodViewId] = useState(null);
+    const [selectedIngredientsViewId,setSelectedIngredientsViewId] = useState(null);
+    const [selectedQuickViewId,setSelectedQuickViewId] = useState(null);
 
     const [selsectedListIdOpen,setSelectedListIdOpen] = useState(false);
     const [selectedMode,setSelectedMode] = useState('read');
@@ -263,7 +294,19 @@ const CalendarView = () => {
     }
 
     const selectIngredients = (data) => {
-        console.log('INGREDIENTS', data);
+        toast.promise(
+            CalendarEntriesAPI.create({
+                type: 'from_ingredients',
+                date: selectedEditData.date,
+                meal_order: selectedEditData.mealNo,
+                ingredients: data.ingredients
+            }),
+            {
+                loading: 'Dodawanie... ',
+                success: 'Dodano składniki',
+                error: 'Nie udało się dodać'
+            }
+        ).then(load);
         handleCloseSourceInputDialog();
     }
 
@@ -310,8 +353,10 @@ const CalendarView = () => {
                         mealNo={index}
                         meals={entries}
                         title={title}
-                        onClick={(id) => {
-                            setSelectedViewId(id)
+                        onClick={(id,type) => {
+                            if(type === 'from_fast_food_store') setSelectedFastFoodViewId(id);
+                            if(type === 'from_ingredients') setSelectedIngredientsViewId(id);
+                            if(type === 'quick_entry') setSelectedQuickViewId(id);
                         }}
                         onEdit={ () => {
                             setOpenSourceSelectDialog(true);
@@ -327,7 +372,7 @@ const CalendarView = () => {
         </DateContainer>
     });
 
-    const selectFastFood = async (fastFood) => {
+const selectFastFood = async (fastFood) => {
 
         if(fastFood.meals.length === 0){
             handleCloseSourceInputDialog();
@@ -358,6 +403,25 @@ const CalendarView = () => {
         handleCloseSourceInputDialog();
         load();
 
+    }
+
+    const selectQuick = async (data) => {
+        const res = await toast.promise(
+            CalendarEntriesAPI.create({
+                type: 'quick_entry',
+                date: selectedEditData.date,
+                meal_order: selectedEditData.mealNo
+            }),
+            {
+                loading: 'Dodawanie...',
+                success: 'Dodano wpis',
+                error: 'Błąd podczas dodawania'
+            }
+        );
+        const entryId = res.data.data.id;
+        await CalendarEntryQuickEntriesAPI.create(entryId, data);
+        handleCloseSourceInputDialog();
+        load();
     }
 
     return <Container>
@@ -423,10 +487,19 @@ const CalendarView = () => {
             onSelect={selectFastFood}
         />
         <FastFoodEntryViewDialog
-            open={ selectedViewId !== null}
-            onClose={handleCloseSourceInputDialog}
-            id={selectedViewId}
-            onClose={() => setSelectedViewId(null)}
+            open={ selectedFastFoodViewId !== null}
+            onClose={() => setSelectedFastFoodViewId(null)}
+            id={selectedFastFoodViewId}
+        />
+        <IngredientsEntryViewDialog
+            open={selectedIngredientsViewId !== null}
+            onClose={() => setSelectedIngredientsViewId(null)}
+            id={selectedIngredientsViewId}
+        />
+        <QuickEntryViewDialog
+            open={selectedQuickViewId !== null}
+            onClose={() => setSelectedQuickViewId(null)}
+            id={selectedQuickViewId}
         />
         <RecipeSelectorDialog
             open={selectedSource === 'recipe'}
@@ -436,6 +509,7 @@ const CalendarView = () => {
         <CalendarQuickAddDialog
             open={selectedSource === 'quick'}
             onClose={handleCloseSourceInputDialog}
+            onSave={selectQuick}
         />
         <div style={!isMobile && {
             display: 'flex',

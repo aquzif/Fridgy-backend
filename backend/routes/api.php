@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalendarEntriesController;
 use App\Http\Controllers\CalendarEntryFastFoodMealsController;
 use App\Http\Controllers\CalendarEntryIngredientsController;
+use App\Http\Controllers\CalendarEntryQuickEntriesController;
 use App\Http\Controllers\FastFoodMealsController;
 use App\Http\Controllers\FastFoodMealSetMealsController;
 use App\Http\Controllers\FastFoodMealSetsController;
@@ -207,6 +208,15 @@ Route::middleware('auth:sanctum')->group(fn() => [
                 Route::get('/{calendarEntryIngredient}',[CalendarEntryIngredientsController::class,'show']),
                 Route::match(['put','patch'],'/{calendarEntryIngredient}',[CalendarEntryIngredientsController::class,'update']),
                 Route::delete('/{calendarEntryIngredient}',[CalendarEntryIngredientsController::class,'destroy']),
+            ]),
+
+        Route::prefix('/{calendarEntry}/quick-entry')
+            ->group(fn() => [
+                Route::get('/',[CalendarEntryQuickEntriesController::class,'index']),
+                Route::post('/',[CalendarEntryQuickEntriesController::class,'store']),
+                Route::get('/{calendarEntryQuickEntry}',[CalendarEntryQuickEntriesController::class,'show']),
+                Route::match(['put','patch'],'/{calendarEntryQuickEntry}',[CalendarEntryQuickEntriesController::class,'update']),
+                Route::delete('/{calendarEntryQuickEntry}',[CalendarEntryQuickEntriesController::class,'destroy']),
             ]),
 
     ]),
