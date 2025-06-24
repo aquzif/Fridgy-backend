@@ -30,12 +30,12 @@ export default class RequestUtils{
         return await this.request(url, 'POST', data , headers);
     }
 
-    static async apiPost(url, data = {}, headers = {}){
+    static async apiPost(url, data = {}, headers = {},asJSON = false){
         const result = await this.request(url, 'POST', StringUtils.trimObjectValues(data) , {
 
             ...headers,
             'Authorization': 'Bearer ' + UserUtils.getUserToken(),
-        });
+        },asJSON);
 
         if(result.status > 400)
             throw new Error(result.data.message);
@@ -75,7 +75,7 @@ export default class RequestUtils{
         return result;
     }
 
-    static async request(url, method, data, headers) {
+    static async request(url, method, data, headers, asJSON = false) {
         let toReturn = {};
 
         if (url[0] === '/' && NetworkUtils.isLocalhost()) {
@@ -104,7 +104,9 @@ export default class RequestUtils{
             axiosConfig.data = formData;
             axiosConfig.headers['Content-Type'] = 'multipart/form-data;boundary='+formData._boundary;
         }
-        console.log(axiosConfig);
+        if(asJSON)
+            axiosConfig.data = data;
+        console.log('AXIOS:',axiosConfig);
         //if method is put or delete, we need to send the data as form data
 
 

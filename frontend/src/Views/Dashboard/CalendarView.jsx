@@ -198,11 +198,13 @@ const mealTitles = (amount) => {
 
 const getCaloriesPerDate = (date,entries) => {
     let calories = 0;
+
     for(let entry of entries){
         if(date.isSame(entry.date,'day')){
             calories += Math.round(entry.calories);
         }
     }
+    console.log(entries,calories);
     return calories;
 }
 const CalendarView = () => {
@@ -410,6 +412,8 @@ const selectFastFood = async (fastFood) => {
             CalendarEntriesAPI.create({
                 type: 'quick_entry',
                 date: selectedEditData.date,
+                name: data.name,
+                calories: data.calories,
                 meal_order: selectedEditData.mealNo
             }),
             {
@@ -419,7 +423,7 @@ const selectFastFood = async (fastFood) => {
             }
         );
         const entryId = res.data.data.id;
-        await CalendarEntryQuickEntriesAPI.create(entryId, data);
+        //await CalendarEntryQuickEntriesAPI.create(entryId, data);
         handleCloseSourceInputDialog();
         load();
     }
