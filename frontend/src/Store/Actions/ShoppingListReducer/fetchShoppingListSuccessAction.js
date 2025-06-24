@@ -7,6 +7,7 @@ const fetchShoppingListSuccessAction = (state, action) => {
     state.errorMessage = '';
     state.shoppingLists = payload;
 
+
 }
 
 

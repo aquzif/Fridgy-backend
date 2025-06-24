@@ -63,6 +63,7 @@ const ShoppingListCEDialog = (
                     success: 'Lista zakupów została zaktualizowana',
                     error: 'Nie udało się zaktualizować listy zakupów'
                 });
+                store.dispatch(requestShoppingLists());
             }else{
                 // ShoppingListsAPI.create(values)
                 const result = await toast.promise(ShoppingListsAPI.create(values),{
@@ -70,10 +71,11 @@ const ShoppingListCEDialog = (
                     success: 'Lista zakupów została utworzona',
                     error: 'Nie udało się utworzyć listy zakupów'
                 });
+                store.dispatch(requestShoppingLists());
                 store.dispatch(selectShoppingList(result.data.id));
 
             }
-            store.dispatch(requestShoppingLists());
+
 
             handleClose();
         }

@@ -62,7 +62,9 @@ const ShoppingListView = () => {
     selectedShoppingListID = selectedShoppingListID || 0;
 
     const selectedShoppingList = shoppingLists.find((shoppingList) => shoppingList.id === selectedShoppingListID);
-    const load = () => {
+    const load = (refresh = false) => {
+        if(!refresh)
+            store.dispatch(selectShoppingList(0));
         store.dispatch(requestShoppingLists());
         store.dispatch(requestProductCategories());
     }
@@ -146,8 +148,6 @@ const ShoppingListView = () => {
 
     }
 
-    console.log(selectedShoppingList);
-
     return (
         <Container>
             <ConfirmDialog
@@ -218,7 +218,7 @@ const ShoppingListView = () => {
                        <TooltipIconButton
                            title={'Odśwież'}
                            disabled={isLoading}
-                           onClick={load}
+                           onClick={() => load(true)}
                            icon={<Refresh />}
                        />
                     </div>

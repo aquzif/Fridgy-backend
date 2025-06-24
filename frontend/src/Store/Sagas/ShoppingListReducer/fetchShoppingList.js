@@ -20,8 +20,19 @@ function* fetchShoppingList(){
 
     if(data?.data?.length === 0)
         yield put(selectShoppingList(0));
-    else if(data?.data?.filter(list => list.id === selectedShoppingListID).length === 0)
-        yield put(selectShoppingList(data.data[0]?.id));
+    else if(data?.data?.filter(list => list.id === selectedShoppingListID).length === 0){
+        let foundDefault = false;
+        for(let sl of data.data){
+            if(sl.default){
+                foundDefault = true;
+                yield put(selectShoppingList(sl.id));
+                break;
+            }
+        }
+        if(!foundDefault)
+            yield put(selectShoppingList(data.data[0]?.id));
+    }
+
 
     yield put(success(data.data));
 

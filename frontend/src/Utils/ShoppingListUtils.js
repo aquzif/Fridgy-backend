@@ -12,19 +12,20 @@ export default class ShoppingListUtils {
 
         let {type, entries} = shoppingList;
         if(type === 'default'){
+            console.log('ENT',entries);
             shoppingListToReturn = [
                 ...entries.filter(entry => !entry.checked).map(entry => {
                     return {
                         type: 'entry',
                         ...entry
                     }
-                }),
+                }).sort((a, b) => a.product_name.localeCompare(b.product_name)),
                 ...entries.filter(entry => entry.checked).map(entry => {
                     return {
                         type: 'entry',
                         ...entry
                     }
-                })
+                }).sort((a, b) => a.product_name.localeCompare(b.product_name))
             ];
         } else if(type === 'grouped'){
 
