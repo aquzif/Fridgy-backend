@@ -22,14 +22,14 @@ const Transition = forwardRef(function Transition(props, ref) {
 
 const SSContainer = styled.div`
     //padding: 20px;
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
     text-align: center;
     background-color: ${props => props.bgColor};
     color: white;
     font-weight: bold;
     border-radius: 20px;
-    margin: 0px 10px;
+    margin: 5px 5px;
     position: relative;
     transition: 0.2s;
   
@@ -46,8 +46,8 @@ const SSContainer = styled.div`
 `;
 
 const StyledIcon = styled(Icon)`
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
     margin-left: 25px;
     margin-top: 15px;
     display: block;
@@ -61,6 +61,7 @@ const SSTitle = styled.span`
     bottom: 10px;
     left: 0px;
     width: 100%;
+    font-size: 15px;
     text-align: center;
 `;
 
