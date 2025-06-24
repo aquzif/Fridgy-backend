@@ -162,10 +162,10 @@ class ShoppingListsController extends Controller {
         $this->authorize('update', $shoppingList);
 
         $fields = $request->validate([
-            'sort' => 'required|boolean',
+            'sort' => 'required',
         ]);
 
-        $shoppingList->update(['sort' => $fields['sort']]);
+        $shoppingList->update(['sort' => $fields['sort'] == 'true']);
         $shoppingList = $shoppingList->refresh();
 
         return ResponseUtils::generateSuccessResponse($shoppingList);

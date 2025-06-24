@@ -33,7 +33,7 @@ export default class ShoppingListsAPI {
     }
 
     static async setSort(id, sort) {
-        return await RequestUtils.apiPut('/api/shopping-list/' + id + '/sort', {sort});
+        return await RequestUtils.apiPost('/api/shopping-list/' + id + '/sort', {sort},{});
     }
 
     static async delete(id) {

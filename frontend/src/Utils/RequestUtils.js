@@ -47,11 +47,12 @@ export default class RequestUtils{
         return await this.request(url, 'PUT', data, headers);
     }
 
-    static async apiPut(url, data = {}, headers = {}){
+    static async apiPut(url, data = {}, headers = {},asJSON=false){
+
         const result = await this.request(url, 'PUT', data, {
             ...headers,
             'Authorization': 'Bearer ' + UserUtils.getUserToken(),
-        });
+        },asJSON);
 
         if(result.status > 400)
             throw new Error(result.data.message);
@@ -85,6 +86,7 @@ export default class RequestUtils{
         let axiosConfig = {
             method,
             url,
+            data,
             headers: {
                 // 'Content-Type': 'application/json',
                 // 'Accept': 'application/json',
@@ -93,8 +95,8 @@ export default class RequestUtils{
             },
         };
 
-        if (method !== 'GET') {
-            console.log('data', data);
+        if (method !== 'GET' && !asJSON) {
+
             axiosConfig.method = 'POST';
             const formData = new FormData();
             for (const key in data) {
@@ -104,9 +106,8 @@ export default class RequestUtils{
             axiosConfig.data = formData;
             axiosConfig.headers['Content-Type'] = 'multipart/form-data;boundary='+formData._boundary;
         }
-        if(asJSON)
-            axiosConfig.data = data;
-        console.log('AXIOS:',axiosConfig);
+        console.log('data', axiosConfig);
+
         //if method is put or delete, we need to send the data as form data
 
 

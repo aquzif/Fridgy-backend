@@ -80,7 +80,7 @@ Route::middleware('auth:sanctum')->group(fn() => [
         Route::get('/{shoppingList}',[ShoppingListsController::class,'show']),
         Route::match(['put','patch'],'/{shoppingList}',[ShoppingListsController::class,'update']),
         Route::match(['put','patch'],'/{shoppingList}/default',[ShoppingListsController::class,'setDefault']),
-        Route::match(['put','patch'],'/{shoppingList}/sort',[ShoppingListsController::class,'setSort']),
+        Route::match(['post'],'/{shoppingList}/sort',[ShoppingListsController::class,'setSort']),
         Route::delete('/{shoppingList}',[ShoppingListsController::class,'destroy']),
 
 
