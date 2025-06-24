@@ -26,6 +26,8 @@ jobs:
         with:
           node-version: '18'
       - uses: actions/checkout@v3
+      - name: move to frontend directory
+        run: cd frontend
       - name: Install node dependencies
         run: npm install
       - name: Execute tests (frontend) via Jest
@@ -39,6 +41,8 @@ jobs:
         with:
           node-version: '18'
       - uses: actions/checkout@v3
+      - name: move to frontend directory
+        run: cd frontend
       - name: Install node dependencies
         run: npm install
       - name: Build assets
