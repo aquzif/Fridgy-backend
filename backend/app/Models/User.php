@@ -70,6 +70,10 @@ class User extends Authenticatable
         return $this->hasMany(Training::class);
     }
 
+    public function shelfEntries(): \Illuminate\Database\Eloquent\Relations\HasMany {
+        return $this->hasMany(ShelfEntry::class);
+    }
+
     public function recalculate() {
 
 
