@@ -7,6 +7,7 @@ namespace App\Providers;
 use App\Models\GlobalUnit;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\ShelfEntry;
 use App\Models\ProductUnit;
 use App\Models\ShoppingList;
 use App\Models\ShoppingListEntry;
@@ -14,6 +15,7 @@ use App\Policies\GlobalUnitPolicy;
 use App\Policies\ProductCategoryPolicy;
 use App\Policies\ProductPolicy;
 use App\Policies\ProductUnitPolicy;
+use App\Policies\ShelfEntryPolicy;
 use App\Policies\ShoppingListEntryPolicy;
 use App\Policies\ShoppingListPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -34,6 +36,7 @@ class AuthServiceProvider extends ServiceProvider
         ProductUnit::class => ProductUnitPolicy::class,
         GlobalUnit::class => GlobalUnitPolicy::class,
         ProductCategory::class => ProductCategoryPolicy::class,
+        ShelfEntry::class => ShelfEntryPolicy::class,
     ];
 
     /**

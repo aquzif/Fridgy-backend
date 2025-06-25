@@ -23,6 +23,7 @@ use App\Http\Controllers\ShoppingListEntriesController;
 use App\Http\Controllers\ShoppingListsController;
 use App\Http\Controllers\TrainingsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ShelfEntriesController;
 use App\Models\Product;
     use App\Models\ProductUnit;
     use App\Models\ShoppingList;
@@ -268,6 +269,17 @@ Route::middleware('auth:sanctum')->group(fn() => [
 
             ]),
 
+    ]),
+
+    //-----------------------------
+    //Shelf routes
+    //-----------------------------
+    Route::prefix('/shelf')->group(fn() => [
+        Route::get('/',[ShelfEntriesController::class,'index']),
+        Route::post('/',[ShelfEntriesController::class,'store']),
+        Route::get('/{shelfEntry}',[ShelfEntriesController::class,'show']),
+        Route::match(['put','patch'],'/{shelfEntry}',[ShelfEntriesController::class,'update']),
+        Route::delete('/{shelfEntry}',[ShelfEntriesController::class,'destroy']),
     ]),
 
     //-----------------------------

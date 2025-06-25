@@ -23,6 +23,7 @@ import BarcodeResultsView from "@/Views/Dashboard/BarcodeResultsView";
 import FastFoodsView from "@/Views/Dashboard/FastFoodsView";
 import FastFoodEditView from "@/Views/Dashboard/FastFoodEditView";
 import FastFoodView from "@/Views/Dashboard/FastFoodView";
+import ShelfView from "@/Views/Dashboard/ShelfView";
 
 const Router = () => {
 
@@ -58,6 +59,7 @@ const Router = () => {
                                 <Route path="/przepisy/:id/edycja" element={<RecipeEditView />} />
                                 <Route path="/produkty" element={<ProductsView />} />
                                 <Route path="/produkty/:id" element={<ProductView />} />
+                                <Route path="/szafka" element={<ShelfView />} />
                                 <Route path="/kategorie" element={<CategoriesView />} />
                                 <Route path="/profil" element={<ProfileView />} />
                                 <Route path="/ustawienia" element={<UserSettingsView />} />

@@ -13,6 +13,7 @@ import chevronLeft from '@iconify/icons-mdi/chevron-left';
 import burgerIcon from '@iconify/icons-mdi/burger';
 import calendarIcon from '@iconify/icons-mdi/calendar';
 import gearIcon from '@iconify/icons-mdi/gear';
+import fridgeIcon from '@iconify/icons-mdi/fridge-outline';
 import AuthAPI from "@/API/AuthAPI";
 import store from "@/Store/store";
 import {logout} from "@/Store/Reducers/AuthReducer";
@@ -120,6 +121,7 @@ const Navigation = ({
                 <NavItem name={'Przepisy'} icon={receiptText} url={'/przepisy'} />
                 <NavItem name={'Fast Food'} icon={burgerIcon} url={'/fast-food'} />
                 <NavItem name={'Produkty'} icon={fruitWatermelon} url={'/produkty'} />
+                <NavItem name={'Szafka'} icon={fridgeIcon} url={'/szafka'} />
                 <NavItem name={'Ustawienia aplikacji'} icon={gearIcon} url={'/admin/ustawienia'} />
 
             </nav>
