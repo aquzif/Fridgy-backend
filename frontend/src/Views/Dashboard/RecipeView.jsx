@@ -199,14 +199,28 @@ const RecipeView = () => {
         <div style={{textAlign:'center'}} >
             {
                 // youtube embed
-                recipe?.video_url && <iframe
+                recipe?.video_url && /*<iframe
                     width="560"
                     height="315"
                     src={recipe?.video_url}
                     title="YouTube"
                     frameborder="0"
                     allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
+                    allowfullscreen></iframe>*/
+                //prepare only button to yt, with text "utwórz film na youtube
+                <a href={recipe?.video_url} target="_blank" rel="noopener noreferrer">
+                    <button style={{
+                        padding: '10px 20px',
+                        backgroundColor: '#FF0000',
+                        color: 'white',
+                        borderRadius: '5px',
+                        border: 'none',
+                        cursor: 'pointer'
+                    }}>
+                        Obejrzyj film na YouTube
+                    </button>
+                </a>
+
 
             }
         </div>
