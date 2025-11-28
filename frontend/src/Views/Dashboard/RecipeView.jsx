@@ -7,7 +7,7 @@ import NetworkUtils from "@/Utils/NetworkUtils";
 import kcalImage from '@/Assets/kcal.png';
 import foodRationImage from '@/Assets/food_ration.png';
 import timeImage from '@/Assets/time.png';
-import {Grid, IconButton} from "@mui/material";
+import {FormControl, Grid, IconButton, InputLabel, MenuItem, Select} from "@mui/material";
 import {EntryRawProductContent} from "@/Components/ShoppingListEntry/ShoppingListEntry";
 import NumberInput from "@/Components/NumberInput/NumberInput";
 import VerticalLinearStepper from "@/Components/RecipeSteps/RecipeSteps";
@@ -82,6 +82,7 @@ const RecipeView = () => {
     const [recipe,setRecipe] = useState(null);
     const [isLoading,setIsLoading] = useState(true);
     const [showPerPortion,setShowPerPortion] = useState(1);
+    const [selectedVariantId,setSelectedVariantId] = useState(null);
 
     const navigate = useNavigate();
 
@@ -114,19 +115,26 @@ const RecipeView = () => {
         const {data} = response.data;
 
         setRecipe(data);
+        const defaultVariant = data?.variants?.find((variant) => variant.is_default) || data?.variants?.[0];
+        setSelectedVariantId(defaultVariant?.id || null);
         setShowPerPortion(data.serving_amount);
 
         setIsLoading(false);
     }
 
+    const selectedVariant = recipe?.variants?.find((variant) => variant.id === selectedVariantId)
+        || recipe?.variants?.find((variant) => variant.is_default)
+        || recipe?.variants?.[0];
+
     let porMulti = (showPerPortion || 1);
+    const caloriesPerServing = selectedVariant?.calories_per_serving || recipe?.calories_per_serving;
 
     const topData = [
         {
             image: kcalImage,
             value: <>
-                {Math.round(recipe?.calories_per_serving * porMulti) || 0} kalorii <br />
-                {Math.round(recipe?.calories_per_serving)} na porcję
+                {Math.round((caloriesPerServing || 0) * porMulti) || 0} kalorii <br />
+                {Math.round(caloriesPerServing || 0)} na porcję
             </>
         },
         {
@@ -180,6 +188,26 @@ const RecipeView = () => {
                 ))
             }
         </Grid>
+        <div style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
+            padding: '20px 0'
+        }}>
+            <FormControl variant={'standard'} sx={{minWidth: 200}}>
+                <InputLabel>Wariant</InputLabel>
+                <Select
+                    value={selectedVariantId || ''}
+                    onChange={(e) => setSelectedVariantId(e.target.value)}
+                >
+                    {(recipe?.variants || []).map((variant) => (
+                        <MenuItem value={variant.id} key={variant.id}>
+                            {variant.name} {variant.is_default ? '(domyślny)' : ''}
+                        </MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
+        </div>
         <div
             style={{
                 display: 'flex',
@@ -219,7 +247,7 @@ const RecipeView = () => {
                     }}
                 >
                     {
-                        recipe?.ingredients.map(ingredient => (
+                        (selectedVariant?.ingredients || []).map(ingredient => (
                             //<li>{ingredient.product.name} - {ingredient.amount_in_unit} {ingredient.unit.name}</li>
                             <div style={{
                                 padding: '4px'

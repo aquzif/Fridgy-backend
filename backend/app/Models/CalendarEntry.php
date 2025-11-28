@@ -8,6 +8,7 @@ class CalendarEntry extends Model
 {
     protected $fillable = [
         'recipe_id',
+        'recipe_variant_id',
         'entry_type',
         'calories',
         'date',
@@ -16,10 +17,14 @@ class CalendarEntry extends Model
         'fast_food_store_id'
     ];
 
-    protected $with = ["recipe", "fastFoodStore", "calendarEntryFastFoodMeals", "calendarEntryIngredients", "calendarEntryQuickEntries"];
+    protected $with = ["recipe", "recipeVariant", "fastFoodStore", "calendarEntryFastFoodMeals", "calendarEntryIngredients", "calendarEntryQuickEntries"];
 
     public function recipe() {
         return $this->belongsTo(Recipe::class);
+    }
+
+    public function recipeVariant() {
+        return $this->belongsTo(RecipeVariant::class);
     }
 
     public function fastFoodStore(): \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -42,7 +47,7 @@ class CalendarEntry extends Model
     public function recalculate() {
         $calories = 0;
         if ($this->entry_type === 'from_recipe') {
-            $calories = $this->recipe->calories_per_serving;
+            $calories = $this->recipeVariant?->calories_per_serving ?? $this->recipe->calories_per_serving;
         } elseif ($this->entry_type === 'from_fast_food_store') {
             foreach ($this->calendarEntryFastFoodMeals as $meal) {
                 $calories += $meal->calories_per_ration * $meal->quantity;

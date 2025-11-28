@@ -64,6 +64,9 @@ const RecipeSelectorDialog = (
 
     const [newRecipeDialogOpen,setNewRecipeDialogOpen] = useState(false);
     const [selectedTags,setSelectedTags] = useState([]);
+    const [variantDialogOpen,setVariantDialogOpen] = useState(false);
+    const [selectedRecipe,setSelectedRecipe] = useState(null);
+    const [selectedVariantId,setSelectedVariantId] = useState(null);
 
 
     const load = async () => {
@@ -103,108 +106,150 @@ const RecipeSelectorDialog = (
     },[currentPage,selectedTags,searchDebounced,needAllTags]);
 
     const handleSelect = (recipe) => {
-        onSelect(recipe);
+        const defaultVariant = recipe?.variants?.find((variant) => variant.is_default) || recipe?.variants?.[0];
+        if((recipe?.variants || []).length <= 1){
+            onSelect({recipe, variantId: defaultVariant?.id || null});
+            onClose();
+            return;
+        }
+
+        setSelectedRecipe(recipe);
+        setSelectedVariantId(defaultVariant?.id || null);
+        setVariantDialogOpen(true);
     }
 
-    return <Dialog
-        open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        maxWidth={'lg'}
-        fullWidth={true}
-        onClose={onClose}
-    >
-        <DialogTitle>Wybierz Posiłek</DialogTitle>
-        <DialogContent>
-            <Container>
-                <SearchContainer>
-                    <TextField
-                        label={'Szukaj'}
-                        id={'recipe-search-input'}
-                        name={'recipe-search-input'}
-                        variant={'standard'}
-                        value={searchValue}
-                        onChange={(e) => setSearchValue(e.target.value)}
-                        fullWidth={true}
-                    />
-                    <div style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        marginTop: '10px',
-                        justifyContent: 'space-between'
-                    }} >
-                        <div style={{width: 'calc(100% - 210px)'}} >
-                            <Multiselector
-                                title={'Tagi'}
-                                options={recipeTags}
-                                renderTags={(value, getTagProps) =>
-                                    value.map((option, index) => (
-                                        <Chip variant="outlined" label={option.name} {...getTagProps({ index })}
-                                              sx={{
-                                                  backgroundColor: option.color
-                                              }}
-                                              size={'small'}
-                                        />
-                                    ))
-                                }
-                                onChange={onTagSelect}
-                                selected={recipeTags.filter((tag) => {
-                                    return selectedTags.includes(tag.id);
-                                })}
-                            />
-                        </div>
-                        <div style={{width: '200px'}} >
-                            <FormControl variant="standard" fullWidth>
-                                <InputLabel >Wymagaj:</InputLabel>
-                                <Select
-                                    value={needAllTags}
-                                    onChange={(val) => setNeedAllTags(val.target.value)}
-                                >
-                                    <MenuItem value={1}>Wszystkich tagów</MenuItem>
-                                    <MenuItem value={0}>Dowolnego tagu</MenuItem>
-                                </Select>
-                            </FormControl>
-                        </div>
-                    </div>
-                </SearchContainer>
-
-                <RecipeCreateDialog
-                    open={newRecipeDialogOpen}
-                    onClose={(res) => {
-                        setNewRecipeDialogOpen(false);
-                        if(res){
-                            load(true);
-                        }
-                    }}
-                />
-                <Grid container spacing={2}>
-                    {
-                        recipes.map((recipe) => {
-                            return <Grid item xs={12} md={6} lg={3} xl={3} key={recipe.id}>
-                                <RecipeCard
-                                    onReload={() => load(true)}
-                                    data={recipe}
-                                    selectMode={true}
-                                    onSelect={handleSelect}
+    return <>
+        <Dialog
+            open={open}
+            TransitionComponent={Transition}
+            keepMounted
+            maxWidth={'lg'}
+            fullWidth={true}
+            onClose={onClose}
+        >
+            <DialogTitle>Wybierz Posiłek</DialogTitle>
+            <DialogContent>
+                <Container>
+                    <SearchContainer>
+                        <TextField
+                            label={'Szukaj'}
+                            id={'recipe-search-input'}
+                            name={'recipe-search-input'}
+                            variant={'standard'}
+                            value={searchValue}
+                            onChange={(e) => setSearchValue(e.target.value)}
+                            fullWidth={true}
+                        />
+                        <div style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            marginTop: '10px',
+                            justifyContent: 'space-between'
+                        }} >
+                            <div style={{width: 'calc(100% - 210px)'}} >
+                                <Multiselector
+                                    title={'Tagi'}
+                                    options={recipeTags}
+                                    renderTags={(value, getTagProps) =>
+                                        value.map((option, index) => (
+                                            <Chip variant="outlined" label={option.name} {...getTagProps({ index })}
+                                                  sx={{
+                                                      backgroundColor: option.color
+                                                  }}
+                                                  size={'small'}
+                                            />
+                                        ))
+                                    }
+                                    onChange={onTagSelect}
+                                    selected={recipeTags.filter((tag) => {
+                                        return selectedTags.includes(tag.id);
+                                    })}
                                 />
-                            </Grid>
-                        })
-                    }
-                </Grid>
-                <Stack alignItems="center" padding={'20px'}>
-                    <Pagination
-                        count={Math.ceil(totalPages)}
-                        page={currentPage}
-                        onChange={(e,page) =>setCurrentPage(page)}
-                        color='primary'
+                            </div>
+                            <div style={{width: '200px'}} >
+                                <FormControl variant="standard" fullWidth>
+                                    <InputLabel >Wymagaj:</InputLabel>
+                                    <Select
+                                        value={needAllTags}
+                                        onChange={(val) => setNeedAllTags(val.target.value)}
+                                    >
+                                        <MenuItem value={1}>Wszystkich tagów</MenuItem>
+                                        <MenuItem value={0}>Dowolnego tagu</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </div>
+                        </div>
+                    </SearchContainer>
+
+                    <RecipeCreateDialog
+                        open={newRecipeDialogOpen}
+                        onClose={(res) => {
+                            setNewRecipeDialogOpen(false);
+                            if(res){
+                                load(true);
+                            }
+                        }}
                     />
-                </Stack>
-            </Container>
-        </DialogContent>
-        <DialogActions>
-            <Button color={'warning'} onClick={onClose}>Anuluj</Button>
-        </DialogActions>
-    </Dialog>
+                    <Grid container spacing={2}>
+                        {
+                            recipes.map((recipe) => {
+                                return <Grid item xs={12} md={6} lg={3} xl={3} key={recipe.id}>
+                                    <RecipeCard
+                                        onReload={() => load(true)}
+                                        data={recipe}
+                                        selectMode={true}
+                                        onSelect={handleSelect}
+                                    />
+                                </Grid>
+                            })
+                        }
+                    </Grid>
+                    <Stack alignItems="center" padding={'20px'}>
+                        <Pagination
+                            count={Math.ceil(totalPages)}
+                            page={currentPage}
+                            onChange={(e,page) =>setCurrentPage(page)}
+                            color='primary'
+                        />
+                    </Stack>
+                </Container>
+            </DialogContent>
+            <DialogActions>
+                <Button color={'warning'} onClick={onClose}>Anuluj</Button>
+            </DialogActions>
+        </Dialog>
+        <Dialog
+            open={variantDialogOpen}
+            onClose={() => setVariantDialogOpen(false)}
+        >
+            <DialogTitle>Wybierz wariant</DialogTitle>
+            <DialogContent>
+                <FormControl variant={'standard'} sx={{minWidth: 300}}>
+                    <InputLabel>Wariant</InputLabel>
+                    <Select
+                        value={selectedVariantId || ''}
+                        onChange={(e) => setSelectedVariantId(e.target.value)}
+                    >
+                        {(selectedRecipe?.variants || []).map((variant) => (
+                            <MenuItem value={variant.id} key={variant.id}>
+                                {variant.name} {variant.is_default ? '(domyślny)' : ''}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
+            </DialogContent>
+            <DialogActions>
+                <Button color={'warning'} onClick={() => setVariantDialogOpen(false)}>Anuluj</Button>
+                <Button onClick={() => {
+                    if(selectedRecipe){
+                        onSelect({recipe: selectedRecipe, variantId: selectedVariantId});
+                        setVariantDialogOpen(false);
+                        onClose();
+                    }
+                }}>Wybierz</Button>
+            </DialogActions>
+        </Dialog>
+    </>
 
 
 }

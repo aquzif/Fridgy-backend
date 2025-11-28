@@ -4,7 +4,7 @@ import {useEffect, useRef, useState} from "react";
 import ProductsAPI from "@/API/ProductsAPI";
 import toast from "react-hot-toast";
 import ProductAPI from "@/API/RecipesAPI";
-import {Box, Chip, Grid, Tab, Tabs, TextField} from "@mui/material";
+import {Box, Button, Chip, FormControl, Grid, InputLabel, MenuItem, Select, Tab, Tabs, TextField} from "@mui/material";
 import placeholderImage from "@/Assets/placeholder.png";
 import RecipesAPI from "@/API/RecipesAPI";
 import NetworkUtils from "@/Utils/NetworkUtils";
@@ -21,6 +21,7 @@ import {useSelector} from "react-redux";
 import recipeTagsReducer, {requestRecipeTags} from "@/Store/Reducers/RecipeTagsReducer";
 import store from "@/Store/store";
 import RecipeIngredientsAPI from "@/API/RecipeIngredientsAPI";
+import RecipeVariantsAPI from "@/API/RecipeVariantsAPI";
 
 const Container = styled.div`
   width: calc(100% - 100px);
@@ -90,11 +91,24 @@ const RecipeEditView = () => {
     const [stepDialogStartText, setStepDialogStartText] = useState('');
     const [ingredientDialogOpen, setIngredientDialogOpen] = useState(false);
     const [ingredientDialogEdit, setIngredientDialogEdit] = useState(0);
+    const [variants,setVariants] = useState([]);
+    const [selectedVariantId,setSelectedVariantId] = useState(null);
+    const [variantName,setVariantName] = useState('');
+    const [newVariantName,setNewVariantName] = useState('');
     const [newImage, setNewImage] = useState({
         selected: false,
         url: '',
         file: null
     });
+
+    const syncVariants = (recipeData) => {
+        const recipeVariants = recipeData?.variants || [];
+        setVariants(recipeVariants);
+
+        const defaultVariant = recipeVariants.find((variant) => variant.is_default) || recipeVariants[0];
+        setSelectedVariantId(defaultVariant?.id || null);
+        setVariantName(defaultVariant?.name || '');
+    }
 
     const load = async () => {
         store.dispatch(requestRecipeTags());
@@ -110,6 +124,7 @@ const RecipeEditView = () => {
         let {data} = response.data;
 
         setProduct(data);
+        syncVariants(data);
 
         console.log('LOAD');
         setOldImagePath(NetworkUtils.fixBackendUrl(data?.image) || placeholderImage);
@@ -136,6 +151,82 @@ const RecipeEditView = () => {
     useEffect(() => {
         updateImage();
     }, [newImage]);
+
+    const selectedVariant = variants.find((variant) => variant.id === selectedVariantId) || null;
+
+    const handleVariantChange = (value) => {
+        setSelectedVariantId(value);
+        const variant = variants.find((variant) => variant.id === value);
+        setVariantName(variant?.name || '');
+    }
+
+    const createVariant = async () => {
+        if(!newVariantName.trim()){
+            toast.error('Podaj nazwę wariantu');
+            return;
+        }
+
+        await toast.promise(RecipeVariantsAPI.create(id,{
+            name: newVariantName
+        }),{
+            loading: 'Dodawanie wariantu...',
+            success: 'Dodano wariant',
+            error: 'Nie udało się dodać wariantu'
+        });
+
+        setNewVariantName('');
+        await load();
+    }
+
+    const saveVariantName = async () => {
+        if(!selectedVariantId){
+            toast.error('Wybierz wariant');
+            return;
+        }
+
+        await toast.promise(RecipeVariantsAPI.update(id, selectedVariantId,{
+            name: variantName
+        }),{
+            loading: 'Aktualizowanie wariantu...',
+            success: 'Wariant został zaktualizowany',
+            error: 'Nie udało się zaktualizować wariantu'
+        });
+
+        await load();
+    }
+
+    const setDefaultVariant = async () => {
+        if(!selectedVariantId){
+            toast.error('Wybierz wariant');
+            return;
+        }
+
+        await toast.promise(RecipeVariantsAPI.update(id, selectedVariantId,{
+            is_default: true
+        }),{
+            loading: 'Ustawianie wariantu domyślnego...',
+            success: 'Ustawiono wariant domyślny',
+            error: 'Nie udało się ustawić wariantu domyślnego'
+        });
+
+        await load();
+    }
+
+    const deleteVariant = async () => {
+        if(!selectedVariantId){
+            toast.error('Wybierz wariant');
+            return;
+        }
+
+        await toast.promise(RecipeVariantsAPI.delete(id, selectedVariantId),{
+            loading: 'Usuwanie wariantu...',
+            success: 'Usunięto wariant',
+            error: 'Nie udało się usunąć wariantu'
+        });
+
+        setSelectedVariantId(null);
+        await load();
+    }
 
     const formik = useFormik({
         initialValues: {
@@ -233,6 +324,10 @@ const RecipeEditView = () => {
             'label': 'Dodaj składnik',
             'icon': <Add />,
             'onClick': async () => {
+                if(!selectedVariantId){
+                    toast.error('Wybierz wariant, aby dodać składniki');
+                    return;
+                }
                 setIngredientDialogOpen(true);
                 setIngredientDialogEdit(0);
             }
@@ -245,6 +340,10 @@ const RecipeEditView = () => {
             'label': 'Edytuj',
             'icon': <Edit />,
             'onClick': async ({id}) =>{
+                if(!selectedVariantId){
+                    toast.error('Wybierz wariant');
+                    return;
+                }
                 setIngredientDialogOpen(true);
                 setIngredientDialogEdit(id);
             }
@@ -253,7 +352,7 @@ const RecipeEditView = () => {
             'label': 'Usuń',
             'icon': <Delete color={'error'} />,
             'onClick': async ({id: rowId}) => {
-                toast.promise(RecipeIngredientsAPI.delete(id,rowId),{
+                toast.promise(RecipeIngredientsAPI.delete(id, selectedVariantId, rowId),{
                     loading: 'usuwania składnika...',
                     success: 'Składnik został usunięty',
                     error: 'Nie udało się usunąć składnika'
@@ -304,6 +403,7 @@ const RecipeEditView = () => {
             editId={ingredientDialogEdit}
             editMode={ingredientDialogEdit > 0}
             editRecipeId={id}
+            editVariantId={selectedVariantId}
             open={ingredientDialogOpen}
             onClose={(success) => {
                 setIngredientDialogOpen(false);
@@ -313,7 +413,7 @@ const RecipeEditView = () => {
             }}
         />
         <h2>{
-            isLoading ? 'Ładowanie...' : product.name + ' ('+Math.round(product.calories_per_serving)+' kcal)'
+            isLoading ? 'Ładowanie...' : product.name + ' ('+Math.round(selectedVariant?.calories_per_serving || product.calories_per_serving)+' kcal)'
         }</h2>
         <FAB
             icon={<Save/>}
@@ -392,6 +492,51 @@ const RecipeEditView = () => {
                                 />
                             </Grid>
                             <Grid item xs={12}>
+                                <FormControl fullWidth variant={'standard'}>
+                                    <InputLabel>Wariant</InputLabel>
+                                    <Select
+                                        value={selectedVariantId || ''}
+                                        onChange={(val) => handleVariantChange(val.target.value)}
+                                    >
+                                        {variants.map((variant) => (
+                                            <MenuItem key={variant.id} value={variant.id}>
+                                                {variant.name} {variant.is_default ? '(domyślny)' : ''}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={12} lg={6}>
+                                <TextField
+                                    variant={'standard'}
+                                    name={'variant_name'}
+                                    label={'Nazwa wybranego wariantu'}
+                                    value={variantName}
+                                    onChange={(e) => setVariantName(e.target.value)}
+                                    fullWidth
+                                />
+                            </Grid>
+                            <Grid item xs={12} lg={6}>
+                                <div style={{display: 'flex', flexDirection: 'row', gap: '10px', flexWrap: 'wrap'}}>
+                                    <Button variant={'contained'} onClick={saveVariantName}>Zapisz nazwę</Button>
+                                    <Button variant={'outlined'} onClick={setDefaultVariant}>Ustaw domyślny</Button>
+                                    <Button variant={'outlined'} color={'error'} onClick={deleteVariant}>Usuń wariant</Button>
+                                </div>
+                            </Grid>
+                            <Grid item xs={12} lg={6}>
+                                <TextField
+                                    variant={'standard'}
+                                    name={'new_variant_name'}
+                                    label={'Nazwa nowego wariantu'}
+                                    value={newVariantName}
+                                    onChange={(e) => setNewVariantName(e.target.value)}
+                                    fullWidth
+                                />
+                            </Grid>
+                            <Grid item xs={12} lg={6}>
+                                <Button variant={'contained'} onClick={createVariant}>Dodaj wariant</Button>
+                            </Grid>
+                            <Grid item xs={12}>
                                 <Multiselector
                                     title={'Tagi'}
                                     options={recipeTags}
@@ -457,7 +602,7 @@ const RecipeEditView = () => {
                     tools={ingredientsTools}
                     inlineTools={ingredientsInlineTools}
                     searchBar={true}
-                    data={product?.ingredients?.map((ingredient) =>{
+                    data={selectedVariant?.ingredients?.map((ingredient) =>{
                         return {
                             id: ingredient.id,
                             name: ingredient.product.name,

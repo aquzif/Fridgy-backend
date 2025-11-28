@@ -82,7 +82,7 @@ const CalendarMealRecipe = ({meal,mealName,onClick, onEdit,selectMode, editMode,
             {mealName}
         </MealName>
         <RecipeName>
-            {meal.recipe.name}
+            {meal.recipe.name} {meal.recipe_variant && `(${meal.recipe_variant.name})`}
         </RecipeName>
         {
             selectMode && <>
