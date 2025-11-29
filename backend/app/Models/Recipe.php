@@ -23,7 +23,7 @@ class Recipe extends Model {
         'created_by',
     ];
 
-    protected $with = ['ingredients'];
+    protected $with = ['variants'];
 
     public function toSearchableArray(): array {
         return [
@@ -33,26 +33,22 @@ class Recipe extends Model {
 
 
     public function ingredients() {
-        return $this->hasMany(Ingredient::class);
+        return $this->hasManyThrough(Ingredient::class, RecipeVariant::class);
+    }
+
+    public function variants() {
+        return $this->hasMany(RecipeVariant::class);
     }
 
     public function recalculate() {
-        $ingredients = $this->ingredients()->get();
-        $calories = 0;
-        foreach ($ingredients as $ingredient) {
-            $ingredient->amount_in_grams = $ingredient->amount_in_unit * $ingredient->unit()->first()->grams_per_unit;
-            $ingredient->calories = $ingredient->amount_in_grams * ($ingredient->product->nutrition_energy_kcal/100);
-            $ingredient->saveQuietly();
-            $calories += $ingredient->calories;
-        }
+        foreach ($this->variants as $variant) {
+            foreach ($variant->ingredients as $ingredient) {
+                $ingredient->amount_in_grams = $ingredient->amount_in_unit * $ingredient->unit()->first()->grams_per_unit;
+                $ingredient->calories = $ingredient->amount_in_grams * ($ingredient->product->nutrition_energy_kcal/100);
+                $ingredient->saveQuietly();
+            }
 
-        $this->calories_per_serving = $calories / $this->serving_amount;
-        $this->saveQuietly();
-
-        $entries = $this->calendarEntries()->get();
-        foreach ($entries as $entry) {
-            $entry->calories = $this->calories_per_serving;
-            $entry->saveQuietly();
+            $variant->recalculate();
         }
 
     }

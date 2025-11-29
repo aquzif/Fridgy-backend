@@ -278,13 +278,14 @@ const CalendarView = () => {
         setSelectedEditData(null);
     }
 
-    const selectRecipe = async (recipe) => {
+    const selectRecipe = async ({recipe, variantId}) => {
         console.log('RECIPE',recipe);
         await toast.promise(CalendarEntriesAPI.create({
             "type" :"from_recipe",
             "date": selectedEditData.date,
             "meal_order": selectedEditData.mealNo,
-            "recipe_id": recipe.id
+            "recipe_id": recipe.id,
+            "recipe_variant_id": variantId
         }),{
             loading: 'Dodawanie przepisu...',
             success: 'Pomyślnie dodano przepis',

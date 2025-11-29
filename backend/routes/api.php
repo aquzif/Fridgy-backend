@@ -18,6 +18,7 @@ use App\Http\Controllers\ProductsController;
     use App\Http\Controllers\ProductUnitController;
 use App\Http\Controllers\RecipeIngredientsController;
 use App\Http\Controllers\RecipesController;
+use App\Http\Controllers\RecipeVariantsController;
 use App\Http\Controllers\RecipeTagsController;
 use App\Http\Controllers\ShoppingListEntriesController;
 use App\Http\Controllers\ShoppingListsController;
@@ -158,15 +159,24 @@ Route::middleware('auth:sanctum')->group(fn() => [
         Route::delete('/{recipe}',[RecipesController::class,'destroy']),
 
         //-----------------------------
-        //Recipe ingredients
+        //Recipe variants & ingredients
         //-----------------------------
-        Route::prefix('/{recipe}/ingredient')
+        Route::prefix('/{recipe}/variant')
             ->group(fn() => [
-                Route::get('/',[RecipeIngredientsController::class,'index']),
-                Route::post('/',[RecipeIngredientsController::class,'store']),
-                Route::get('/{ingredient}',[RecipeIngredientsController::class,'show']),
-                Route::match(['put','patch'],'/{ingredient}',[RecipeIngredientsController::class,'update']),
-                Route::delete('/{ingredient}',[RecipeIngredientsController::class,'destroy']),
+                Route::get('/',[RecipeVariantsController::class,'index']),
+                Route::post('/',[RecipeVariantsController::class,'store']),
+                Route::get('/{recipeVariant}',[RecipeVariantsController::class,'show']),
+                Route::match(['put','patch'],'/{recipeVariant}',[RecipeVariantsController::class,'update']),
+                Route::delete('/{recipeVariant}',[RecipeVariantsController::class,'destroy']),
+
+                Route::prefix('/{recipeVariant}/ingredient')
+                    ->group(fn() => [
+                        Route::get('/',[RecipeIngredientsController::class,'index']),
+                        Route::post('/',[RecipeIngredientsController::class,'store']),
+                        Route::get('/{ingredient}',[RecipeIngredientsController::class,'show']),
+                        Route::match(['put','patch'],'/{ingredient}',[RecipeIngredientsController::class,'update']),
+                        Route::delete('/{ingredient}',[RecipeIngredientsController::class,'destroy']),
+                    ]),
             ]),
     ]),
 

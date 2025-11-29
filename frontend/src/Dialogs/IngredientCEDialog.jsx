@@ -33,6 +33,7 @@ const IngredientCEDialog =
     onClose = () => {},
     editMode=false,
     editRecipeId = 0,
+    editVariantId = 0,
     editId = null
 }) => {
 
@@ -48,12 +49,12 @@ const IngredientCEDialog =
 
     useEffect(() => {
         if(editMode){
-            RecipeIngredientsAPI.get(editRecipeId,editId).then((response) => {
+            RecipeIngredientsAPI.get(editRecipeId, editVariantId, editId).then((response) => {
                 setEditIngredient(response.data.data);
                 setSelectedProduct(response.data.data.product);
             })
         }
-    }, [editMode,editId,editRecipeId,open]);
+    }, [editMode,editId,editRecipeId,editVariantId,open]);
 
     console.log(selectedProduct);
 
@@ -67,14 +68,14 @@ const IngredientCEDialog =
         validateOnChange: true,
         onSubmit: async (values) => {
             if(editMode){
-                await toast.promise(RecipeIngredientsAPI.update(editRecipeId,editId, values),{
+                await toast.promise(RecipeIngredientsAPI.update(editRecipeId, editVariantId, editId, values),{
                     loading: 'Aktualizowanie składnika...',
                     success: 'Składnik został zaktualizowany',
                     error: 'Nie udało się zaktualizować składnika'
                 });
             }else{
                 // ShoppingListsAPI.create(values)
-                await toast.promise(RecipeIngredientsAPI.create(editRecipeId,values),{
+                await toast.promise(RecipeIngredientsAPI.create(editRecipeId, editVariantId, values),{
                     loading: 'Tworzenie składnika...',
                     success: 'Składnik został utworzony',
                     error: 'Nie udało się utworzyć składnika'

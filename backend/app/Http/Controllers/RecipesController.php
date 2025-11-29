@@ -81,6 +81,12 @@ class RecipesController extends Controller {
 
         $newObj = Recipe::create($fields);
 
+        $newObj->variants()->create([
+            'name' => 'Domyślny',
+            'is_default' => true,
+            'calories_per_serving' => $newObj->calories_per_serving,
+        ]);
+
 
         return ResponseUtils::generateSuccessResponse(
             $newObj->where('id',$newObj['id'])->first()

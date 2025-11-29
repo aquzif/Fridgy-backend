@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CalendarEntry;
 use App\Models\FastFoodStore;
 use App\Models\Recipe;
+use App\Models\RecipeVariant;
 use App\Utils\ResponseUtils;
 use Illuminate\Http\Request;
 
@@ -160,17 +161,30 @@ class CalendarEntriesController extends Controller
     public function storeFromRecipe(Request $request) {
         $fields = $request->validate([
             'recipe_id' => 'required|integer',
+            'recipe_variant_id' => 'integer|exists:recipe_variants,id|nullable',
             'date' => 'required|date',
             'meal_order' => 'integer|required',
         ]);
 
         $user = $request->user();
         $recipe = Recipe::findOrFail($fields['recipe_id']);
+        $variant = isset($fields['recipe_variant_id'])
+            ? RecipeVariant::findOrFail($fields['recipe_variant_id'])
+            : $recipe->variants()->where('is_default', true)->first();
+
+        if($variant && $variant->recipe_id !== $recipe->id) {
+            return ResponseUtils::generateErrorResponse('Invalid variant for recipe', 422);
+        }
+
+        if(!$variant) {
+            $variant = $recipe->variants()->first();
+        }
 
         $entry = $user->calendarEntries()->create([
             'recipe_id' => $recipe->id,
+            'recipe_variant_id' => $variant?->id,
             'entry_type' => 'from_recipe',
-            'calories' => $recipe->calories_per_serving,
+            'calories' => $variant?->calories_per_serving ?? $recipe->calories_per_serving,
             'date' => $fields['date'],
             'meal_order' => $fields['meal_order'],
         ]);
@@ -179,21 +193,32 @@ class CalendarEntriesController extends Controller
     }
 
     public function updateFromRecipe(Request $request, CalendarEntry $calendarEntry) {
-        $request = $request->validate([
+        $fields = $request->validate([
             'recipe_id' => 'integer',
+            'recipe_variant_id' => 'integer|exists:recipe_variants,id|nullable',
             'date' => 'date',
             'meal_order' => 'integer',
         ]);
 
-        $user = $request->user();
+        $recipe = Recipe::findOrFail($fields['recipe_id']);
+        $variant = isset($fields['recipe_variant_id'])
+            ? RecipeVariant::findOrFail($fields['recipe_variant_id'])
+            : $recipe->variants()->where('is_default', true)->first();
 
-        $recipe = Recipe::findOrFail($request['recipe_id']);
+        if($variant && $variant->recipe_id !== $recipe->id) {
+            return ResponseUtils::generateErrorResponse('Invalid variant for recipe', 422);
+        }
+
+        if(!$variant) {
+            $variant = $recipe->variants()->first();
+        }
 
         $calendarEntry->update([
             'recipe_id' => $recipe->id,
-            'calories' => $recipe->calories_per_serving,
-            'date' => $request['date'],
-            'meal_order' => $request['meal_order'],
+            'recipe_variant_id' => $variant?->id,
+            'calories' => $variant?->calories_per_serving ?? $recipe->calories_per_serving,
+            'date' => $fields['date'],
+            'meal_order' => $fields['meal_order'],
         ]);
 
         return ResponseUtils::generateSuccessResponse($calendarEntry);

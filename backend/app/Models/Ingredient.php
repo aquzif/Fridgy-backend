@@ -9,6 +9,7 @@ class   Ingredient extends Model {
 
     protected $fillable = [
         'recipe_id',
+        'recipe_variant_id',
         'product_id',
         'product_unit_id',
         'amount_in_unit',
@@ -20,6 +21,10 @@ class   Ingredient extends Model {
     protected $with = ['product', 'unit'];
     public function recipe() {
         return $this->belongsTo(Recipe::class);
+    }
+
+    public function variant() {
+        return $this->belongsTo(RecipeVariant::class, 'recipe_variant_id');
     }
 
     public function product() {
@@ -36,16 +41,22 @@ class   Ingredient extends Model {
             $model->amount_in_grams = $model->amount_in_unit * $model->unit()->first()->grams_per_unit;
             $model->calories = $model->amount_in_grams * ($model->product->nutrition_energy_kcal/100);
             $model->saveQuietly();
-            $model->recipe->recalculate();
+            if($model->variant) {
+                $model->variant->recalculate();
+            }
         });
         self::updated(function($model) {
             $model->amount_in_grams = $model->amount_in_unit * $model->unit()->first()->grams_per_unit;
             $model->calories = $model->amount_in_grams * ($model->product->nutrition_energy_kcal/100);
             $model->saveQuietly();
-            $model->recipe->recalculate();
+            if($model->variant) {
+                $model->variant->recalculate();
+            }
         });
         self::deleted(function($model) {
-            $model->recipe->recalculate();
+            if($model->variant) {
+                $model->variant->recalculate();
+            }
         });
     }
 
