@@ -4,13 +4,13 @@ import {useEffect, useState} from "react";
 import styled from "styled-components";
 import TopBar from "@/Components/TopBar/TopBar";
 import {useMediaQuery} from "@/Hooks/useMediaQuery";
-import ShoppingListsAPI from "@/API/ShoppingListsAPI";
 
 
 const Container = styled.div`
-    width: calc(100vw - 250px);
+    width: calc(100vw - 280px);
     height: 100vh;
-    background-color: #F3F3F3;
+    background: radial-gradient(circle at top right, #eef2ff 0%, #f8faff 45%, #f4f7ff 100%);
+    transition: width 0.2s ease-in;
 
     @media (max-width: 768px) {
         width: 100vw;
@@ -20,14 +20,21 @@ const Container = styled.div`
 
 const Flex = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: row;
+    background-color: #f4f7ff;
 `;
 
 const OutletContainer = styled.div`
   width: 100%;
   overflow: auto;
+  padding: 20px;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+      padding: 14px;
+  }
 `;
 
 const DashboardView = () => {
