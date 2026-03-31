@@ -23,55 +23,68 @@ import {Icon} from "@iconify/react/offline";
 
 
 const Container = styled.div`
-    background-color: #2B2B2B;
-    width: 250px;
+    background: linear-gradient(165deg, #121631 0%, #171d42 45%, #1e2755 100%);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    width: 280px;
     height: 100vh;
     transition: left 0.2s ease-in;
-    z-index: 1000; 
+    z-index: 1000;
+    box-shadow: 10px 0 30px rgba(12, 16, 40, 0.25);
+    box-sizing: border-box;
+    padding: 20px 16px 16px;
 
 
     @media (max-width: 768px) {
         width: 100vw;
+        padding-top: 64px;
     }
 
 `;
 
 const Title = styled.h2`
-    color: #FACC2C;
+    color: #f5f7ff;
     font-weight: bold;
-    font-size: 32px;
-    padding-top: 5px;
-    text-align: center;
-    letter-spacing: 4px;
-    height: 45px;
+    font-size: 34px;
+    text-align: left;
+    letter-spacing: 2px;
+    height: 48px;
+    margin-bottom: 10px;
+    padding-left: 8px;
 
     @media (max-width: 768px) {
-    padding: 30px 0px;
+      text-align: center;
+      padding: 0;
     }
 `;
 
 const MiniNav = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: row;
-    width: 100%;
-    height: 32px;
-    background-color: #494949;
-    margin-bottom: 10px;
+    gap: 10px;
+    width: calc(100% - 16px);
+    margin: 0 8px 18px;
+    padding: 10px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
 
 
     @media (max-width: 768px) {
-        height: 50px;
+        justify-content: center;
     }
 `;
 
 const ExitIcon = styled(Icon)`
     position: absolute;
-    top: 25px;
-    left: 25px;
-    width: 50px;
-    height: 50px;
-    color: #FACC2C;
+    top: 14px;
+    left: 14px;
+    width: 40px;
+    height: 40px;
+    color: #d6ddff;
+    padding: 6px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08);
 `;
 
 
