@@ -4,13 +4,12 @@ import {useEffect, useState} from "react";
 import styled from "styled-components";
 import TopBar from "@/Components/TopBar/TopBar";
 import {useMediaQuery} from "@/Hooks/useMediaQuery";
-import ShoppingListsAPI from "@/API/ShoppingListsAPI";
 
 
 const Container = styled.div`
     width: calc(100vw - 250px);
     height: 100vh;
-    background-color: #F3F3F3;
+    background: radial-gradient(circle at top, #f8fbff 0%, #f1f5f9 45%, #eef2f7 100%);
 
     @media (max-width: 768px) {
         width: 100vw;
@@ -28,6 +27,8 @@ const Flex = styled.div`
 const OutletContainer = styled.div`
   width: 100%;
   overflow: auto;
+  padding: 12px;
+  box-sizing: border-box;
 `;
 
 const DashboardView = () => {
@@ -53,7 +54,7 @@ const DashboardView = () => {
                 <TopBar onOpen={onNavClick} />
                 <OutletContainer
                     style={{
-                        height: mobile ? 'calc(100% - 71px)' : 'calc(100% - 51px)'
+                        height: mobile ? 'calc(100% - 71px)' : 'calc(100% - 65px)'
                     }}
                 >
                     <Outlet />

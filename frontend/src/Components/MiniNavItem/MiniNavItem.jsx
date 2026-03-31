@@ -3,13 +3,17 @@ import {Icon} from "@iconify/react/offline";
 
 
 const Item = styled(Icon)`
-    width: 24px;
-    height: 24px;
-    padding: 4px;
-    color: #A6A6A6;
+    width: 22px;
+    height: 22px;
+    padding: 6px;
+    color: #cbd5e1;
     margin: 0px 8px;
+    border-radius: 10px;
+    transition: all 0.15s ease-in-out;
 
     &:hover {
+        color: #f8fafc;
+        background: rgba(148, 163, 184, 0.22);
         cursor: pointer;
     }
 

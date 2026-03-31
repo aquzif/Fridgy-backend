@@ -1,5 +1,5 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700&display=swap');
 
 // Variables
 @import 'variables';
@@ -7,13 +7,16 @@
 
 
 * {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Inter', 'Montserrat', sans-serif;
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
   overflow: hidden;
+  background: #f1f5f9;
+  color: #0f172a;
 }
 
 #root {
@@ -21,4 +24,3 @@ body {
   height: 100vh;
   overflow: auto;
 }
-
