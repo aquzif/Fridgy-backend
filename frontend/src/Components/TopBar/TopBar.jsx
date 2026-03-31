@@ -9,10 +9,17 @@ import {useNavigate} from "react-router-dom";
 const Container = styled.div`
     display: flex;
     flex-direction: row;
+    align-items: center;
     width: 100%;
-    height: 50px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid #bcbaba;
+    height: 64px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    border-bottom: 1px solid #e2e8f0;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-radius: 0 0 16px 16px;
 
     @media (max-width: 768px) {
         height: 70px;
@@ -20,20 +27,26 @@ const Container = styled.div`
 `;
 
 const OpenIcon = styled(Icon)`
-    margin: 10px;
-    width: 50px;
-    height: 50px;
-    color: #545454;
+    margin: 10px 12px;
+    width: 34px;
+    height: 34px;
+    color: #334155;
+    padding: 6px;
+    border-radius: 12px;
+
+    &:hover {
+        background: #e2e8f0;
+        cursor: pointer;
+    }
 `;
 
 const Logo = styled.p`
     width: calc(100vw - 140px);
-    padding-top: 16px;
     text-align: center;
-    color: #FACC2C;
-    font-weight: bold;
-    font-size: 30px;
-    letter-spacing: 2px;
+    color: #0f172a;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: 0.5px;
 `;
 
 const TopBar = ({

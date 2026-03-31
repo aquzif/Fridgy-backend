@@ -23,12 +23,15 @@ import {Icon} from "@iconify/react/offline";
 
 
 const Container = styled.div`
-    background-color: #2B2B2B;
+    background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
     width: 250px;
     height: 100vh;
     transition: left 0.2s ease-in;
-    z-index: 1000; 
-
+    z-index: 1000;
+    border-right: 1px solid rgba(148, 163, 184, 0.2);
+    box-shadow: 10px 0 30px rgba(2, 6, 23, 0.35);
+    display: flex;
+    flex-direction: column;
 
     @media (max-width: 768px) {
         width: 100vw;
@@ -37,16 +40,16 @@ const Container = styled.div`
 `;
 
 const Title = styled.h2`
-    color: #FACC2C;
-    font-weight: bold;
-    font-size: 32px;
-    padding-top: 5px;
+    color: #e2e8f0;
+    font-weight: 700;
+    font-size: 30px;
+    padding-top: 14px;
     text-align: center;
-    letter-spacing: 4px;
-    height: 45px;
+    letter-spacing: 1px;
+    height: 58px;
 
     @media (max-width: 768px) {
-    padding: 30px 0px;
+    padding: 26px 0px 20px 0;
     }
 `;
 
@@ -54,11 +57,13 @@ const MiniNav = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: row;
-    width: 100%;
-    height: 32px;
-    background-color: #494949;
-    margin-bottom: 10px;
-
+    width: calc(100% - 28px);
+    height: 44px;
+    margin: 0 auto 12px auto;
+    background: rgba(148, 163, 184, 0.15);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 14px;
+    backdrop-filter: blur(6px);
 
     @media (max-width: 768px) {
         height: 50px;
@@ -67,16 +72,12 @@ const MiniNav = styled.div`
 
 const ExitIcon = styled(Icon)`
     position: absolute;
-    top: 25px;
-    left: 25px;
-    width: 50px;
-    height: 50px;
-    color: #FACC2C;
+    top: 20px;
+    left: 16px;
+    width: 42px;
+    height: 42px;
+    color: #cbd5e1;
 `;
-
-
-
-
 
 const Navigation = ({
     open,
@@ -115,7 +116,7 @@ const Navigation = ({
                 <MiniNavItem icon={cogIcon} onClick={onSettingsClick} />
                 <MiniNavItem icon={baselineMeetingRoom} onClick={onLogoutClick} />
             </MiniNav>
-            <nav>
+            <nav style={{ paddingBottom: '16px', overflowY: 'auto' }}>
                 <NavItem name={'Kalendarz'} icon={calendarIcon} url={'/kalendarz'} />
                 <NavItem name={'Lista zakupów'} icon={basketOutline} url={'/lista-zakupow'} />
                 <NavItem name={'Przepisy'} icon={receiptText} url={'/przepisy'} />
